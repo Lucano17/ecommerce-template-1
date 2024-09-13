@@ -2,13 +2,12 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { titleFont } from "../../fonts/fonts";
 
-export default function Shop() {
+export default function Auth() {
   return (
     <div className={styles.page}>
-      <main className={styles.main}>
-        <h1>Hola mundo</h1>
-        <h1 className={titleFont.className}>Hola mundo</h1>
-      </main>
+      <div className={styles.main}>
+        <h1>New Account page</h1>
+      </div>
       <footer className={styles.footer}>
         
       </footer>
