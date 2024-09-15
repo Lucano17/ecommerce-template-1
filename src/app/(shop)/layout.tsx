@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import {inter, geistMono, geistSans} from "@/./fonts/fonts"
 import "../globals.css";
+import { TopMenu } from "@/components";
 
 
 
@@ -18,7 +19,10 @@ export default function ShopLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <main>
+        <TopMenu/>
         {children}
+        </main>
       </body>
     </html>
   );

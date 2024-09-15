@@ -6,7 +6,7 @@ export default function Auth() {
   return (
     <div className={styles.page}>
       <div className={styles.main}>
-        <h1>Login page</h1>
+        <h1>New account page</h1>
       </div>
       <footer className={styles.footer}>
         
