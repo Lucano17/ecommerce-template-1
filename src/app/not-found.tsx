@@ -4,6 +4,7 @@ import { PageNotFound, TopMenu} from '@/components';
 export default function() {
   return (
     <>
+    <TopMenu/>
     <PageNotFound/>
     </>
   )
