@@ -1,9 +1,10 @@
 import React from 'react';
-import { PageNotFound} from '@/components';
+import { PageNotFound, TopMenu} from '@/components';
 
 export default function() {
   return (
     <>
+    <TopMenu/>
     <PageNotFound/>
     </>
   )

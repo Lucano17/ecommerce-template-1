@@ -5,9 +5,6 @@ interface Props {
   };
 }
 
-const validURL = ["/","admin", "cart", "checkout", "checkout/adress", "category{id}", "orders", "orders{id}",
-    "product", "products", "auth", "auth/login", "auth/new-account"]
-
 export default function ({ params }: Props) {
   const { id } = params;
 

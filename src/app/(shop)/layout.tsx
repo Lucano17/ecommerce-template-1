@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-
-import {inter, geistMono, geistSans} from "@/./fonts/fonts"
+import { inter, geistMono, geistSans } from "@/./fonts/fonts";
 import "../globals.css";
 import { TopMenu } from "@/components";
-
-
 
 export const metadata: Metadata = {
   title: "Ecommerce-template-1",
@@ -20,8 +17,8 @@ export default function ShopLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <main>
-        <TopMenu/>
-        {children}
+          <TopMenu />
+          {children}
         </main>
       </body>
     </html>
