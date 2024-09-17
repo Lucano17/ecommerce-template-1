@@ -1,17 +1,13 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import { titleFont } from "../../fonts/fonts";
+import { ProductGrid, Title } from "@/components";
+import { initialData } from "@/seed/seed";
+
+const products = initialData.products;
 
 export default function Shop() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <h1>Hola mundo</h1>
-        <h1 className={titleFont.className}>Shop page</h1>
-      </main>
-      <footer className={styles.footer}>
-        
-      </footer>
-    </div>
+    <>
+      <Title title="Tienda" subtitle="Todos los productos" />
+      <ProductGrid products={products}/>
+    </>
   );
 }
