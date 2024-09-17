@@ -1,5 +1,6 @@
 import { ProductGrid, Title } from "@/components";
 import { initialData } from "@/seed/seed";
+import styles from "./page.module.css"
 
 const products = initialData.products;
 

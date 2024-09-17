@@ -1,5 +1,6 @@
 import React from 'react'
 import { Product } from '@/interfaces';
+import styles from "./ProductGrid.module.css"
 
 
 interface Props {
@@ -8,7 +9,7 @@ interface Props {
 
 export const ProductGrid = ({products}:Props) => {
   return (
-    <div>
+    <div className={styles.gridContainer}>
         {products.map(product=>(
             <span key={product.slug}>{product.title}</span>
         ))}
