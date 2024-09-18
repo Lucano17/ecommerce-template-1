@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import styles from "./PageNotFound.module.css"
 import Image from "next/image";
-import notFoundImage from "@/public/imgs/starman_750x750.png"
+import notFoundImage from "@/../public/imgs/starman_750x750.png"
 
 export const PageNotFound = () => {
   return (
