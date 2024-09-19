@@ -26,7 +26,7 @@ export const TopMenu = () => {
         <div className={styles.categoryContainer}>
           <Link href="/category/men">Hombres</Link>
           <Link href="/category/women">Mujeres</Link>
-          <Link href="/category/kids">Niños</Link>
+          <Link href="/category/kid">Niños</Link>
         </div>
         <div className={styles.items}>
           <Link href="/search"><IoSearchOutline/></Link>
