@@ -1,6 +1,6 @@
+import "../globals.css";
 import type { Metadata } from "next";
 import { inter, geistMono, geistSans } from "@/./fonts/fonts";
-import "../globals.css";
 import { SideBar, TopMenu } from "@/components";
 
 export const metadata: Metadata = {

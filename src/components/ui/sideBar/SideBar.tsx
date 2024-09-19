@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import styles from "./SideBar.module.css";
 import {
   IoCloseOutline,
@@ -13,16 +12,33 @@ import {
   IoTicketOutline,
 } from "react-icons/io5";
 import Link from "next/link";
+import { useUIStore } from "@/store";
 
 export const SideBar = () => {
+  const isSideMenuOpen = useUIStore(state => state.isSideMenuOpen);
+  const closeSideMenu = useUIStore(state => state.closeSideMenu);
+
   return (
     <div>
-      <div className={styles.blackBackground}></div>
-      <div className={styles.blurBackground}></div>
-      <nav className={styles.sideBar}>
+      {
+        isSideMenuOpen && (
+          <div className={styles.blackBackground}></div>
+        )
+      }
+      {
+        isSideMenuOpen && (
+          <div className={styles.blurBackground}
+          onClick={closeSideMenu}></div>
+        )
+      }
+
+      <div>
+      {
+        isSideMenuOpen && (
+          <nav className={styles.sideBar}>
         <IoCloseOutline
           className={styles.closeIcon}
-          onClick={() => console.log("click")}
+          onClick={closeSideMenu}
         />
         <div className={styles.searchContainer}>
           <IoSearchOutline className={styles.searchIcon} size={20} />
@@ -71,6 +87,9 @@ export const SideBar = () => {
         </Link>
 
       </nav>
+        )
+      }
+      </div>
     </div>
   );
 };

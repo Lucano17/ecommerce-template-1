@@ -1,6 +1,7 @@
+import "./globals2.css";
 import type { Metadata } from "next";
 import { inter, geistMono, geistSans } from "@/fonts/fonts";
-import "./globals2.css";
+
 
 export const metadata: Metadata = {
   title: "Ecommerce-template-1",

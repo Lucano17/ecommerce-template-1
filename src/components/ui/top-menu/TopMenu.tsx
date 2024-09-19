@@ -1,10 +1,15 @@
-import React from "react";
+"use client"
+
+// import React, { useState } from "react";
 import styles from "./page.module.css";
 import Link from "next/Link";
 import { titleFont } from "@/fonts/fonts";
 import {IoSearchOutline, IoCartOutline} from "react-icons/io5"
+import { useUIStore } from "@/store";
 
 export const TopMenu = () => {
+  const openSideMenu = useUIStore(state => state.openSideMenu)
+
   return (
     <nav className={styles.nav}>
       <div className={styles.container}>
@@ -31,7 +36,8 @@ export const TopMenu = () => {
           <IoCartOutline/>
           </div>
           </Link>
-          <button>
+          <button
+          onClick={openSideMenu}>
             Menu
           </button>
         </div>

@@ -1,6 +1,6 @@
+import styles from "./PageNotFound.module.css"
 import React from "react";
 import Link from "next/link";
-import styles from "./PageNotFound.module.css"
 import Image from "next/image";
 import notFoundImage from "@/../public/imgs/starman_750x750.png"
 
@@ -16,7 +16,8 @@ export const PageNotFound = () => {
         src={notFoundImage}
         alt="Not found image"
         width={300}
-        height={300}/>
+        height={300}
+        priority={true}/>
       </div>
     </div>
   );
