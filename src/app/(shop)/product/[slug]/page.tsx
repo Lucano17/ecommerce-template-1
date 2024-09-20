@@ -1,7 +1,7 @@
 import styles from "./page.module.css";
 import { initialData } from "@/seed/seed";
 import notFound from "../not-found";
-import { SizeSelector } from "@/components";
+import { QuantitySelector, SizeSelector } from "@/components";
 
 interface Props {
   params: {
@@ -32,6 +32,9 @@ export default function ({ params }: Props) {
           selectedSize={product.sizes[0]}
           availableSizes={product.sizes}
         />
+
+        <QuantitySelector
+        quantity={1}/>
 
         <button>Agregar al carrito</button>
 
