@@ -14,14 +14,14 @@ export default function ShopLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+    // <html lang="en">
+    //   <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <main>
           <TopMenu />
           <SideBar/>
           {children}
         </main>
-      </body>
-    </html>
+    //   </body>
+    // </html>
   );
 }

@@ -27,7 +27,7 @@ export const ProductGridItem = ({ product }: Props) => {
         />
       </Link>
       <div>
-        <Link href={`product/${product.slug}`}>{product.title}</Link>
+        <Link href={`/product/${product.slug}`}>{product.title}</Link>
         <span>${product.price}</span>
       </div>
     </div>
