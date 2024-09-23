@@ -11,7 +11,7 @@ interface Props {
 
 export default function ({ params }: Props) {
   const { slug } = params;
-  const product = initialData.products.find(product => product.slug === slug);
+  const product = initialData.products.find((product) => product.slug === slug);
 
   if (!product) {
     notFound();
@@ -20,9 +20,7 @@ export default function ({ params }: Props) {
   return (
     <div className={styles.container}>
       <div className={styles.imagesContainer}>
-        <ProductSlideShow
-        title={product.title}
-        images={product.images}/>
+        <ProductSlideShow title={product.title} images={product.images} />
       </div>
 
       <div className={styles.dataContainer}>
@@ -31,24 +29,23 @@ export default function ({ params }: Props) {
         <p>${product?.price}</p>
 
         <div>
-        <SizeSelector
-          selectedSize={product.sizes[0]}
-          availableSizes={product.sizes}
-        />
+          <SizeSelector
+            selectedSize={product.sizes[0]}
+            availableSizes={product.sizes}
+          />
         </div>
 
         <div>
-        <QuantitySelector
-        quantity={1}/>
+          <QuantitySelector quantity={1} />
         </div>
 
-        <button
-        className={styles.cartButton}>Agregar al carrito</button>
+        <button className={styles.cartButton}>Agregar al carrito</button>
 
-        <h3>Descripción</h3>
+        <div className={styles.description}>
+          <h3>Descripción</h3>
+          <p className={styles.descriptionText}>{product?.description}</p>
+        </div>
 
-        <p
-        className={styles.descriptionText}>{product?.description}</p>
       </div>
     </div>
   );

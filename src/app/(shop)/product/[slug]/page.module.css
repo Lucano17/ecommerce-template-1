@@ -40,3 +40,11 @@
     margin-top: 10px;
     cursor: pointer;
 }
+
+.description {
+    margin-top: 20px;
+}
+
+.descriptionText {
+    text-align: start;
+}
