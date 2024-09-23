@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import { IoAddCircleOutline, IoRemoveCircleOutline} from 'react-icons/io5'
+import styles from "./QuantitySelector.module.css"
 
 
 interface Props {
@@ -15,16 +16,16 @@ export const QuantitySelector = ({quantity}:Props) => {
     };
 
   return (
-    <div>
+    <div className={styles.container}>
 
-        <button>
+        <button className={styles.handleAmountButton}>
             <IoRemoveCircleOutline size={30}
             onClick={()=>onQuantityChanged(-1)}/>
         </button>
 
-        <span>{count}</span>
+        <span className={styles.amount}>{count}</span>
 
-        <button>
+        <button className={styles.handleAmountButton}>
             <IoAddCircleOutline size={30}
             onClick={()=>onQuantityChanged(+1)}/>
         </button>

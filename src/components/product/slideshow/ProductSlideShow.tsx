@@ -39,7 +39,7 @@ export const ProductSlideShow = ({ images, title, className }: Props) => {
         {images.map((image) => (
           <SwiperSlide key={image}>
             <Image
-            width={415}
+            width={423}
             height={350}
             src={`/products/${image}`}
             alt={title}

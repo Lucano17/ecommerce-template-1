@@ -19,30 +19,36 @@ export default function ({ params }: Props) {
 
   return (
     <div className={styles.container}>
-      <div className={styles.item1}>
+      <div className={styles.imagesContainer}>
         <ProductSlideShow
         title={product.title}
         images={product.images}/>
       </div>
 
-      <div className={styles.item2}>
+      <div className={styles.dataContainer}>
         <h1>{product?.title}</h1>
 
         <p>${product?.price}</p>
 
+        <div>
         <SizeSelector
           selectedSize={product.sizes[0]}
           availableSizes={product.sizes}
         />
+        </div>
 
+        <div>
         <QuantitySelector
         quantity={1}/>
+        </div>
 
-        <button>Agregar al carrito</button>
+        <button
+        className={styles.CartButton}>Agregar al carrito</button>
 
         <h3>Descripción</h3>
 
-        <p>{product?.description}</p>
+        <p
+        className={styles.descriptionText}>{product?.description}</p>
       </div>
     </div>
   );

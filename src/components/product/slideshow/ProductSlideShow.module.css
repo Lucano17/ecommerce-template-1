@@ -66,7 +66,7 @@
     width: 65%;
     height: 50%;
     box-sizing: border-box;
-    padding: 10px 0;
+    padding: 5px 0;
   }
   
   .mySwiper :global(.swiper-slide) {

@@ -4,7 +4,7 @@
     /* height: 90.6vh; */
 }
 
-.item1 {
+.imagesContainer {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -15,7 +15,7 @@
     left: 0;
 }
 
-.item2 {
+.dataContainer {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -25,5 +25,8 @@
     top: 0;
     right: 0;
     padding-right: 20px;
-    
+}
+
+.dataContainer p {
+    margin-top: 10px;
 }
