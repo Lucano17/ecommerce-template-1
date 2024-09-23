@@ -43,7 +43,7 @@ export default function ({ params }: Props) {
         </div>
 
         <button
-        className={styles.CartButton}>Agregar al carrito</button>
+        className={styles.cartButton}>Agregar al carrito</button>
 
         <h3>Descripción</h3>
 

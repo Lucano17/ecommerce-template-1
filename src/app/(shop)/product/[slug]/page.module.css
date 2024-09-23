@@ -30,3 +30,13 @@
 .dataContainer p {
     margin-top: 10px;
 }
+
+.cartButton {
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    padding: 5px 0;
+    margin: auto;
+    margin-top: 10px;
+    cursor: pointer;
+}
