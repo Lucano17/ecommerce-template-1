@@ -1,6 +1,4 @@
-"use client"
 
-import React, { useState } from 'react'
 import type { Size } from '@/interfaces';
 import styles from "./SizeSelector.module.css"
 
@@ -11,7 +9,6 @@ interface Props {
 
 
 export const SizeSelector = ({selectedSize, availableSizes}:Props) => {
-    const [sizeSelected, useSelectedSize] = useState(false);
 
   return (
     <div>
@@ -19,7 +16,9 @@ export const SizeSelector = ({selectedSize, availableSizes}:Props) => {
         <div>
             {
             availableSizes.map(size =>(
+                // Agregar clase para que selectedSize se vea remarcado
                 <button key={size}>
+                    
                     {size}
                 </button>
             ))

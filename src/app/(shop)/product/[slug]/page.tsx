@@ -1,7 +1,7 @@
 import styles from "./page.module.css";
 import { initialData } from "@/seed/seed";
 import notFound from "../not-found";
-import { QuantitySelector, SizeSelector } from "@/components";
+import { ProductSlideShow, QuantitySelector, SizeSelector } from "@/components";
 
 interface Props {
   params: {
@@ -11,7 +11,7 @@ interface Props {
 
 export default function ({ params }: Props) {
   const { slug } = params;
-  const product = initialData.products.find((product) => product.slug === slug);
+  const product = initialData.products.find(product => product.slug === slug);
 
   if (!product) {
     notFound();
@@ -21,6 +21,9 @@ export default function ({ params }: Props) {
     <div className={styles.container}>
       <div className={styles.item1}>
         <h1>Product Page</h1>
+        <ProductSlideShow
+        title={product.title}
+        images={product.images}/>
       </div>
 
       <div className={styles.item2}>
