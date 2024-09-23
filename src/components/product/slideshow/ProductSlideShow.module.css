@@ -16,10 +16,10 @@
     padding: 0;
   } */
   
-  .swiper {
+  /* .swiper {
     width: 100%;
     height: 100%;
-  }
+  } */
   
   .swiper-slide {
     text-align: center;
@@ -58,34 +58,52 @@
   
   .mySwiper2 {
     height: 50%;
-    width: 50%;
-    border: 3px solid black;
+    width: 65%;
   }
   
   .mySwiper {
     display: flex;
-    width: 100%;
+    width: 65%;
     height: 50%;
     box-sizing: border-box;
     padding: 10px 0;
-    border: 3px solid black;
   }
   
-  .mySwiper .swiper-slide {
+  .mySwiper :global(.swiper-slide) {
     width: 25%;
     height: 100%;
-    opacity: 0.4;
+    opacity: 0.2;
     
   }
   
-  .mySwiper .swiper-slide-thumb-active {
+  .mySwiper :global(.swiper-slide-thumb-active) {
     opacity: 1;
   }
   
-  .swiper-slide img {
+  /* .swiper-slide img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
+  } */
+
+  .mySwiper2 :global(.swiper-button-next),
+  .mySwiper2 :global(.swiper-button-prev) {
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  border-radius: 50%; /* Hacer los botones redondos */
+  width: 40px;
+  height: 40px;
+}
+
+  .mySwiper2 :global(.swiper-button-next:hover),
+  .mySwiper2 :global(.swiper-button-prev:hover) {
+  background-color: rgba(255, 255, 255, 0.8); /* Cambia el fondo en hover */
+  color: black;
+}
+
+  .mySwiper2 :global(.swiper-button-next::after),
+  .mySwiper2 :global(.swiper-button-prev::after) {
+  font-size: 16px; /* Ajusta el tamaño de la flecha */
+}
+
   

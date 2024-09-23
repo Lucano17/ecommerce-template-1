@@ -20,7 +20,6 @@ export default function ({ params }: Props) {
   return (
     <div className={styles.container}>
       <div className={styles.item1}>
-        <h1>Product Page</h1>
         <ProductSlideShow
         title={product.title}
         images={product.images}/>

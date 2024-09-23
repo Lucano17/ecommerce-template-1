@@ -24,12 +24,12 @@ export const ProductSlideShow = ({ images, title, className }: Props) => {
   return (
     <div>
       <Swiper
-        // style={
-        //   {
-        //     "--swiper-navigation-color": "#fff",
-        //     "--swiper-pagination-color": "#fff",
-        //   } as React.CSSProperties
-        // }
+        style={
+          {
+            "--swiper-navigation-color": "#fff",
+            "--swiper-pagination-color": "#fff",
+          } as React.CSSProperties
+        }
         spaceBetween={10}
         navigation={true}
         thumbs={{ swiper: thumbsSwiper }}
@@ -39,8 +39,8 @@ export const ProductSlideShow = ({ images, title, className }: Props) => {
         {images.map((image) => (
           <SwiperSlide key={image}>
             <Image
-            width={290}
-            height={290}
+            width={415}
+            height={350}
             src={`/products/${image}`}
             alt={title}
             priority={true}/>
@@ -52,7 +52,7 @@ export const ProductSlideShow = ({ images, title, className }: Props) => {
         onSwiper={setThumbsSwiper}
         spaceBetween={10}
         // Colocar images amount para que cargue siempre la cantidad de images del producto
-        slidesPerView={2}
+        slidesPerView={4}
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
