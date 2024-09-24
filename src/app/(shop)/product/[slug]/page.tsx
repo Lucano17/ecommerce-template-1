@@ -72,7 +72,7 @@ export default function ({ params }: Props) {
       <div className={styles.dataContainer}>
         <h1>{product?.title}</h1>
 
-        <p>${product?.price}</p>
+        <p className={styles.price}>Precio: ${product?.price}</p>
 
         <div>
           <SizeSelector
