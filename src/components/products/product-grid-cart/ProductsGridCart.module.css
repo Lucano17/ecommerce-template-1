@@ -1,0 +1,41 @@
+
+
+.productsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-top: 10px;
+    margin-left: 10px;
+    max-width: 400px;
+}
+
+.quantitySelector {
+    margin-left: 20px;
+}
+
+.title {
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.price {
+    font-size: 10px;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.priceAndQuantity {
+    display: flex;
+}
+
+.remove {
+    font-size: 25px;
+    margin-top: auto;
+    margin-left: 50px;
+}
+
+.remove:hover {
+    font-size: 25px;
+    color: red;
+    cursor: pointer;
+}
