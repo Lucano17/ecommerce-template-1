@@ -11,12 +11,18 @@ export default function () {
       <div className={styles.carritoContainer}>
 
         <div className={styles.carrito}>
-          <Link href="/">Continúa comprando</Link>
           <ProductsGridCart />
+          <Link href="/" className={styles.keepShoping}>Continúa comprando</Link>
         </div>
 
-        <div>
+        <div className={styles.checkOut}>
           <h2>Resumen de orden</h2>
+          <p>Número de productos <span>3</span></p>
+          <p>Subtotal <span>$150</span></p>
+          <p>Impuestos (21%)<span></span></p>
+          <p>Envío <span>$50</span></p>
+          <div className={styles.spacer}/>
+          <p className={styles.totalPrice}>Total <span>$500</span></p>
         </div>
 
       </div>

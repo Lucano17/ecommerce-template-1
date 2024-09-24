@@ -1,3 +1,42 @@
 .carritoContainer {
     display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 100%
+}
+
+.keepShoping {
+    display: flex;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.checkOut {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.238);
+    box-shadow: 5px 5px 10px rgb(68, 68, 68);
+    padding: 20px;
+    height: 275px;
+}
+
+.checkOut p {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    justify-content: space-between; /* Esto coloca el texto al inicio y el span al final */
+}
+
+.checkOut p span {
+    text-align: end;
+}
+
+.totalPrice {
+    display: flex;
+    margin-top: auto;
+    font-size: 25px;
+}
+
+.spacer {
+    flex-grow: 1;
 }
