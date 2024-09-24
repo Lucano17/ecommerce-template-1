@@ -1,7 +1,17 @@
-.sizeSelected {
-    color: red;
-}
-
-.sizeNonSelected {
-    color: white;
-}
+.sizeButton {
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+  
+  .selected {
+    border: none;
+    border-bottom: 1px solid white;
+    background: none;
+  }
+  
+  .sizeContainer h3 {
+    font-size: 15px;
+  }
