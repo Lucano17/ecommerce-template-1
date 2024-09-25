@@ -1,13 +1,21 @@
+"use client"
 import { IsPaid, Title } from "@/components";
 import Link from "next/link";
 import styles from "./page.module.css";
+import { useState } from "react";
 
 export default function () {
+    const [isPaid, setIsPaid] = useState(false);
+
+    const handleStateChange = () => {
+      setIsPaid((isPaid) => !isPaid); // Cambia el estado de isPaid
+    };
   return (
     <>
       <Title title="Orders" />
 
       <div className={styles.container}>
+        <button onClick={handleStateChange}>Cambiar estado</button>
         <table>
           <thead>
             <tr>
@@ -23,7 +31,7 @@ export default function () {
               <td>Mark</td>
               <td>
                 <div className={styles.state}>
-                  <IsPaid />
+                  <IsPaid isPaid={isPaid}/>
                 </div>
               </td>
               <td>
@@ -37,7 +45,7 @@ export default function () {
 
               <td>
                 <div className={styles.state}>
-                  <IsPaid />
+                <IsPaid isPaid={isPaid}/>
                 </div>
               </td>
 

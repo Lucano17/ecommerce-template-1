@@ -1,20 +1,13 @@
 "use client"
-import React, { useEffect, useState } from "react";
-import styles from "./IsPaid.module.css"
+import React from "react";
+import styles from "./IsPaid.module.css";
 import { IoCardOutline } from "react-icons/io5";
 
-
-
-export const IsPaid = () => {
-  const [isPaid, setIsPaid] = useState(false);
-
-  useEffect (()=>{
-    
-  },[])
+// El componente recibe `isPaid` y `onStateChange` como props
+export const IsPaid = ({ isPaid }: { isPaid: boolean }) => {
 
   return (
     <div className={styles.container}>
-        <button onClick={()=>setIsPaid(!isPaid)}>Cambiar estado</button>
       {isPaid ? (
         <div className={styles.paidTrue}>
           <IoCardOutline size={30} />

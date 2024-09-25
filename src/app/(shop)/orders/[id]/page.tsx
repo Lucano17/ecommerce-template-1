@@ -2,6 +2,7 @@
 import { IsPaid, Title } from "@/components";
 import styles from "./page.module.css";
 import ProductsGridCheckout from "@/components/products/product-grid-checkout/ProductsGridCheckout";
+import { useState } from "react";
 
 
 interface Props {
@@ -13,16 +14,24 @@ interface Props {
  
 export default function ({params}:Props) {
     const {id} = params;
+    const [isPaid, setIsPaid] = useState(false);
 
+    const handleStateChange = () => {
+      setIsPaid((isPaid) => !isPaid); // Cambia el estado de isPaid
+    };
 
     //to-do: verificar => redirect("/")
   return (
     <div className={styles.container}>
+      
       <Title title={`Orden #${id}`} />
       <div className={styles.carritoContainer}>
+
+      <button onClick={handleStateChange}>Cambiar estado</button>
+
         <div className={styles.carrito}>
 
-        <IsPaid />
+        <IsPaid isPaid={isPaid} />
 
           <ProductsGridCheckout />
         </div>
@@ -51,7 +60,7 @@ export default function ({params}:Props) {
           </div>
             
             <div className={styles.checkOutPaid}>
-            <IsPaid />
+            <IsPaid isPaid={isPaid} />
             </div>
 
         </div>
