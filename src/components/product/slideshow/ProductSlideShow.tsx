@@ -51,7 +51,6 @@ export const ProductSlideShow = ({ images, title, className }: Props) => {
         <Swiper
         onSwiper={setThumbsSwiper}
         spaceBetween={10}
-        // Colocar images amount para que cargue siempre la cantidad de images del producto
         slidesPerView={4}
         freeMode={true}
         watchSlidesProgress={true}

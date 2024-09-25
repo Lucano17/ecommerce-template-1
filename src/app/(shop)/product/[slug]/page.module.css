@@ -61,7 +61,7 @@
     text-align: start;
 }
 
-@media (max-width: 950px){
+@media (max-width: 800px){
     .container {
         position: relative;
         display: flex;

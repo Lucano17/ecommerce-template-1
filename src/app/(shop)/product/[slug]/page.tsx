@@ -11,6 +11,7 @@ import {
   SizeSelector,
 } from "@/components";
 import type { Size } from "@/interfaces";
+import { useWidthDimention } from "@/hooks";
 
 interface Props {
   params: {
@@ -26,49 +27,28 @@ export default function ({ params }: Props) {
     notFound();
     return null;
   }
-  
-  const [selectedSize, setSelectedSize] = useState<Size>(product.sizes[0]); // Estado inicial con la primera talla
-  
-  
-  const [windowDimention, setWindowDimention] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
 
-  const detectDimention = () => {
-    setWindowDimention({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
-  };
+  const [selectedSize, setSelectedSize] = useState<Size>(product.sizes[0]);
 
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    window.addEventListener("resize", detectDimention);
-    windowDimention.width < 900 && setIsMobile(true);
-    return () => {
-      window.removeEventListener("resize", detectDimention);
-    };
-}, [windowDimention]);
-
+  const isMobile = useWidthDimention();
 
   return (
     <div className={styles.container}>
       <div className={styles.imagesContainer}>
-
         <div>
-        { windowDimention.width < 900 && isMobile ? (
-          <ProductMobileSlideShow
-            title={product?.title || "Producto sin título"}
-            images={product?.images || []}
-          />
-        ) : <ProductSlideShow
-        title={product?.title || "Producto sin título"}
-        images={product?.images || []} />}
-      </div>
-
+          {isMobile ? (
+            <ProductMobileSlideShow
+              title={product?.title || "Producto sin título"}
+              images={product?.images || []}
+            />
+          ) : (
+            <ProductSlideShow
+              title={product?.title || "Producto sin título"}
+              images={product?.images || []}
+            />
+          )}
         </div>
+      </div>
       <div className={styles.dataContainer}>
         <h1>{product?.title}</h1>
 
