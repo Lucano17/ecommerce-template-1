@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    gap: 10px;
+}
+
+.paidFalse {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background-color: red;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.paidTrue {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background-color: rgb(15, 144, 3);
+    border-radius: 5px;
+    width: 100%;
+}

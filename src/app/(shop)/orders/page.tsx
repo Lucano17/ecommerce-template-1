@@ -1,10 +1,8 @@
-import { Title } from '@/components';
+import { IsPaid, Title } from "@/components";
+import Link from "next/link";
+import styles from "./page.module.css";
 
-import Link from 'next/link';
-import { IoCardOutline } from 'react-icons/io5';
-import styles from "./page.module.css"
-
-export default function() {
+export default function () {
   return (
     <>
       <Title title="Orders" />
@@ -13,62 +11,40 @@ export default function() {
         <table>
           <thead>
             <tr>
-              <th>
-                #ID
-              </th>
-              <th>
-                Nombre completo
-              </th>
-              <th>
-                Estado
-              </th>
-              <th>
-                Opciones
-              </th>
+              <th>#ID</th>
+              <th>Nombre completo</th>
+              <th>Estado</th>
+              <th>Opciones</th>
             </tr>
           </thead>
           <tbody>
-
             <tr>
-
               <td>1</td>
+              <td>Mark</td>
               <td>
-                Mark
+                <div className={styles.state}>
+                  <IsPaid />
+                </div>
               </td>
               <td>
-
-                <IoCardOutline className={styles.hola}/>
-                <span>Pagada</span>
-
+                <Link href="/orders/123">Ver orden</Link>
               </td>
-              <td>
-                <Link href="/orders/123">
-                  Ver orden
-                </Link>
-              </td>
-
             </tr>
 
             <tr>
-
               <td>1</td>
-              <td>
-                Mark
-              </td>
-              <td>
+              <td>Mark</td>
 
-                <IoCardOutline className="text-red-800" />
-                <span>No Pagada</span>
-
-              </td>
               <td>
-                <Link href="/orders/123">
-                  Ver orden
-                </Link>
+                <div className={styles.state}>
+                  <IsPaid />
+                </div>
               </td>
 
+              <td>
+                <Link href="/orders/123">Ver orden</Link>
+              </td>
             </tr>
-
           </tbody>
         </table>
       </div>

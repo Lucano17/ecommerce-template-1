@@ -1,10 +1,7 @@
 "use client"
-import { Title } from "@/components";
-import Link from "next/link";
+import { IsPaid, Title } from "@/components";
 import styles from "./page.module.css";
 import ProductsGridCheckout from "@/components/products/product-grid-checkout/ProductsGridCheckout";
-import { IoCardOutline } from "react-icons/io5";
-import { useState } from "react";
 
 
 interface Props {
@@ -15,7 +12,6 @@ interface Props {
 
  
 export default function ({params}:Props) {
-    const [isPaid, setIsPaid] = useState(false)
     const {id} = params;
 
 
@@ -26,18 +22,7 @@ export default function ({params}:Props) {
       <div className={styles.carritoContainer}>
         <div className={styles.carrito}>
 
-            {
-                isPaid ? (<div className={styles.paidTrue}>
-                    <IoCardOutline size={30}/>
-                    <p>Pago realizado</p>
-                </div>)
-                : (
-                    <div className={styles.paidFalse}>
-                <IoCardOutline size={30}/>
-                <p>Pendiente de pago</p>
-            </div>
-                )
-            }
+        <IsPaid />
 
           <ProductsGridCheckout />
         </div>
@@ -66,18 +51,7 @@ export default function ({params}:Props) {
           </div>
             
             <div className={styles.checkOutPaid}>
-          {
-                isPaid ? (<div className={styles.paidTrue}>
-                    <IoCardOutline size={20}/>
-                    <p>Pago realizado</p>
-                </div>)
-                : (
-                    <div className={styles.paidFalse}>
-                <IoCardOutline size={20}/>
-                <p>Pendiente de pago</p>
-            </div>
-                )
-            }
+            <IsPaid />
             </div>
 
         </div>
