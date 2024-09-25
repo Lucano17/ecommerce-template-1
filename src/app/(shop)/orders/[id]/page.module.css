@@ -1,0 +1,102 @@
+.carritoContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 100%;
+    margin-top: 30px;
+}
+
+
+.comeBack {
+    display: flex;
+    margin-top: 30px;
+    margin-left: 25%;
+}
+
+.checkOut {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.238);
+    box-shadow: 5px 5px 10px rgb(68, 68, 68);
+    padding: 20px;
+    height: 330px;
+}
+
+.checkOut p {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    font-size: 12px;
+    justify-content: space-between; /* Esto coloca el texto al inicio y el span al final */
+}
+
+.checkOut p span {
+    text-align: end;
+}
+
+.order {
+    margin-top: 15px;
+}
+
+.totalPrice {
+    display: flex;
+    font-size: 25px;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+.checkOut h2 {
+    font-size: 20px;
+}
+.checkOut h3 {
+    font-size: 15px;
+    margin-top: 5px;
+    text-align: start;
+}
+
+.paidFalse {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background-color: red;
+    border-radius: 5px;
+}
+
+.paidTrue {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background-color: rgb(15, 144, 3);
+    border-radius: 5px;
+}
+
+.paidTrue p {
+    margin-left: 5px;
+}
+
+.paidFalse p {
+    margin-left: 5px;
+}
+
+.checkOutPaid {
+    margin-top: auto;
+}
+
+@media (max-width: 800px) {
+    .carritoContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .checkOut {
+        max-width: 80vw;
+        margin: auto;
+        margin-top: 120px;
+    }
+    .carrito {
+        margin: auto;
+        margin-top: 30px;
+    }
+}
