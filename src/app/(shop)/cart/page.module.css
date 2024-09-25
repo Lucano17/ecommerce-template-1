@@ -19,7 +19,7 @@
     background-color: rgba(0, 0, 0, 0.238);
     box-shadow: 5px 5px 10px rgb(68, 68, 68);
     padding: 20px;
-    height: 275px;
+    height: 300px;
 }
 
 .checkOut p {
@@ -35,7 +35,7 @@
 
 .totalPrice {
     display: flex;
-    margin-top: auto;
+    margin-bottom: 20px;
     font-size: 25px;
 }
 

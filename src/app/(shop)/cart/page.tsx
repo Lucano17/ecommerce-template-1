@@ -26,6 +26,9 @@ export default function () {
           <p>Envío <span>$50</span></p>
           <div className={styles.spacer}/>
           <p className={styles.totalPrice}>Total <span>$500</span></p>
+          <div className={styles.goToOrder}>
+                <Link href="/checkout/address">Checkout</Link>
+            </div>
         </div>
 
       </div>

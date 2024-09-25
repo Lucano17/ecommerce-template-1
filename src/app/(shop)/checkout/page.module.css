@@ -7,7 +7,7 @@
 }
 
 
-.keepShoping {
+.comeBack {
     display: flex;
     margin-top: 30px;
     margin-left: 25%;
@@ -19,13 +19,14 @@
     background-color: rgba(0, 0, 0, 0.238);
     box-shadow: 5px 5px 10px rgb(68, 68, 68);
     padding: 20px;
-    height: 275px;
+    height: 330px;
 }
 
 .checkOut p {
     display: flex;
     flex-direction: row;
-    margin-top: 15px;
+    margin-top: 5px;
+    font-size: 12px;
     justify-content: space-between; /* Esto coloca el texto al inicio y el span al final */
 }
 
@@ -33,14 +34,30 @@
     text-align: end;
 }
 
+.order {
+    margin-top: 15px;
+}
+
 .totalPrice {
     display: flex;
-    margin-top: auto;
     font-size: 25px;
 }
 
 .spacer {
     flex-grow: 1;
+}
+
+.checkOut h2 {
+    font-size: 20px;
+}
+.checkOut h3 {
+    font-size: 15px;
+    margin-top: 5px;
+    text-align: start;
+}
+
+.goToOrder {
+    margin-top: auto;
 }
 
 @media (max-width: 800px) {
