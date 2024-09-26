@@ -14,11 +14,6 @@ interface Props {
  
 export default function ({params}:Props) {
     const {id} = params;
-    const [isPaid, setIsPaid] = useState(false);
-
-    const handleStateChange = () => {
-      setIsPaid((isPaid) => !isPaid); // Cambia el estado de isPaid
-    };
 
     //to-do: verificar => redirect("/")
   return (
@@ -27,11 +22,9 @@ export default function ({params}:Props) {
       <Title title={`Orden #${id}`} />
       <div className={styles.carritoContainer}>
 
-      <button onClick={handleStateChange}>Cambiar estado</button>
-
         <div className={styles.carrito}>
 
-        <IsPaid isPaid={isPaid} />
+        <IsPaid/>
 
           <ProductsGridCheckout />
         </div>
@@ -60,7 +53,7 @@ export default function ({params}:Props) {
           </div>
             
             <div className={styles.checkOutPaid}>
-            <IsPaid isPaid={isPaid} />
+            <IsPaid/>
             </div>
 
         </div>
