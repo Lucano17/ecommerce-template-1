@@ -56,30 +56,6 @@
     text-align: start;
 }
 
-.paidFalse {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    background-color: red;
-    border-radius: 5px;
-}
-
-.paidTrue {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    background-color: rgb(15, 144, 3);
-    border-radius: 5px;
-}
-
-.paidTrue p {
-    margin-left: 5px;
-}
-
-.paidFalse p {
-    margin-left: 5px;
-}
-
 .checkOutPaid {
     margin-top: auto;
 }

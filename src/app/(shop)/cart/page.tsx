@@ -2,11 +2,13 @@ import { Title } from "@/components";
 import Link from "next/link";
 import styles from "./page.module.css";
 import ProductsGridCart from "@/components/products/product-grid-cart/ProductsGridCart";
+import { redirect } from "next/navigation";
 
 
 
 
 export default function () {
+  // redirect("/empty")
 
   return (
     <div className={styles.container}>
