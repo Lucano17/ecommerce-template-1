@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 
-import {inter, geistMono, geistSans} from "@/./fonts/fonts"
+import { inter, geistMono, geistSans } from "@/./fonts/fonts";
 import "../globals.css";
-
-
 
 export const metadata: Metadata = {
   title: "Ecommerce-template-1",
@@ -16,10 +14,8 @@ export default function NewAccount({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-      </body>
-    </html>
+    <main>
+      <div>{children}</div>
+    </main>
   );
 }
