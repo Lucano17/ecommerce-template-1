@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    background: rgb(0, 0, 0);
+    border-top: 1px solid white;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.columnRight {
+    display: flex;
+    flex-direction: column;
+}
+.contactButton {
+    margin-top: 15px;
+}
+.contactButton:hover {
+    color: aquamarine;
+}
