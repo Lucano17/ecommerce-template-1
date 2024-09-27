@@ -19,14 +19,14 @@ export default function ShopLayout({
     // <html lang="en">
     //   <body className={`${geistSans.variable} ${geistMono.variable}`}>
     <div className={styles.container}>
-      <main className={styles.container}>
+      <main className={styles.main}>
       <div>
       <TopMenu />
       <SideBar />
-      <div>{children}</div>
+      <div className={styles.childrenContainer}>{children}</div>
       </div>
     </main>
-      <footer>
+      <footer className={styles.footer}>
 
       <Footer/>
       </footer>

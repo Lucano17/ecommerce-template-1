@@ -7,7 +7,7 @@ const products = initialData.products;
 export default function Shop() {
   return (
     <>
-      <Title title="Tienda" subtitle="Todos los productos" />
+      <Title className={styles.title} title="Tienda" subtitle="Todos los productos" />
       <ProductGrid products={products}/>
     </>
   );
