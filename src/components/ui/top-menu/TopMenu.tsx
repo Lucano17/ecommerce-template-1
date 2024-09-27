@@ -28,19 +28,26 @@ export const TopMenu = () => {
           <Link href="/category/women">Mujeres</Link>
           <Link href="/category/kid">Niños</Link>
         </div>
+
         <div className={styles.items}>
+
           <Link href="/search"><IoSearchOutline/></Link>
           <Link href="/cart">
+
           <div>
             <span className={styles.cartNumber}>3</span>
           <IoCartOutline/>
           </div>
+          
           </Link>
-          <button
+
+          <button className={styles.navMenu}
           onClick={openSideMenu}>
             Menu
           </button>
+
         </div>
+
       </div>
     </nav>
   );

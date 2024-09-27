@@ -15,7 +15,7 @@ export const ProductGridItem = ({ product }: Props) => {
 
   return (
     <div>
-      <Link href={`product/${product.slug}`}>
+      <Link href={`/product/${product.slug}`}>
         <Image
           src={`/products/${displayImage}`}
           alt={product.title}
@@ -27,7 +27,7 @@ export const ProductGridItem = ({ product }: Props) => {
         />
       </Link>
       <div>
-        <Link href={`/product/${product.slug}`}>{product.title}</Link>
+        <Link href={`/product/${product.slug}`} passHref>{product.title}</Link>
         <span>${product.price}</span>
       </div>
     </div>
