@@ -24,9 +24,9 @@ export const TopMenu = () => {
           </span>
         </Link>
         <div className={styles.categoryContainer}>
-          <Link href="/category/men">Hombres</Link>
-          <Link href="/category/women">Mujeres</Link>
-          <Link href="/category/kid">Niños</Link>
+          <Link href="/category/men" className={styles.categoryLink}>Hombres</Link>
+          <Link href="/category/women" className={styles.categoryLink}>Mujeres</Link>
+          <Link href="/category/kid" className={styles.categoryLink}>Niños</Link>
         </div>
 
         <div className={styles.items}>
