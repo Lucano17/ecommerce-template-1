@@ -27,7 +27,7 @@ export const ProductGridItem = ({ product }: Props) => {
           onMouseLeave={()=>{setDisplayImage(product.images[0])}}
           priority={true}
         />
-      </Link>
+      
       <div className={styles.productInfo}>
 
         <Link
@@ -38,6 +38,7 @@ export const ProductGridItem = ({ product }: Props) => {
 
         <span>${product.price}</span>
       </div>
+      </Link>
     </div>
   );
 };

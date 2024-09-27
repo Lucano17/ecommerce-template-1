@@ -1,7 +1,7 @@
-.container globals:html, .container globals.body {
+/* .container globals.html, .container globals.body {
     height: 100%;
     margin: 0;
-}
+} */
 
 .container {
     display: flex;
@@ -12,11 +12,6 @@
 .main {
     flex: 1;
     
-}
-
-.container globals:footer {
-    background-color: #f8f9fa;
-    padding: 20px;
 }
 
 .topMenu {
