@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { inter, geistMono, geistSans } from "@/./fonts/fonts";
 import { SideBar, TopMenu } from "@/components";
 import Footer from "@/components/ui/footer/Footer";
+import styles from "./layout.module.css"
 
 export const metadata: Metadata = {
   title: "Ecommerce-template-1",
@@ -17,12 +18,19 @@ export default function ShopLayout({
   return (
     // <html lang="en">
     //   <body className={`${geistSans.variable} ${geistMono.variable}`}>
-    <main>
+    <div className={styles.container}>
+      <main className={styles.container}>
+      <div>
       <TopMenu />
       <SideBar />
       <div>{children}</div>
-      <Footer/>
+      </div>
     </main>
+      <footer>
+
+      <Footer/>
+      </footer>
+    </div>
     //   </body>
     // </html>
   );
