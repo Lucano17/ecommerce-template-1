@@ -19,10 +19,20 @@
     padding: 20px;
 }
 
+.topMenu {
+    position: fixed;
+    z-index: 2;
+}
+
 .childrenContainer {
-    padding-top: 60px
+    padding-top: 60px;
+    z-index: 1;
+    
+    margin-bottom: 80px;
 }
 
 .footer {
-    padding-top: 40px;
+    position: relative;
+    padding-top: 80px;
+    z-index: 2;
 }

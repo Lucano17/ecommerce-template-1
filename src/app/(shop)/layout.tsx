@@ -21,7 +21,10 @@ export default function ShopLayout({
     <div className={styles.container}>
       <main className={styles.main}>
       <div>
-      <TopMenu />
+        <div className={styles.topMenu}>
+          
+      <TopMenu/>
+        </div>
       <SideBar />
       <div className={styles.childrenContainer}>{children}</div>
       </div>

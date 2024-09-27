@@ -42,10 +42,13 @@ export default function ({ params }: Props) {
               images={product?.images || []}
             />
           ) : (
-            <ProductSlideShow
-              title={product?.title || "Producto sin título"}
-              images={product?.images || []}
-            />
+            <div className={styles.productSlideShow}>
+
+              <ProductSlideShow
+                title={product?.title || "Producto sin título"}
+                images={product?.images || []}
+              />
+            </div>
           )}
         </div>
       </div>
