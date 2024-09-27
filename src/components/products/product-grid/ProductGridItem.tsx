@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Product } from "@/interfaces";
 import Image from "next/image";
 import Link from "next/link";
+import styles from "./ProductGridItem.module.css"
 
 interface Props {
   product: Product;
@@ -14,9 +15,10 @@ export const ProductGridItem = ({ product }: Props) => {
   const [displayImage, setDisplayImage] = useState(product.images[0]);
 
   return (
-    <div>
+    <div className={styles.container}>
       <Link href={`/product/${product.slug}`}>
         <Image
+        className={styles.productImage}
           src={`/products/${displayImage}`}
           alt={product.title}
           width={250}
@@ -26,8 +28,14 @@ export const ProductGridItem = ({ product }: Props) => {
           priority={true}
         />
       </Link>
-      <div>
-        <Link href={`/product/${product.slug}`} passHref>{product.title}</Link>
+      <div className={styles.productInfo}>
+
+        <Link
+        href={`/product/${product.slug}`}
+        className={styles.productTitle}>
+          {product.title}
+        </Link>
+
         <span>${product.price}</span>
       </div>
     </div>

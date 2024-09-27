@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    background: none;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgb(255, 255, 255);
+    width: 270px;
+    padding: 10px 0 10px 0;
+}
+
+.productImage {
+    border-radius: 5px;
+}
+
+.productInfo{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+}
+
+.productTitle {
+    font-size: 13px;
+    text-align: center;
+}
+
+.productInfo span {
+    margin-top: 5px;
+}

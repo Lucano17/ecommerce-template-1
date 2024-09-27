@@ -1,9 +1,12 @@
 .gridContainer {
     display: grid;
-    margin-top: 40px;
+    align-items: center;
+    justify-items: center;
+    margin: 40px auto;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
     grid-auto-rows: minmax(100px, auto);
+    max-width: 1200px;
 }
 
 @media (max-width: 800px) {
