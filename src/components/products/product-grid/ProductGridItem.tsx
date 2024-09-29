@@ -30,11 +30,10 @@ export const ProductGridItem = ({ product }: Props) => {
       
       <div className={styles.productInfo}>
 
-        <Link
-        href={`/product/${product.slug}`}
+        <p
         className={styles.productTitle}>
           {product.title}
-        </Link>
+        </p>
 
         <span>${product.price}</span>
       </div>

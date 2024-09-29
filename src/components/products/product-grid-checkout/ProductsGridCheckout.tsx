@@ -1,8 +1,8 @@
-import { QuantitySelector, Title } from "@/components";
+// import { QuantitySelector, Title } from "@/components";
 import { initialData } from "@/seed/seed";
 import Image from "next/image";
 import styles from "./ProductsGridCheckout.module.css";
-import { FaTrashAlt } from "react-icons/fa";
+// import { FaTrashAlt } from "react-icons/fa";
 
 const productsInCart = [
   initialData.products[0],
