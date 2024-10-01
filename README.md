@@ -7,8 +7,10 @@ TypeScript.js, Next.JS, Node.JS, PostgresSQL & Prisma.
 ## First, run the development server:
 
 1. Clone the repository.
-2. Instal dependencies ```pnpm install```
-3. Run the project ```pnpm run dev```
+2. Create a copy of ```.env.template```, then rename it to ```.env```, and change the enviornment var.
+3. Instal dependencies ```pnpm install```
+4. Up database ```docker compose up -d```
+5. Run the project ```pnpm run dev```
 
 ## Run in production:
 1. 
