@@ -64,7 +64,7 @@ export const ProductSlideShow = ({ images, title, className }: Props) => {
             height={100}
             src={`/products/${image}`}
             alt={title}
-            priority={true}/>
+            priority={false}/>
           </SwiperSlide>
         ))}
       </Swiper>

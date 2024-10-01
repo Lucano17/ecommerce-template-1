@@ -36,7 +36,7 @@ export const ProductMobileSlideShow = ({ images, title, className }: Props) => {
             height={350}
             src={`/products/${image}`}
             alt={title}
-            priority={true}/>
+            priority={false}/>
           </SwiperSlide>
         ))}
       </Swiper>
