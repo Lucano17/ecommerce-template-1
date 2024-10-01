@@ -28,6 +28,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 2. Run ```prisma db pull``` to turn your database schema into a Prisma schema.
 3. Run ```prisma generate``` to generate the Prisma Client. You can then start querying your database.
 4. Tip: Explore how you can extend the ORM with scalable connection pooling, global caching, and real-time database events. Read: ```https://pris.ly/cli/beyond-orm```
+5. Migrate Prisma schema pnpm ```pnpm dlx prisma migrate dev --name ProductCategory```.
 
 
 
