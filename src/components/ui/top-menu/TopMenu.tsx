@@ -31,10 +31,10 @@ export const TopMenu = () => {
 
         <div className={styles.items}>
 
-          <Link href="/search"><IoSearchOutline/></Link>
+          <Link href="/search"  className={styles.navItem}><IoSearchOutline/></Link>
           <Link href="/cart">
 
-          <div>
+          <div className={styles.navItem}>
             <span className={styles.cartNumber}>3</span>
           <IoCartOutline/>
           </div>
