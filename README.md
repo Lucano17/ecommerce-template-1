@@ -10,7 +10,8 @@ TypeScript.js, Next.JS, Node.JS, PostgreSQL & Prisma.
 2. Create a copy of ```.env.template```, then rename it to ```.env```, and change the enviornment var.
 3. Instal dependencies ```pnpm install``` o ```pnpm dlx install```.
 4. Up database ```docker compose up -d```.
-5. Run Prisma migrations ```pnpm dlx prisma migrate dev --name {migration_name}```
+5. Run Prisma migrations ```pnpm dlx prisma migrate dev --name {migration_name}```.
+6. Execute seed ```pnpm run seed```.
 6. Run the project ```pnpm run dev```.
 
 
