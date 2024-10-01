@@ -1,5 +1,5 @@
 This is an E-COMMERCE project made by Lucas de la Fuente. I used the following technologies:
-TypeScript.js, Next.JS, Node.JS, PostgressSQL & Prisma.
+TypeScript.js, Next.JS, Node.JS, PostgresSQL & Prisma.
 
 
 ## Getting Started
