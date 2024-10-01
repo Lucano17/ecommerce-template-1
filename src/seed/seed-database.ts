@@ -3,15 +3,15 @@ import prisma from "../lib/prisma"
 
 async function main() {
 
-    // 1. Delete previous registers.
-    await Promise.all([
-        prisma.productImage.deleteMany(),
-        prisma.product.deleteMany(),
-        prisma.category.deleteMany(),
-    ])
+    // 1. Borrar registros previos
+    // await Promise.all( [
+    await prisma.productImage.deleteMany();
+    await prisma.product.deleteMany();
+    await prisma.category.deleteMany();
+    // ]);
+    
+    const { categories, products } = initialData;
 
-
-    const { categories, products } = initialData
     // Categories
     const categoriesData = categories.map((name) => ({ name }))
     await prisma.category.createMany({
@@ -25,16 +25,31 @@ async function main() {
         return map;
     }, {} as Record<string, string>); //<string=shirt, string=categoryID>
 
+
     // Products
-    products.forEach(async(product) =>{
-        const {type, images, ...rest} = product;
+    products.forEach(async (product) => {
+        const { type, images, ...rest } = product;
         const dbProduct = await prisma.product.create({
             data: {
                 ...rest,
                 categoryId: categoriesMap[type]
             }
+
+
+        })
+
+        // Product images
+        const imagesData = images.map(image => ({
+            url: image,
+            productId: dbProduct.id
+        }));
+
+        await prisma.productImage.createMany({
+            data: imagesData
         })
     })
+
+
 
 
 
