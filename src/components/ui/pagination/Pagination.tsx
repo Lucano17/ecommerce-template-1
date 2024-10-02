@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import styles from "./Pafination.module.css";
 import { IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
-import { usePathname, useSearchParams } from "next/navigation";
+import { redirect, usePathname, useSearchParams } from "next/navigation";
 import { generatePaginationNumbers } from "@/utils";
 import Link from "next/link";
 
@@ -19,11 +19,18 @@ export const Pagination = ({totalPages}:Props) => {
   const searchParams = useSearchParams();
   const [thisPage, setThisPage] = useState(false)
 
-  const currentPage = Number(searchParams.get("page") ? searchParams.get("page") : 1) ?? 1;
+  const pageString = searchParams.get("page") ?? 1;
+
+  let currentPage = isNaN(+pageString) ? 1 : +pageString;
+  // const currentPage = Number(searchParams.get("page") ? searchParams.get("page") : 1) ?? 1;
   const allPages = generatePaginationNumbers(currentPage, totalPages);
 
   const createPageUrl = (pageNumber: number | string)=> {
     const params = new URLSearchParams(searchParams);
+
+    if (currentPage < 1 || isNaN(+pageString)) {
+      redirect(pathname)
+    }
 
     if (pageNumber === "...")
     {
