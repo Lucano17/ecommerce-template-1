@@ -3,7 +3,7 @@ import React from "react";
 import { IoCartOutline } from "react-icons/io5";
 import styles from "./page.module.css"
 
-export default function () {
+export default function EmptyPage() {
   return (
     <div>
       <IoCartOutline size={80} />

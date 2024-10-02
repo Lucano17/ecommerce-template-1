@@ -4,6 +4,9 @@ import { Pagination, ProductGrid, Title } from "@/components";
 import { getPaginatedProductsWithImages } from "@/actions";
 import { Gender } from "@prisma/client";
 
+
+export const revalidate = 60
+
 // const seedProducts = initialData.products; ESTO ES CON LA SEED INICIAL
 interface Props {
   params: {
@@ -15,7 +18,7 @@ interface Props {
   }
 
 
-export default async function ({ params, searchParams}: Props) {
+export default async function GenderByIdPage({ params, searchParams}: Props) {
   const { gender } = params;
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
 

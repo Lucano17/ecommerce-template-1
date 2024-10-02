@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 
 
 
-export default function () {
+export default function CartPage() {
   // redirect("/empty")
 
   return (

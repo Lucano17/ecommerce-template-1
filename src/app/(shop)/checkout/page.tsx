@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import ProductsGridCheckout from "@/components/products/product-grid-checkout/ProductsGridCheckout";
 
-export default function () {
+export default function CheckoutPage() {
   return (
     <div className={styles.container}>
       <Title title="Verificar orden" />

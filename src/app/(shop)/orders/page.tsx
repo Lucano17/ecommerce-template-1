@@ -3,7 +3,7 @@ import { IsPaid, Title } from "@/components";
 import Link from "next/link";
 import styles from "./page.module.css";
 
-export default function () {
+export default function OrdersPage() {
   return (
     <>
       <Title title="Orders" />
