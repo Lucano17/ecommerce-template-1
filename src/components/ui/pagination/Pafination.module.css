@@ -13,5 +13,9 @@
 }
 
 .activePage {
-    color: rgb(0, 106, 255);
+    color: rgb(255, 255, 255);
+    background-color: rgb(8, 80, 237);
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 2px 4px;
 }

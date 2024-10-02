@@ -19,7 +19,7 @@ export const Pagination = ({totalPages}:Props) => {
   const searchParams = useSearchParams();
   const [thisPage, setThisPage] = useState(false)
 
-  const currentPage = Number(searchParams.get("page")) ?? 1;
+  const currentPage = Number(searchParams.get("page") ? searchParams.get("page") : 1) ?? 1;
   const allPages = generatePaginationNumbers(currentPage, totalPages);
 
   const createPageUrl = (pageNumber: number | string)=> {

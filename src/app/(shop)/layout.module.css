@@ -23,11 +23,11 @@
     padding-top: 60px;
     z-index: 1;
     
-    margin-bottom: 80px;
+    margin-bottom: 50px;
 }
 
 .footer {
     position: relative;
-    padding-top: 80px;
+    padding-top: 10px;
     z-index: 2;
 }

@@ -32,10 +32,10 @@ export default async function Shop({ searchParams }: Props) {
       />
       <ProductGrid products={products} />
 
+      </div>
       <div className={styles.pagination}>
       <Pagination totalPages={totalPages}/>
     </div>
-      </div>
     </>
   );
 }

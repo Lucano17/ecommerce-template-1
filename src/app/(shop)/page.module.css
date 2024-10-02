@@ -1,5 +1,7 @@
+.container {
+    flex: 1;
+}
+
 .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: auto;
+    margin-top: 150px;
 }
