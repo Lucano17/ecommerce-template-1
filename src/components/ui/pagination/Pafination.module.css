@@ -1,0 +1,17 @@
+.container {
+    margin-top: auto
+}
+
+.navigation ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.navigation li {
+    list-style: none;
+}
+
+.activePage {
+    color: rgb(0, 106, 255);
+}

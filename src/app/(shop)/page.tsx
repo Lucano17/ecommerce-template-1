@@ -1,4 +1,4 @@
-import { ProductGrid, Title } from "@/components";
+import { ProductGrid, Title, Pagination } from "@/components";
 // import { initialData } from "@/seed/seed";
 import styles from "./page.module.css";
 import { getPaginatedProductsWithImages } from "@/actions";
@@ -15,7 +15,7 @@ interface Props {
 export default async function Shop({ searchParams }: Props) {
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
 
-  const { products } = await getPaginatedProductsWithImages({page});
+  const { products, currentPage, totalPages } = await getPaginatedProductsWithImages({page});
 
   if (products.length === 0) {
     redirect("/")
@@ -23,12 +23,19 @@ export default async function Shop({ searchParams }: Props) {
 
   return (
     <>
+    <div className={styles.container}>
+
       <Title
         className={styles.title}
         title="Tienda"
         subtitle="Todos los productos"
       />
       <ProductGrid products={products} />
+
+      <div className={styles.pagination}>
+      <Pagination totalPages={totalPages}/>
+    </div>
+      </div>
     </>
   );
 }
