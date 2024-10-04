@@ -49,7 +49,7 @@ export const ProductClientComponent = ({ product }: Props) => {
         </div>
       </div>
       <div className={styles.dataContainer}>
-        {/* <StockLabel slug={slug}/> */}
+        <StockLabel slug={product.slug}/>
         <h1>{product?.title}</h1>
 
         <p className={styles.price}>Precio: ${product?.price}</p>
