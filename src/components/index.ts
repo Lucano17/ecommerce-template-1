@@ -4,6 +4,7 @@ export * from "./product/quantity-selector/QuantitySelector"
 export * from "./product/size-selector/SizeSelector"
 export * from "./product/slideshow/ProductMobileSlideShow"
 export * from "./product/slideshow/ProductSlideShow"
+export * from "./product/stock-label/StockLabel"
 
 export * from "./products/product-grid-cart/ProductsGridCart"
 export * from "./products/product-grid-checkout/ProductsGridCheckout"

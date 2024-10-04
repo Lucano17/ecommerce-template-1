@@ -9,9 +9,11 @@ import {
   ProductSlideShow,
   QuantitySelector,
   SizeSelector,
+  // StockLabel,
 } from "@/components";
 import type { Size } from "@/interfaces";
 import { useWidthDimention } from "@/hooks";
+import { StockLabel } from "@/components";
 
 
 export const revalidate = 604800 // 7 días
@@ -47,6 +49,7 @@ export const ProductClientComponent = ({ product }: Props) => {
         </div>
       </div>
       <div className={styles.dataContainer}>
+        {/* <StockLabel slug={slug}/> */}
         <h1>{product?.title}</h1>
 
         <p className={styles.price}>Precio: ${product?.price}</p>
