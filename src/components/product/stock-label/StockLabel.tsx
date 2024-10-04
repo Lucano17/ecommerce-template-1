@@ -1,7 +1,8 @@
 "use client";
 
 import { getStockBySlug } from "@/actions";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import styles from "./StockLabel.module.css"
 
 interface Props {
   slug: string;
@@ -24,9 +25,18 @@ export const StockLabel = ({ slug }: Props) => {
 
   return (
     <>
-        <h3>
+    {
+      isLoading
+      ? (
+          // <h3 className={styles.skeleton}>&nbsp;</h3>
+          <span>Cargando stock...</span>
+      )
+      : (
+        <span>
           Stock: {stock}
-        </h3>
+        </span>
+      )
+    }
     </>
   );
 };
