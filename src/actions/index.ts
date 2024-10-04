@@ -1,1 +1,2 @@
-export * from "./products/product-pagination"
+export * from "./product/product-pagination"
+export * from "./product/get-product-slug"
