@@ -1,0 +1,9 @@
+.cartButton {
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    padding: 5px 0;
+    margin: auto;
+    margin-top: 20px;
+    cursor: pointer;
+}

@@ -2,7 +2,7 @@ import type { Size } from "@/interfaces";
 import styles from "./SizeSelector.module.css";
 
 interface Props {
-  selectedSize: Size;
+  selectedSize?: Size;
   availableSizes: Size[];
   onSelectedSizeChange: (size: Size) => void; // Nueva función para manejar el cambio de talla
 }

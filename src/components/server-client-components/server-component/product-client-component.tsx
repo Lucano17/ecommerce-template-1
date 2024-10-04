@@ -14,6 +14,7 @@ import {
 import type { Size } from "@/interfaces";
 import { useWidthDimention } from "@/hooks";
 import { StockLabel } from "@/components";
+import { AddToCart } from "@/app/(shop)/product/[slug]/ui/AddToCart";
 
 
 export const revalidate = 604800 // 7 días
@@ -25,7 +26,7 @@ interface Props {
 }
 
 export const ProductClientComponent = ({ product }: Props) => {
-  const [selectedSize, setSelectedSize] = useState<Size>(product.sizes[0]);
+  // const [selectedSize, setSelectedSize] = useState<Size>(product.sizes[0]);
 
   const isMobile = useWidthDimention();
 
@@ -54,7 +55,7 @@ export const ProductClientComponent = ({ product }: Props) => {
 
         <p className={styles.price}>Precio: ${product?.price}</p>
 
-        <div>
+        {/* <div>
           <SizeSelector
             selectedSize={selectedSize}
             availableSizes={product?.sizes || []}
@@ -66,7 +67,8 @@ export const ProductClientComponent = ({ product }: Props) => {
           <QuantitySelector quantity={1} />
         </div>
 
-        <button className={styles.cartButton}>Agregar al carrito</button>
+        <button className={styles.cartButton}>Agregar al carrito</button> */}
+        <AddToCart product={product}/>
 
         <div className={styles.description}>
           <h3>Descripción</h3>
