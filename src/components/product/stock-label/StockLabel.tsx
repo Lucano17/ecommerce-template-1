@@ -17,21 +17,16 @@ export const StockLabel = ({ slug }: Props) => {
 
   const getStock = async () => {
     const inStock = await getStockBySlug(slug);
+    console.log(inStock)
     setStock(inStock);
     setIsLoading(false);
   };
 
   return (
     <>
-      {isLoading ? (
-        <h1>
-          &nbsp;
-        </h1>
-      ) : (
-        <h1>
+        <h3>
           Stock: {stock}
-        </h1>
-      )}
+        </h3>
     </>
   );
 };

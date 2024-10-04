@@ -1,3 +1,4 @@
+// get-stock-by-slug.ts
 "use server";
 
 import prisma from "@/lib/prisma";
@@ -8,9 +9,13 @@ export const getStockBySlug = async (slug: string): Promise<number> => {
       where: { slug },
       select: { inStock: true },
     });
-    return stock?.inStock ?? 0;
+    
+    // Log the stock value obtained from Prisma
+    console.log("Stock from Prisma:", stock);
+    
+    return stock?.inStock ?? 0; // Return stock or 0 if undefined
   } catch (error) {
-    console.error(error);
-    return 0;
+    console.error("Error fetching stock:", error);
+    return 0; // Return 0 on error
   }
 };
