@@ -5,10 +5,17 @@ import styles from "./page.module.css";
 import Link from "next/Link";
 import { titleFont } from "@/fonts/fonts";
 import {IoSearchOutline, IoCartOutline} from "react-icons/io5"
-import { useUIStore } from "@/store";
+import { useCartStore, useUIStore } from "@/store";
+import { useEffect, useState } from "react";
 
 export const TopMenu = () => {
   const openSideMenu = useUIStore(state => state.openSideMenu)
+  const totalItemsInCart = useCartStore(state => state.getTotalItems())
+  const [loaded, setLoaded] = useState(false)
+
+  useEffect(()=>{
+    setLoaded(true)
+  },[])
 
   return (
     <nav className={styles.nav}>
@@ -35,7 +42,11 @@ export const TopMenu = () => {
           <Link href="/cart">
 
           <div className={styles.navItem}>
-            <span className={styles.cartNumber}>3</span>
+            {
+              (loaded && totalItemsInCart > 0) && (
+                <span className={styles.cartNumber}>{totalItemsInCart}</span>
+              )
+            }
           <IoCartOutline/>
           </div>
           
