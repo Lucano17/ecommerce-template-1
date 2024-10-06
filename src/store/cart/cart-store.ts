@@ -12,30 +12,34 @@ interface State {
 }
 
 export const useCartStore = create<State>()(
+    persist(
+        (set, get) => ({
+            cart: [],
 
+            //Methods
+            addProductToCart: (product: CartProduct) => {
+                const { cart } = get()
 
-    (set, get) => ({
-        cart: [],
-
-        //Methods
-        addProductToCart: (product: CartProduct) => {
-            const { cart } = get()
-
-            const productInCart = cart.some(
-                (item) => (item.id === product.id && item.size === product.size)
-            )
-            if (!productInCart) {
-                set({ cart: [...cart, product] })
-                return
-            }
-            const updatedCartProducts = cart.map((item) => {
-                if (item.id === product.id && item.size === product.size) {
-                    return {...item, quantity: item.quantity + product.quantity}
+                const productInCart = cart.some(
+                    (item) => (item.id === product.id && item.size === product.size)
+                )
+                if (!productInCart) {
+                    set({ cart: [...cart, product] })
+                    return
                 }
+                const updatedCartProducts = cart.map((item) => {
+                    if (item.id === product.id && item.size === product.size) {
+                        return { ...item, quantity: item.quantity + product.quantity }
+                    }
 
-                return item;
-            })
+                    return item;
+                })
 
-            set({cart: updatedCartProducts})
+                set({ cart: updatedCartProducts })
+            }
+        })
+        , {
+            name: "shopping-cart"
         }
-    }))
+    )
+)
