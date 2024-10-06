@@ -1,34 +1,50 @@
+"use client";
+
 import { QuantitySelector, Title } from "@/components";
-import { initialData } from "@/seed/seed";
 import Image from "next/image";
 import styles from "./ProductsGridCart.module.css";
 import { FaTrashAlt } from "react-icons/fa";
+import { useCartStore } from "@/store";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+export const ProductsGridCart = () => {
+  const productsInCart = useCartStore((state) => state.cart);
+  const [loaded, setLoaded] = useState(false);
 
-const productsInCart = [
-  initialData.products[0],
-  initialData.products[1],
-  initialData.products[2],
-];
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
 
-export default function () {
+  if (!loaded) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className={styles.container}>
       {productsInCart.map((product) => (
-        <div key={product.slug} className={styles.productsContainer}>
+        <div
+          key={`${product.slug} - ${product.size}`}
+          className={styles.productsContainer}
+        >
           <Image
-            src={`/products/${product.images[0]}`}
+            src={`/products/${product.image}`}
             width={50}
             height={50}
             alt={product.title}
           />
 
           <div>
-            <p className={styles.title}>{product.title}</p>
+            <Link href={`/product/${product.slug}`} className={styles.title}>
+              {product.title}
+            </Link>
 
             <div className={styles.priceAndQuantity}>
               <p className={styles.price}>{product.price}</p>
               <div className={styles.quantitySelector}>
-                <QuantitySelector quantity={3} />
+                <QuantitySelector
+                  quantity={3}
+                  onQuantityChanged={(value) => console.log(value)}
+                />
               </div>
               <div className={styles.remove}>
                 <FaTrashAlt />
@@ -39,4 +55,4 @@ export default function () {
       ))}
     </div>
   );
-}
+};

@@ -1,7 +1,7 @@
 import { Title } from "@/components";
 import Link from "next/link";
 import styles from "./page.module.css";
-import ProductsGridCart from "@/components/products/product-grid-cart/ProductsGridCart";
+import { ProductsGridCart } from "@/components";
 import { redirect } from "next/navigation";
 
 
