@@ -16,6 +16,7 @@ export const ProductsGridCart = () => {
   const productsInCart = useCartStore((state) => state.cart);
   const [loaded, setLoaded] = useState(false);
   const updateProductQuantity = useCartStore((state) => state.updateProductQuantity)
+  const removeProduct = useCartStore((state) => state.removeProduct)
 
   useEffect(() => {
     setLoaded(true);
@@ -53,7 +54,7 @@ export const ProductsGridCart = () => {
                 />
               </div>
               <div className={styles.remove}>
-                <FaTrashAlt />
+                <FaTrashAlt onClick={()=>removeProduct(product)}/>
               </div>
             </div>
           </div>
