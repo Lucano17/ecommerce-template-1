@@ -1,5 +1,6 @@
 import type { CartProduct } from "@/interfaces"
 import { create } from "zustand"
+import { persist } from "zustand/middleware"
 
 interface State {
     cart: CartProduct[]
@@ -11,6 +12,8 @@ interface State {
 }
 
 export const useCartStore = create<State>()(
+
+
     (set, get) => ({
         cart: [],
 
