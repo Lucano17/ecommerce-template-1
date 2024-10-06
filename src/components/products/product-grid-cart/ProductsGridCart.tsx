@@ -7,9 +7,15 @@ import { FaTrashAlt } from "react-icons/fa";
 import { useCartStore } from "@/store";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+
+
+
+
+
 export const ProductsGridCart = () => {
   const productsInCart = useCartStore((state) => state.cart);
   const [loaded, setLoaded] = useState(false);
+  const updateProductQuantity = useCartStore((state) => state.updateProductQuantity)
 
   useEffect(() => {
     setLoaded(true);
@@ -35,15 +41,15 @@ export const ProductsGridCart = () => {
 
           <div>
             <Link href={`/product/${product.slug}`} className={styles.title}>
-              {product.title}
+              {product.size} - {product.title}
             </Link>
 
             <div className={styles.priceAndQuantity}>
               <p className={styles.price}>{product.price}</p>
               <div className={styles.quantitySelector}>
                 <QuantitySelector
-                  quantity={3}
-                  onQuantityChanged={(value) => console.log(value)}
+                  quantity={product.quantity}
+                  onQuantityChanged={(quantity) => updateProductQuantity(product, quantity)}
                 />
               </div>
               <div className={styles.remove}>
