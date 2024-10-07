@@ -39,7 +39,10 @@ export const TopMenu = () => {
         <div className={styles.items}>
 
           <Link href="/search"  className={styles.navItem}><IoSearchOutline/></Link>
-          <Link href="/cart">
+          <Link href={
+            ((totalItemsInCart === 0) && loaded)
+            ? "/empty"
+            :"/cart"}>
 
           <div className={styles.navItem}>
             {
