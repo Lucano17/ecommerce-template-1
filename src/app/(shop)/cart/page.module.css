@@ -13,46 +13,11 @@
     margin-left: 25%;
 }
 
-.checkOut {
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.238);
-    box-shadow: 5px 5px 10px rgb(68, 68, 68);
-    padding: 20px;
-    height: 300px;
-}
-
-.checkOut p {
-    display: flex;
-    flex-direction: row;
-    margin-top: 15px;
-    justify-content: space-between; /* Esto coloca el texto al inicio y el span al final */
-}
-
-.checkOut p span {
-    text-align: end;
-}
-
-.totalPrice {
-    display: flex;
-    margin-bottom: 20px;
-    font-size: 25px;
-}
-
-.spacer {
-    flex-grow: 1;
-}
-
 @media (max-width: 800px) {
     .carritoContainer {
         display: flex;
         flex-direction: column;
         justify-content: center;
-    }
-    .checkOut {
-        max-width: 80vw;
-        margin: auto;
-        margin-top: 120px;
     }
     .carrito {
         margin: auto;

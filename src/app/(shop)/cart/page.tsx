@@ -19,7 +19,7 @@ export default function CartPage() {
           <ProductsGridCart />
           <Link href="/" className={styles.keepShoping}>Continúa comprando</Link>
         </div>
-
+        
         <OrderSummary/>
 
       </div>
