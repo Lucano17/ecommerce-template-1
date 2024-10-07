@@ -11,7 +11,19 @@ interface State {
     updateProductQuantity: (product: CartProduct, quantity: number) => void
 
     removeProduct: (product: CartProduct) => void
+
+    getSummaryInformation: () => {
+        subtotal: number;
+        tax: number;
+        total: number;
+        itemsInCart: number;
+    }
 }
+
+
+// 21% de IVA en el resumen de orden de compra
+const taxIVA = 0.21;
+
 
 export const useCartStore = create<State>()(
     persist(
@@ -67,7 +79,26 @@ export const useCartStore = create<State>()(
                     (item) => item.id !== product.id || item.size !== product.size
                 );
 
-                set({cart: updatedCartProducts})
+                set({ cart: updatedCartProducts })
+            },
+
+            getSummaryInformation: () => {
+                const { cart } = get();
+
+                const subtotal = cart.reduce(
+                    (subtotal, product) => (product.quantity * product.price) + subtotal
+                    , 0)
+
+                const tax = subtotal * taxIVA
+                const total = subtotal + tax
+                const itemsInCart = cart.reduce((total, item) => total + item.quantity, 0)
+
+                return {
+                    subtotal: parseFloat(subtotal.toFixed(2)),
+                    tax: parseFloat(tax.toFixed(2)),
+                    total: parseFloat(total.toFixed(2)),
+                    itemsInCart
+                }
             },
 
 

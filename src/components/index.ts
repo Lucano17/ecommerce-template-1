@@ -1,3 +1,4 @@
+export * from "./cart/OrderSummary"
 export * from "./cart/payment/IsPaid"
 
 export * from "./product/quantity-selector/QuantitySelector"
