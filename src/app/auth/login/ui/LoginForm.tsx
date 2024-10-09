@@ -25,14 +25,14 @@ export const LoginForm = () => {
         <input
           placeholder='juan.perez@gmail.com'
           type="email"
-          name='email' />
+          name="email" />
 
 
         <label htmlFor="password">Contraseña</label>
         <input
           placeholder='**********'
           type="password"
-          name='password' />
+          name="password" />
 
         <button type='submit'
           >
