@@ -17,7 +17,7 @@ export const authConfig = {
           .object({ email: z.string().email(), password: z.string().min(6) })
           .safeParse(credentials);
 
-          console.log(parsedCredentials.success)
+          console.log(parsedCredentials.success) //TODO: REMOVE THIS CONSOLE.LOG
 
         if (!parsedCredentials.success) return null;
         const { email, password } = parsedCredentials.data;

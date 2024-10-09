@@ -6,12 +6,10 @@ import Link from 'next/link'
 import { useFormState } from 'react-dom'
 import { authenticate } from '@/actions'
 import { object } from 'zod'
+import { IoInformation, IoInformationOutline } from 'react-icons/io5'
 
 export const LoginForm = () => {
     const [state, dispatch] = useFormState(authenticate, undefined)
-    
-
-    console.log(state) //TODO: Remove this console.log
 
   return (
     <form action={dispatch} className={styles.container}>
@@ -34,13 +32,19 @@ export const LoginForm = () => {
           type="password"
           name="password" />
 
+        {state === "CredentialsSignin" && (
+            <>
+            <div>
+            <IoInformationOutline/>
+            <p>Las credenciales no son correctas</p>
+            </div>
+            </>
+          )}
+
         <button type='submit'
           >
           Ingresar
         </button>
-
-
-        {/* divisor l ine */ }
 
         
 
