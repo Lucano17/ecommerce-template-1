@@ -7,25 +7,33 @@
     margin-top: 10px;
     margin-left: 10px;
     max-width: 400px;
+    margin-bottom: 20px;
 }
 
 .quantitySelector {
     margin-left: 20px;
+    min-width: 105px;
+    max-width: 105px;
 }
 
 .title {
     font-size: 12px;
     margin-left: 10px;
+    text-align: start;
 }
 
 .price {
     font-size: 10px;
     margin-top: 10px;
     margin-left: 15px;
+    min-width: 20px;
+    max-width: 20px;
 }
 
 .priceAndQuantity {
     display: flex;
+    min-width: 240px;
+    max-width: 240px;
 }
 
 .remove {
@@ -38,4 +46,9 @@
     font-size: 25px;
     color: red;
     cursor: pointer;
+}
+
+.productContentContainer {
+    display: flex;
+    flex-direction: column;
 }

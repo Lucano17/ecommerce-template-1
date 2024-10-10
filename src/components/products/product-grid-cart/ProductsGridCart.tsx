@@ -36,11 +36,11 @@ export const ProductsGridCart = () => {
           <Image
             src={`/products/${product.image}`}
             width={50}
-            height={50}
+            height={55}
             alt={product.title}
           />
 
-          <div>
+          <div className={styles.productContentContainer}>
             <Link href={`/product/${product.slug}`} className={styles.title}>
               {product.size} - {product.title}
             </Link>
