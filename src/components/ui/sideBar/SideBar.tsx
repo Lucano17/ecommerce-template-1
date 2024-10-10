@@ -54,7 +54,7 @@ export const SideBar = () => {
           <span className={styles.navLinksText}>Perfil</span>
         </Link>
 
-        <Link href={"/"} className={styles.navLinks}>
+        <Link href={"/orders"} className={styles.navLinks}>
           <IoTicketOutline className={styles.navIcon} size={25}/>
           <span className={styles.navLinksText}>Orders</span>
         </Link>
@@ -76,7 +76,7 @@ export const SideBar = () => {
           <span className={styles.navLinksText}>Productos</span>
         </Link>
 
-        <Link href={"/"} className={styles.navLinks}>
+        <Link href={"/orders"} className={styles.navLinks}>
           <IoTicketOutline className={styles.navIcon} size={25}/>
           <span className={styles.navLinksText}>Órdenes</span>
         </Link>
