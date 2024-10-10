@@ -1,30 +1,8 @@
-// 'use server';
- 
-// import { signIn } from '@/auth.config';
- 
-// export async function authenticate(
-//   prevState: string | undefined,
-//   formData: FormData,
-// ) {
-//   try {
-//     console.log(Object.fromEntries(formData)) //TODO Delete this console.log
-//     await signIn('credentials', {
-//       ...Object.fromEntries(formData)});
-//   } catch (error) {
-//     if ((error as Error).message.includes('CredentialsSignin')) {
-//           return 'CredentialsSignin';
-//       }
-//       throw error;
-//     }
-//   }
-
-
-// src/actions/auth/authenticate.ts
 
 "use server";
 
 import { signIn } from "@/auth.config";
-import { redirect } from "next/navigation"; // Para manejar redirecciones del lado servidor
+import { redirect } from "next/navigation"; 
 
 export async function authenticate(formData: FormData) {
   try {
@@ -42,12 +20,20 @@ export async function authenticate(formData: FormData) {
     });
 
     if (response?.error) {
+      // Devolvemos el error específico de la respuesta de NextAuth
       return { error: response.error };
     }
 
-    // Si la autenticación es exitosa, puedes redirigir
+    if (!response?.ok) {
+      // Si la respuesta no es OK, algo salió mal
+      return { error: "Error de autenticación. Por favor, revisa tus credenciales." };
+    }
+
+    // Si es exitoso, redirigir al usuario
     redirect('/');
+
   } catch (error) {
+    console.error("Error en authenticate:", error);
     return { error: "Error inesperado, por favor intenta nuevamente." };
   }
 }

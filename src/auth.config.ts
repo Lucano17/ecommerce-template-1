@@ -16,22 +16,34 @@ export const authConfig = {
         const parsedCredentials = z
           .object({ email: z.string().email(), password: z.string().min(6) })
           .safeParse(credentials);
-
-          console.log(parsedCredentials.success) //TODO: REMOVE THIS CONSOLE.LOG
-
+      
+        console.log("Parsed Credentials:", parsedCredentials); // Log para ver las credenciales parseadas
+      
         if (!parsedCredentials.success) return null;
         const { email, password } = parsedCredentials.data;
-
-        const user = await prisma.user.findUnique({ where: { email: email.toLowerCase() } });
-        if (!user) return null;
-
-        if (!bcryptjs.compareSync(password, user.password)) return null;
-
-        const { password: _, ...rest } = user
-
-        console.log({rest})
-
-        return rest;
+      
+        const user = await prisma.user.findUnique({
+          where: { email: email.toLowerCase() },
+        });
+      
+        console.log("User Found:", user); // Log para ver el usuario encontrado
+      
+        if (!user) {
+          console.log("No user found with this email."); // Log si no se encuentra usuario
+          return null;
+        }
+      
+        const isPasswordCorrect = await bcryptjs.compare(password, user.password);
+        console.log("Password Match:", isPasswordCorrect); // Log para ver si las contraseñas coinciden
+      
+        if (!isPasswordCorrect) {
+          console.log("Incorrect password."); // Log si la contraseña es incorrecta
+          return null;
+        }
+      
+        // Eliminar la contraseña del objeto usuario
+        const { password: _, ...rest } = user;
+        return rest; // Devuelve el usuario sin la contraseña
       },
     }),
   ]
