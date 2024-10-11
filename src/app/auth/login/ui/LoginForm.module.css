@@ -54,3 +54,14 @@
     border-radius: 2px;
     padding: 2px 3px;
 }
+
+.credentialsError{
+    display: flex;
+    color: red;
+    margin-top: auto;
+}
+
+.credentialsError p {
+    font-size: 12px;
+    margin-left: 3px;
+}
