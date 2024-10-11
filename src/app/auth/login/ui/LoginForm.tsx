@@ -30,7 +30,10 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { useFormState, useFormStatus } from "react-dom";
 import { authenticate } from "@/actions";
-import { IoInformationCircleOutline, IoInformationOutline } from "react-icons/io5";
+import {
+  IoInformationCircleOutline,
+  IoInformationOutline,
+} from "react-icons/io5";
 import styles from "./LoginForm.module.css";
 // import { useRouter } from 'next/navigation';
 
@@ -59,20 +62,24 @@ export const LoginForm = () => {
 
         <label htmlFor="password">Contraseña</label>
         <input placeholder="**********" type="password" name="password" />
-        {
-          state === "CredentialsSignin" && (
-            <div className={styles.credentialsError}>
-              <IoInformationCircleOutline/>
-              <p>Las credenciales no son correctas</p>
-            </div>
-          )
-        }
+        {state === "CredentialsSignin" && (
+          <div className={styles.credentialsError}>
+            <IoInformationCircleOutline />
+            <p>Las credenciales no son correctas</p>
+          </div>
+        )}
         {/* {errorMessage && <p> <IoInformationOutline/> {errorMessage}</p>} */}
-        <button type="submit">
-          Ingresar
-          {/* {isPending ? "Ingresando..." : "Ingresar"} */}
-        </button>
+        <LoginButton />
       </div>
     </form>
   );
 };
+
+function LoginButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button type="submit" disabled={pending}>
+      {pending ? "Ingresando..." : "Ingresar"}
+    </button>
+  );
+}
