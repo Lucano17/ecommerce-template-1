@@ -52,14 +52,20 @@ export async function authenticate(
   try {
 
     // await sleep(2);
-    console.log("Object fromEntries:", Object.fromEntries(formData))
-    await signIn('credentials', Object.fromEntries(formData));
+    console.log("Object fromEntries:", Object.fromEntries(formData)) //TODO DELETE THIS
+    await signIn('credentials',{
+      ...Object.fromEntries(formData),
+      redirect: false,
+    });
+
+    return 'Success'
 
 
   } catch (error) {
-
-    return 'CredentialsSignin'
-
+    if ((error as any).type === 'CredentialsSignin') {
+      return 'CredentialsSignin'
+    }
+    return 'Unknown error';
 
   }
 }

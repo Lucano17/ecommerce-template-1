@@ -13,6 +13,7 @@ import {
 } from "react-icons/io5";
 import Link from "next/link";
 import { useUIStore } from "@/store";
+import { logout } from "@/actions";
 
 export const SideBar = () => {
   const isSideMenuOpen = useUIStore((state) => state.isSideMenuOpen);
@@ -60,10 +61,12 @@ export const SideBar = () => {
               <span className={styles.navLinksText}>Ingresar</span>
             </Link>
 
-            <Link href={"/"} className={styles.navLinks}>
+            <button
+            className={styles.navLinks}
+            onClick={() => logout()}>
               <IoLogOutOutline className={styles.navIcon} size={25} />
               <span className={styles.navLinksText}>Salir</span>
-            </Link>
+            </button>
 
             <div className={styles.navMidLine} />
 
