@@ -5,7 +5,7 @@
 
 .paidFalse {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     background-color: red;
     border-radius: 5px;
@@ -14,7 +14,7 @@
 
 .paidTrue {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     background-color: rgb(15, 144, 3);
     border-radius: 5px;

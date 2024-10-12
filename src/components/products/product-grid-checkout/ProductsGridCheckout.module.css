@@ -3,7 +3,7 @@
 .productsContainer {
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     margin-top: 10px;
     margin-left: 10px;
     max-width: 400px;
