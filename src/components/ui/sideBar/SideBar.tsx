@@ -62,10 +62,10 @@ export const SideBar = () => {
             </Link>
 
             <button
-            className={styles.navLinks}
+            className={styles.authButton}
             onClick={() => logout()}>
               <IoLogOutOutline className={styles.navIcon} size={25} />
-              <span className={styles.navLinksText}>Salir</span>
+              <span className={styles.authText}>Salir</span>
             </button>
 
             <div className={styles.navMidLine} />
