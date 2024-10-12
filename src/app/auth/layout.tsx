@@ -16,13 +16,11 @@ export default async function Account({
   children: React.ReactNode;
 }>) {
 
-  // const session = await auth()
+  const session = await auth()
 
-  // if (session?.user) {
-  //   redirect("/")
-  // }
-
-  // console.log({session}) //TODO DELETE THIS
+  if (session?.user) {
+    redirect("/")
+  }
 
   return (
     <main>
