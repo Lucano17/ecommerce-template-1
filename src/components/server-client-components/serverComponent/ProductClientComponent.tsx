@@ -2,7 +2,7 @@
 "use client";
 
 import React from "react";
-import styles from "./product-client-component.module.css";
+import styles from "./ProductClientComponent.module.css";
 import {
   ProductMobileSlideShow,
   ProductSlideShow,

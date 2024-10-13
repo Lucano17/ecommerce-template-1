@@ -1,6 +1,6 @@
 // page.tsx (Página del servidor)
 import { getProductBySlug } from "@/actions";
-import { ProductServerComponent } from "@/components/server-client-components/server-component/product-server-component";
+import { ProductServerComponent } from "@/components/server-client-components/serverComponent/ProductServerComponent";
 import { Metadata, ResolvingMetadata } from "next";
 
 interface Props {
