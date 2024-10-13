@@ -56,7 +56,7 @@ export const SideBar = () => {
               <span className={styles.navLinksText}>Orders</span>
             </Link>
 
-            <Link href={"/"} className={styles.navLinks} onClick={()=> closeSideMenu()}>
+            <Link href={"/auth/login"} className={styles.navLinks} onClick={()=> closeSideMenu()}>
               <IoLogInOutline className={styles.navIcon} size={25} />
               <span className={styles.navLinksText}>Ingresar</span>
             </Link>
