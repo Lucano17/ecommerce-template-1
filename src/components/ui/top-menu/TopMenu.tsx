@@ -1,7 +1,7 @@
 "use client"
 
 // import React, { useState } from "react";
-import styles from "./page.module.css";
+import styles from "./TopMenu.module.css";
 import Link from "next/Link";
 import { titleFont } from "@/fonts/fonts";
 import {IoSearchOutline, IoCartOutline} from "react-icons/io5"
