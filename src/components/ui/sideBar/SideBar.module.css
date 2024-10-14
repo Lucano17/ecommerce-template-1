@@ -41,6 +41,18 @@
     height: 20px;
 }
 
+.searchContainer {
+    justify-content: end;
+    margin-top: 10px;
+}
+
+.searchInput {
+    background-color: rgb(210, 210, 194);
+    color: black;
+    padding: 2px 2px;
+    border-radius: 5px;
+}
+
 .searchIcon {
     position: absolute;
     color: black;
@@ -48,10 +60,6 @@
     cursor: pointer;
 }
 
-.searchContainer {
-    justify-content: end;
-    margin-top: 10px;
-}
 
 .navLinks {
     display: flex;
