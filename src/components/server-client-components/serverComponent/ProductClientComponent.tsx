@@ -44,10 +44,10 @@ export const ProductClientComponent = ({ product }: Props) => {
         </div>
       </div>
       <div className={styles.dataContainer}>
-        <StockLabel slug={product.slug}/>
         <h1>{product?.title}</h1>
+        <StockLabel slug={product.slug}/>
 
-        <p className={styles.price}>Precio: ${product?.price}</p>
+        <p className={styles.price}>Precio: <span>${product?.price}</span></p>
         <AddToCart product={product}/>
 
         <div className={styles.description}>

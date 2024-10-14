@@ -45,7 +45,7 @@
 }
 
 .description {
-    margin-bottom: 40px;
+    margin-bottom: auto;
 }
 
 .description h3 {
@@ -58,6 +58,11 @@
 }
 .productSlideShow {
     width: 90%;
+}
+
+.price {
+    display: flex;
+    flex-direction: column;
 }
 
 @media (max-width: 800px){
