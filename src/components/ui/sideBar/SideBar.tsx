@@ -21,6 +21,7 @@ export const SideBar = () => {
   const closeSideMenu = useUIStore((state) => state.closeSideMenu);
   const { data: session } = useSession();
   const isAuthenticated = !!session?.user;
+  const isAdmin = (session?.user.role === "admin");
 
   return (
     <div>
@@ -45,39 +46,40 @@ export const SideBar = () => {
               />
             </div>
 
-            <Link
-              href={"/profile"}
-              className={styles.navLinks}
-              onClick={() => closeSideMenu()}
-            >
-              <IoPersonOutline className={styles.navIcon} size={25} />
-              <span className={styles.navLinksText}>Perfil</span>
-            </Link>
-
-            <Link
-              href={"/orders"}
-              className={styles.navLinks}
-              onClick={() => closeSideMenu()}
-            >
-              <IoTicketOutline className={styles.navIcon} size={25} />
-              <span className={styles.navLinksText}>Orders</span>
-            </Link>
-
             {isAuthenticated && (
-              <button
-                className={styles.authButton}
-                onClick={() => {
-                  logout(), closeSideMenu();
-                }}
-              >
-                <IoLogOutOutline className={styles.navIcon} size={25} />
-                <span className={styles.authText}>Salir</span>
-              </button>
+              <div>
+                <Link
+                  href={"/profile"}
+                  className={styles.navLinks}
+                  onClick={() => closeSideMenu()}
+                >
+                  <IoPersonOutline className={styles.navIcon} size={25} />
+                  <span className={styles.navLinksText}>Perfil</span>
+                </Link>
+
+                <Link
+                  href={"/orders"}
+                  className={styles.navLinks}
+                  onClick={() => closeSideMenu()}
+                >
+                  <IoTicketOutline className={styles.navIcon} size={25} />
+                  <span className={styles.navLinksText}>Orders</span>
+                </Link>
+
+                <button
+                  className={styles.authButton}
+                  onClick={() => {
+                    logout(), closeSideMenu();
+                  }}
+                >
+                  <IoLogOutOutline className={styles.navIcon} size={25} />
+                  <span className={styles.authText}>Salir</span>
+                </button>
+              </div>
             )}
 
-            {
-              !isAuthenticated && (
-                <Link
+            {!isAuthenticated && (
+              <Link
                 href={"/auth/login"}
                 className={styles.navLinks}
                 onClick={() => closeSideMenu()}
@@ -85,37 +87,40 @@ export const SideBar = () => {
                 <IoLogInOutline className={styles.navIcon} size={25} />
                 <span className={styles.navLinksText}>Ingresar</span>
               </Link>
-              )
-            }
+            )}
 
-            <div className={styles.navMidLine} />
+            {isAdmin && (
+              <div>
+                <div className={styles.navMidLine} />
 
-            <Link
-              href={"/"}
-              className={styles.navLinks}
-              onClick={() => closeSideMenu()}
-            >
-              <IoShirtOutline className={styles.navIcon} size={25} />
-              <span className={styles.navLinksText}>Productos</span>
-            </Link>
+                <Link
+                  href={"/"}
+                  className={styles.navLinks}
+                  onClick={() => closeSideMenu()}
+                >
+                  <IoShirtOutline className={styles.navIcon} size={25} />
+                  <span className={styles.navLinksText}>Productos</span>
+                </Link>
 
-            <Link
-              href={"/orders"}
-              className={styles.navLinks}
-              onClick={() => closeSideMenu()}
-            >
-              <IoTicketOutline className={styles.navIcon} size={25} />
-              <span className={styles.navLinksText}>Órdenes</span>
-            </Link>
+                <Link
+                  href={"/orders"}
+                  className={styles.navLinks}
+                  onClick={() => closeSideMenu()}
+                >
+                  <IoTicketOutline className={styles.navIcon} size={25} />
+                  <span className={styles.navLinksText}>Órdenes</span>
+                </Link>
 
-            <Link
-              href={"/"}
-              className={styles.navLinks}
-              onClick={() => closeSideMenu()}
-            >
-              <IoPeopleOutline className={styles.navIcon} size={25} />
-              <span className={styles.navLinksText}>Usuarios</span>
-            </Link>
+                <Link
+                  href={"/"}
+                  className={styles.navLinks}
+                  onClick={() => closeSideMenu()}
+                >
+                  <IoPeopleOutline className={styles.navIcon} size={25} />
+                  <span className={styles.navLinksText}>Usuarios</span>
+                </Link>
+              </div>
+            )}
           </nav>
         )}
       </div>
