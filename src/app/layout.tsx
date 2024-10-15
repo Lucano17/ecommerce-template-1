@@ -1,6 +1,7 @@
 import "./globals2.css";
 import type { Metadata } from "next";
 import { inter, geistMono, geistSans } from "@/fonts/fonts";
+import { Provider } from "@/components";
 
 export const metadata: Metadata = {
   title: "Ecommerce-template-1",
@@ -15,7 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <Provider>
+
         <>{children}</>
+        </Provider>
       </body>
     </html>
   );

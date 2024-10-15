@@ -14,10 +14,12 @@ import {
 import Link from "next/link";
 import { useUIStore } from "@/store";
 import { logout } from "@/actions";
+import { useSession } from "next-auth/react";
 
 export const SideBar = () => {
   const isSideMenuOpen = useUIStore((state) => state.isSideMenuOpen);
   const closeSideMenu = useUIStore((state) => state.closeSideMenu);
+  const {data: session} = useSession()
 
   return (
     <div>
