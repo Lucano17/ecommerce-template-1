@@ -5,17 +5,13 @@ import { useFormState, useFormStatus } from "react-dom";
 import { authenticate } from "@/actions";
 import { IoInformationCircleOutline } from "react-icons/io5";
 import styles from "./LoginForm.module.css";
-import { useRouter } from "next/navigation";
 
 export const LoginForm = () => {
   const [state, dispatch] = useFormState(authenticate, undefined);
-  const router = useRouter();
-
-  console.log("state:", state);
 
   useEffect(() => {
     if (state === "Success") {
-      router.replace("/");
+      window.location.replace("/");
     }
   }, [state]);
 

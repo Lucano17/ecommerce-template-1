@@ -13,7 +13,7 @@ import {
 } from "react-icons/io5";
 import Link from "next/link";
 import { useUIStore } from "@/store";
-import { logout } from "@/actions";
+import { logout, onLogout } from "@/actions";
 import { useSession } from "next-auth/react";
 
 export const SideBar = () => {
@@ -69,7 +69,7 @@ export const SideBar = () => {
                 <button
                   className={styles.authButton}
                   onClick={() => {
-                    logout(), closeSideMenu();
+                    onLogout(), closeSideMenu();
                   }}
                 >
                   <IoLogOutOutline className={styles.navIcon} size={25} />
