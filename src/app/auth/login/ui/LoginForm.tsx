@@ -36,9 +36,10 @@ export const LoginForm = () => {
           <LoginButton />
         </div>
       </form>
-      <Link href="/auth/new-account" className={styles.registerLink}>
-        Crear una nueva cuenta
-      </Link>
+        <p className={styles.p}>Si no tienes una cuenta, regístrate en el siguiente enlace</p>
+        <Link href="/auth/new-account" className={styles.registerLink}>
+          Crear una nueva cuenta
+        </Link>
     </>
   );
 };

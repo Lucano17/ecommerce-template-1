@@ -51,10 +51,11 @@
 
 .loginLink {
     /* border-bottom: 1px solid white; */
-    box-shadow: 2px 2px 10px rgb(255, 255, 255);
+    box-shadow: 0px 10px 5px -9px white;
     border-radius: 5px;
     padding: 5px;
     width: 10%;
+    font-size: 14px;
     margin: auto;
     margin-top: 10px;
 }
