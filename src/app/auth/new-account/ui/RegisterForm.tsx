@@ -24,7 +24,7 @@ export const RegisterForm = () => {
           {/* divisor l ine */}
         </div>
         <p className={styles.p}>Si ya tienes una cuenta</p>
-        <Link href="/auth/login" className={styles.registerLink}>
+        <Link href="/auth/login" className={styles.loginLink}>
           Ingresa
         </Link>
       </div>

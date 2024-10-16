@@ -7,23 +7,34 @@
     display: flex;
     flex-direction: column;
     margin: auto;
-    width: 250px;
-    height: 280px;
-    box-shadow: 2px 2px 10px rgb(255, 255, 255);
+    width: 275px;
+    height: 300px;
+    box-shadow: 2px 2px 10px white;
     border-radius: 5px;
-    padding: 5px 15px;
-    margin-top: 50px;
-}
-
-.formContainer input {
-    margin-top: 5px;
-    background: none;
-    border: none;
-    border-bottom: 1px solid white;
+    padding: 5px 30px;
+    margin-top: 100px;
 }
 
 .formContainer label {
     margin-top: 15px;
+}
+
+.formContainer input {
+    color: black;
+    margin-top: 5px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+    box-shadow: 0 0 0px 1000px rgb(61, 61, 61) inset;
+    border-radius: 2px;
+    padding: 2px 3px;
+}
+
+.formContainer input:-webkit-autofill {
+    box-shadow: 0 0 0px 1000px rgb(61, 61, 61) inset;
+    -webkit-text-fill-color: #000; /* Cambia el color del texto según lo necesites */
+    border-radius: 2px;
+    padding: 2px 3px;
 }
 
 .formContainer button {
@@ -38,7 +49,7 @@
     cursor: pointer;
 }
 
-.registerLink {
+.loginLink {
     /* border-bottom: 1px solid white; */
     box-shadow: 2px 2px 10px rgb(255, 255, 255);
     border-radius: 5px;
@@ -51,3 +62,4 @@
 .p {
     margin-top: 30px;
 }
+
