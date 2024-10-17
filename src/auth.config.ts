@@ -5,6 +5,11 @@ import bcryptjs from "bcryptjs";
 import { z } from "zod"
 import prisma from './lib/prisma';
 
+
+const authenticatedRoutes = [
+  "checkout/address"
+]
+
 export const authConfig = {
   pages: {
     signIn: '/auth/login',
@@ -12,6 +17,20 @@ export const authConfig = {
   },
 
   callbacks: {
+
+    // authorized({ auth, request: { nextUrl } }) {
+    //   console.log({auth})
+    //   const isLoggedIn = !!auth?.user;
+    //   const isOnDashboard = nextUrl.pathname.startsWith(`${authenticatedRoutes}`);
+    //   if (isOnDashboard) {
+    //     if (isLoggedIn) return true;
+    //     return false; // Redirect unauthenticated users to login page
+    //   } else if (isLoggedIn) {
+    //     return Response.redirect(new URL('/', nextUrl));
+    //   }
+    //   return true;
+    // },
+
     jwt({ token, user }) {
       if (user) {
         token.data = user
