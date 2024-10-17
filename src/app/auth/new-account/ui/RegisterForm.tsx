@@ -1,10 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import styles from "./RegisterForm.module.css";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IoInformationCircleOutline } from "react-icons/io5";
+import { registerUser } from "@/actions";
 
 type FormInputs = {
   name: string;
@@ -13,6 +14,7 @@ type FormInputs = {
 };
 
 export const RegisterForm = () => {
+  const [errorMessage, setErrorMessage] = useState("");
   const {
     register,
     handleSubmit,
@@ -20,7 +22,14 @@ export const RegisterForm = () => {
   } = useForm<FormInputs>();
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
+    setErrorMessage("");
     const { name, email, password } = data;
+    const resp = await registerUser(name, email, password);
+
+    if (!resp.ok) {
+      setErrorMessage(resp.message || "Ha ocurrido un error");
+      return;
+    }
   };
 
   return (
@@ -86,6 +95,15 @@ export const RegisterForm = () => {
               Las credenciales deben tener al menos 6 carácteres
             </p>
           )}
+
+          {
+            errorMessage && (
+              <p className={styles.formError}>
+              <IoInformationCircleOutline className={styles.errorIcon} />
+              {errorMessage}
+            </p>
+            )
+          }
         </div>
         <button>Registrarse</button>
       </form>
