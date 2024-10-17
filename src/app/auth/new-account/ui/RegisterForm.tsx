@@ -19,8 +19,6 @@ export const RegisterForm = () => {
     formState: { errors },
   } = useForm<FormInputs>();
 
-  
-
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     const { name, email, password } = data;
   };
@@ -36,15 +34,22 @@ export const RegisterForm = () => {
           type="text"
           {...register("name", { required: true })}
           autoFocus
-          className={`${styles.input} ${errors.name ? styles.formErrorFocus : ""}`}
+          className={`${styles.input} ${
+            errors.name ? styles.formErrorFocus : ""
+          }`}
         />
 
         <label htmlFor="email">Correo electrónico</label>
         <input
           placeholder="juan.perez@gmail.com"
           type="email"
-          {...register("email", { required: true })}
-          className={`${styles.input} ${errors.email ? styles.formErrorFocus : ""}`}
+          {...register("email", {
+            required: true,
+            pattern: /^\S+@\S+$/i
+          })}
+          className={`${styles.input} ${
+            errors.email ? styles.formErrorFocus : ""
+          }`}
         />
 
         <label htmlFor="password">Contraseña</label>
@@ -52,20 +57,30 @@ export const RegisterForm = () => {
           placeholder="**********"
           type="password"
           {...register("password", { required: true })}
-          className={`${styles.input} ${errors.password ? styles.formErrorFocus : ""}`}
+          className={`${styles.input} ${
+            errors.password ? styles.formErrorFocus : ""
+          }`}
         />
 
-        {errors.name?.type === "required" && (
-          <p className={styles.formError}>
-            <IoInformationCircleOutline className={styles.errorIcon} /> El
-            nombre es obligatorio
-          </p>
-        )}
+        <div className={styles.errorContainer}>
+          {(errors.name || errors.email || errors.password)?.type ===
+            "required" && (
+            <p className={styles.formError}>
+              <IoInformationCircleOutline className={styles.errorIcon} />
+              Las credenciales son necesarias
+            </p>
+          )}
 
+          {errors.email?.type === "pattern" && (
+            <p className={styles.formError}>
+              <IoInformationCircleOutline className={styles.errorIcon} />
+              Verifica el formato de tu correo
+            </p>
+          )}
+        </div>
         <button>Registrarse</button>
-
-        {/* divisor l ine */}
       </form>
+
       <p className={styles.p}>Si ya tienes una cuenta</p>
       <Link href="/auth/login" className={styles.loginLink}>
         Ingresa
