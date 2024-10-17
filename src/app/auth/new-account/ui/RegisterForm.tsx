@@ -19,6 +19,8 @@ export const RegisterForm = () => {
     formState: { errors },
   } = useForm<FormInputs>();
 
+  
+
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     const { name, email, password } = data;
   };
@@ -34,6 +36,7 @@ export const RegisterForm = () => {
           type="text"
           {...register("name", { required: true })}
           autoFocus
+          className={`${styles.input} ${errors.name ? styles.formErrorFocus : ""}`}
         />
 
         <label htmlFor="email">Correo electrónico</label>
@@ -41,6 +44,7 @@ export const RegisterForm = () => {
           placeholder="juan.perez@gmail.com"
           type="email"
           {...register("email", { required: true })}
+          className={`${styles.input} ${errors.email ? styles.formErrorFocus : ""}`}
         />
 
         <label htmlFor="password">Contraseña</label>
@@ -48,6 +52,7 @@ export const RegisterForm = () => {
           placeholder="**********"
           type="password"
           {...register("password", { required: true })}
+          className={`${styles.input} ${errors.password ? styles.formErrorFocus : ""}`}
         />
 
         {errors.name?.type === "required" && (
