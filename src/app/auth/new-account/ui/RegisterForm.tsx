@@ -32,7 +32,7 @@ export const RegisterForm = () => {
         <input
           placeholder="Juan Pérez"
           type="text"
-          {...register("name", { required: true })}
+          {...register("name", { required: true, minLength: 6 })}
           autoFocus
           className={`${styles.input} ${
             errors.name ? styles.formErrorFocus : ""
@@ -45,7 +45,8 @@ export const RegisterForm = () => {
           type="email"
           {...register("email", {
             required: true,
-            pattern: /^\S+@\S+$/i
+            pattern: /^\S+@\S+$/i,
+            minLength: 6,
           })}
           className={`${styles.input} ${
             errors.email ? styles.formErrorFocus : ""
@@ -56,7 +57,7 @@ export const RegisterForm = () => {
         <input
           placeholder="**********"
           type="password"
-          {...register("password", { required: true })}
+          {...register("password", { required: true, minLength: 6 })}
           className={`${styles.input} ${
             errors.password ? styles.formErrorFocus : ""
           }`}
@@ -75,6 +76,14 @@ export const RegisterForm = () => {
             <p className={styles.formError}>
               <IoInformationCircleOutline className={styles.errorIcon} />
               Verifica el formato de tu correo
+            </p>
+          )}
+
+          {(errors.name || errors.email || errors.password)?.type ===
+            "minLength" && (
+            <p className={styles.formError}>
+              <IoInformationCircleOutline className={styles.errorIcon} />
+              Las credenciales deben tener al menos 6 carácteres
             </p>
           )}
         </div>
