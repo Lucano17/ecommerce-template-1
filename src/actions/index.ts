@@ -1,5 +1,7 @@
 
+
 export {authenticate} from "./auth/login"
+export {login} from "./auth/login"
 export {logout} from "./auth/logout"
 export {onLogout} from "./auth/onLogout"
 export {registerUser} from "./auth/register"

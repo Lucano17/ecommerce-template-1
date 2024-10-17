@@ -5,7 +5,7 @@ import styles from "./RegisterForm.module.css";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IoInformationCircleOutline } from "react-icons/io5";
-import { registerUser } from "@/actions";
+import { login, registerUser } from "@/actions";
 
 type FormInputs = {
   name: string;
@@ -30,6 +30,9 @@ export const RegisterForm = () => {
       setErrorMessage(resp.message || "Ha ocurrido un error");
       return;
     }
+
+    await login(email.toLowerCase(), password)
+    window.location.replace("/")
   };
 
   return (
