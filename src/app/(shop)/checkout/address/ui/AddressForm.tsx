@@ -78,7 +78,7 @@ export const AddressForm = () => {
       </div>
 
       <div className={styles.inputContainer}>
-        <Link href="/checkout">Siguiente</Link>
+        <Link href="/checkout" className={styles.forwardButton}>Siguiente</Link>
       </div>
     </div>
   );

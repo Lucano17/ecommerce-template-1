@@ -55,6 +55,13 @@
 .iconContainer {
     position: absolute;
   }
+
+.forwardButton {
+    background-color: black;
+    padding: 5px 5px;
+    box-shadow: 0px 0px 3px 0px white;
+    border-radius: 5px;
+}
   
 
 @media (max-width: 800px) {
