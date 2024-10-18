@@ -9,37 +9,37 @@ export const AddressForm = () => {
     <div className={styles.formContainer}>
       <div className={styles.inputContainer}>
         <span>Nombres</span>
-        <input type="text" />
+        <input type="text" className={styles.formInput}/>
       </div>
 
       <div className={styles.inputContainer}>
         <span>Apellidos</span>
-        <input type="text" />
+        <input type="text" className={styles.formInput}/>
       </div>
 
       <div className={styles.inputContainer}>
         <span>Dirección</span>
-        <input type="text" />
+        <input type="text" className={styles.formInput}/>
       </div>
 
       <div className={styles.inputContainer}>
         <span>Dirección 2 (opcional)</span>
-        <input type="text" />
+        <input type="text" className={styles.formInput}/>
       </div>
 
       <div className={styles.inputContainer}>
         <span>Código postal</span>
-        <input type="text" />
+        <input type="text" className={styles.formInput}/>
       </div>
 
       <div className={styles.inputContainer}>
         <span>Ciudad</span>
-        <input type="text" />
+        <input type="text" className={styles.formInput}/>
       </div>
 
       <div className={styles.inputContainer}>
         <span>País</span>
-        <select>
+        <select className={styles.formInput}>
           <option value="">[ Seleccione ]</option>
           <option value="CRI">Argentina</option>
         </select>
@@ -47,7 +47,7 @@ export const AddressForm = () => {
 
       <div className={styles.inputContainer}>
         <span>Teléfono</span>
-        <input type="text" />
+        <input type="text" className={styles.formInput}/>
       </div>
 
       <div className={styles.checkboxContainer}>

@@ -12,15 +12,17 @@
     text-align: left;
 } 
 
-.container div input {
-    margin-top: 10px;
+.formContainer div input {
     width: 200px;
 }
 
-.container div select {
-    margin-top: 5px;
+.formContainer div select {
     width: 200px;
     text-align: center;
+}
+
+.formInput {
+    margin-top: 5px;
 }
 
 .checkboxContainer {
