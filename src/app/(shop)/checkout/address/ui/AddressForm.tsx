@@ -3,51 +3,109 @@
 import Link from "next/link";
 import React from "react";
 import styles from "./AddressForm.module.css";
+import { useForm } from "react-hook-form";
+
+type FormInputs = {
+  firstName: string;
+  lastName: string;
+  address: string;
+  address2?: string;
+  postalCode: string;
+  city: string;
+  country: string;
+  phone: string;
+  rememberAddress: boolean;
+};
 
 export const AddressForm = () => {
+  const {
+    handleSubmit,
+    register,
+    formState: { isValid },
+  } = useForm<FormInputs>({
+    defaultValues: {
+      //TODO: Leer de la base de datos
+    },
+  });
+
+  const onSubmit = (data: FormInputs) => {
+    console.log({ data });
+  };
+
   return (
-    <div className={styles.formContainer}>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
       <div className={styles.inputContainer}>
         <span>Nombres</span>
-        <input type="text" className={styles.formInput}/>
+        <input
+          type="text"
+          className={styles.formInput}
+          {...register("firstName", { required: true })}
+        />
       </div>
 
       <div className={styles.inputContainer}>
         <span>Apellidos</span>
-        <input type="text" className={styles.formInput}/>
+        <input
+          type="text"
+          className={styles.formInput}
+          {...register("lastName", { required: true })}
+        />
       </div>
 
       <div className={styles.inputContainer}>
         <span>Dirección</span>
-        <input type="text" className={styles.formInput}/>
+        <input
+          type="text"
+          className={styles.formInput}
+          {...register("address", { required: true })}
+        />
       </div>
 
       <div className={styles.inputContainer}>
         <span>Dirección 2 (opcional)</span>
-        <input type="text" className={styles.formInput}/>
+        <input
+          type="text"
+          className={styles.formInput}
+          {...register("address2")}
+        />
       </div>
 
       <div className={styles.inputContainer}>
         <span>Código postal</span>
-        <input type="text" className={styles.formInput}/>
+        <input
+          type="text"
+          className={styles.formInput}
+          {...register("postalCode", { required: true })}
+        />
       </div>
 
       <div className={styles.inputContainer}>
         <span>Ciudad</span>
-        <input type="text" className={styles.formInput}/>
+        <input
+          type="text"
+          className={styles.formInput}
+          {...register("city", { required: true })}
+        />
       </div>
 
       <div className={styles.inputContainer}>
         <span>País</span>
-        <select className={styles.formInput}>
+        <select
+          className={styles.formInput}
+          {...register("country", { required: true })}
+        >
           <option value="">[ Seleccione ]</option>
-          <option value="CRI">Argentina</option>
+          <option value="ARG">Argentina</option>
         </select>
       </div>
 
       <div className={styles.inputContainer}>
         <span>Teléfono</span>
-        <input type="text" className={styles.formInput}/>
+        <input
+          type="text"
+          className={styles.formInput}
+          {...register("phone", { required: true })}
+        />
       </div>
 
       <div className={styles.checkboxContainer}>
@@ -56,6 +114,7 @@ export const AddressForm = () => {
             type="checkbox"
             className={styles.checkbox}
             //   checked
+            {...register("rememberAddress")}
           />
           <div className={styles.iconContainer}>
             <svg
@@ -74,12 +133,19 @@ export const AddressForm = () => {
           </div>
         </label>
         <p>¿Recordar dirección?</p>
-       
       </div>
 
       <div className={styles.inputContainer}>
-        <Link href="/checkout" className={styles.forwardButton}>Siguiente</Link>
+        <button
+        type="submit"
+        className={isValid
+          ? styles.forwardButton
+          : styles.InvalidForwardButton
+        }
+        disabled={!isValid}>
+          Siguiente
+        </button>
       </div>
-    </div>
+    </form>
   );
 };

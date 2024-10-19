@@ -23,6 +23,7 @@
 
 .formInput {
     margin-top: 5px;
+    padding: 2px 3px;
 }
 
 .checkboxContainer {
@@ -60,6 +61,12 @@
     background-color: black;
     padding: 5px 5px;
     box-shadow: 0px 0px 3px 0px white;
+    border-radius: 5px;
+}
+
+.InvalidForwardButton {
+    background-color: black;
+    padding: 5px 5px;
     border-radius: 5px;
 }
   
