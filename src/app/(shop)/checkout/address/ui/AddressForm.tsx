@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./AddressForm.module.css";
 import { useForm } from "react-hook-form";
 import { Country } from "@/interfaces";
+import { useAddressStore } from "@/store";
 
 type FormInputs = {
   firstName: string;
@@ -27,14 +28,25 @@ export const AddressForm = ({countries}: Props) => {
     handleSubmit,
     register,
     formState: { isValid },
+    reset,
   } = useForm<FormInputs>({
     defaultValues: {
       //TODO: Leer de la base de datos
     },
   });
 
+  const setAddress = useAddressStore(state => state.setAddress)
+  const address = useAddressStore(state => state.address)
+
+  useEffect(()=>{
+    if (address.firstName) {
+      reset(address)
+    }
+  },[])
+
   const onSubmit = (data: FormInputs) => {
     console.log({ data });
+    setAddress(data)
   };
 
   return (
