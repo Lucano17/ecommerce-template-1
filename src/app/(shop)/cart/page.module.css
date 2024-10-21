@@ -1,3 +1,7 @@
+.container {
+    height: 91vh;
+}
+
 .carritoContainer {
     display: flex;
     flex-direction: row;
@@ -9,8 +13,8 @@
 
 .keepShoping {
     display: flex;
-    margin-top: 30px;
-    margin-left: 25%;
+    justify-content: center;
+    margin-top: 15px;
 }
 
 @media (max-width: 800px) {

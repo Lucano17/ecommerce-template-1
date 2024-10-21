@@ -1,4 +1,6 @@
-
+.container {
+    border-bottom: 1px solid white;
+}
 
 .productsContainer {
     display: flex;
