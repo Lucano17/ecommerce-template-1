@@ -3,8 +3,15 @@ import { Title } from "@/components";
 import { redirect } from "next/navigation";
 import React from "react";
 import styles from "./page.module.css"
+import { ProfileData } from "./ui/ProfileData";
 
-export default async function ProfilePage () {
+interface Props {
+  email: string;
+  name: string;
+  password: string;
+};
+
+export default async function ProfilePage ({email, name, password}: Props) {
   const session = await auth();
   if (!session?.user) {
     // redirect('/auth/login?returnTo=/perfil')
@@ -16,11 +23,7 @@ export default async function ProfilePage () {
       <Title title="Perfil" />
 
       {/* <pre>{JSON.stringify(session.user, null, 2)}</pre> */}
-      <input type="image"  className={styles.image}/>
-      <h3>Usuario: <span>{session.user.name}</span></h3>
-      <h3>Correo electrónico: <span>{session.user.email}</span></h3>
-      <h3>Rol: <span>{session.user.role}</span></h3>
-      <h3>Contraseña: <span>*********</span></h3>
+      <ProfileData email={email} name={name} password={password}/>
     </div>
   );
 };
