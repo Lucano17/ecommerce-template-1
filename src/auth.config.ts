@@ -76,11 +76,11 @@ export const authConfig = {
 
        
         const { password: _, ...rest } = user;  // Eliminar la contraseña del objeto usuario
-        console.log({ rest })
         return rest; // Devuelve el usuario sin la contraseña
       },
     }),
   ]
 } satisfies NextAuthConfig;
+
 
 export const { signIn, signOut, auth, handlers } = NextAuth(authConfig)
