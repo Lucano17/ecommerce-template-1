@@ -3,7 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { Pagination, ProductGrid, Title } from "@/components";
 import { getPaginatedProductsWithImages } from "@/actions";
 import { Gender } from "@prisma/client";
-
+import styles from "./page.module.css"
 
 export const revalidate = 60
 
@@ -41,7 +41,7 @@ export default async function GenderByIdPage({ params, searchParams}: Props) {
     notFound();
   }
   return (
-    <div>
+    <div className={styles.container}>
       <Title title={`Indumentaria para ${labels[gender]}`} />
       <ProductGrid products={products}/>
       <Pagination totalPages={totalPages}/>
