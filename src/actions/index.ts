@@ -1,5 +1,7 @@
 
 
+export {setUserAddress} from "./address/set-user-address"
+
 export {authenticate} from "./auth/login"
 export {login} from "./auth/login"
 export {logout} from "./auth/logout"
