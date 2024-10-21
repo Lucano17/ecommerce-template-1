@@ -3,13 +3,5 @@
     flex-direction: column;
     justify-content: left;
     text-align: left;
-}
-
-.image {
-    display: flex;
-    width: 100px;
-    height: 100px;
-    background-color: black;
-    border: 1px solid white;
-    border-radius: 5px;
+    margin-left: 20px;
 }

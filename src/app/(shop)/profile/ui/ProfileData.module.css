@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    text-align: left;
+}
+
+.image {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.singleDataContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.userData {
+    display: flex;
+    gap: 10px;
+}
+
+.userData button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import { auth, authConfig } from "@/auth.config";
 import { redirect } from "next/navigation";
-import styles from "../page.module.css";
+import styles from "./ProfileData.module.css";
 import { userUpdate } from "@/actions/auth/update-user";
 import { FaEdit } from "react-icons/fa";
 
@@ -23,36 +23,36 @@ export const ProfileData = async ({ email, name, password}: Props) => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <input type="image" className={styles.image} />
 
-      <div>
+      <div className={styles.singleDataContainer}>
         <h3>Correo electrónico:</h3>
-      <div>
+      <div className={styles.userData}>
       <p>{session.user.email}</p>
-      <FaEdit/>
+      <button><FaEdit/></button>
       </div>
       </div>
 
-      <div>
+      <div className={styles.singleDataContainer}>
         <h3>Nombre de usuario:</h3>
-      <div>
+      <div className={styles.userData}>
       <p>{session.user.name}</p>
-      <FaEdit/>
+      <button><FaEdit/></button>
       </div>
       </div>
 
-      <div>
+      <div className={styles.singleDataContainer}>
         <h3>Contraseña:</h3>
-      <div>
+      <div className={styles.userData}>
       <p>Cambiar contraseña</p>
-      <FaEdit/>
+      <button><FaEdit/></button>
       </div>
       </div>
 
-      <div>
+      <div className={styles.singleDataContainer}>
         <h3>Rol de usuario:</h3>
-      <div>
+      <div className={styles.userData}>
       <p>{session.user.role}</p>
       </div>
       </div>
