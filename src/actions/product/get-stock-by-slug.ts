@@ -13,7 +13,6 @@ export const getStockBySlug = async (slug: string): Promise<number> => {
     });
     
     // Log the stock value obtained from Prisma
-    console.log("Stock from Prisma:", stock);
     
     return stock?.inStock ?? 0; // Return stock or 0 if undefined
   } catch (error) {

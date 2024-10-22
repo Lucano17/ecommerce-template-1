@@ -17,7 +17,6 @@ export const AddToCart = ({ product }: Props) => {
   const [posted, setPosted] = useState(false);
 
   const addToCart = () => {
-    console.log({ selectedSize, quantity, product });
     setPosted(true);
 
     if (!selectedSize) return

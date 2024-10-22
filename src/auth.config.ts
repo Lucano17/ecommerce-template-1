@@ -50,8 +50,6 @@ export const authConfig = {
           .object({ email: z.string().email(), password: z.string().min(6) })
           .safeParse(credentials);
 
-        console.log("Parsed Credentials:", parsedCredentials.success); // Log para ver las credenciales parseadas
-
         if (!parsedCredentials.success) return null;
         const { email, password } = parsedCredentials.data;
 
@@ -60,7 +58,6 @@ export const authConfig = {
         });
 
         if (!user) {
-          console.log("No user found with this email."); // Log si no se encuentra usuario
           return null;
         }
 

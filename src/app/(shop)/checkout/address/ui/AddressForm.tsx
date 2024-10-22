@@ -6,6 +6,8 @@ import styles from "./AddressForm.module.css";
 import { useForm } from "react-hook-form";
 import { Country } from "@/interfaces";
 import { useAddressStore } from "@/store";
+import { setUserAddress } from "@/actions";
+import { useSession } from "next-auth/react";
 
 type FormInputs = {
   firstName: string;
@@ -35,18 +37,32 @@ export const AddressForm = ({countries}: Props) => {
     },
   });
 
+  const {data: session} = useSession({
+    required: true
+  })
+  
   const setAddress = useAddressStore(state => state.setAddress)
   const address = useAddressStore(state => state.address)
-
+  
+  console.log(session?.user.id)
+  
   useEffect(()=>{
     if (address.firstName) {
       reset(address)
     }
   },[])
-
-  const onSubmit = (data: FormInputs) => {
-    console.log({ data });
+  
+  const onSubmit = async(data: FormInputs) => {
+    console.log("Formulario enviado:", data)
     setAddress(data)
+    const {rememberAddress, ...restAddress} = data
+
+    if (rememberAddress) {
+      //TODO: Server action
+      const response = await setUserAddress(restAddress, session!.user.id)
+    } else {
+      //TODO: Server action
+    }
   };
 
   return (
