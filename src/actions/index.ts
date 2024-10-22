@@ -1,6 +1,7 @@
 
 
 export {setUserAddress} from "./address/set-user-address"
+export {deleteUserAddress} from "./address/delete-user-address"
 
 export {authenticate} from "./auth/login"
 export {login} from "./auth/login"

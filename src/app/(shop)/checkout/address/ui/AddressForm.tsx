@@ -6,7 +6,7 @@ import styles from "./AddressForm.module.css";
 import { useForm } from "react-hook-form";
 import { Country } from "@/interfaces";
 import { useAddressStore } from "@/store";
-import { setUserAddress } from "@/actions";
+import { deleteUserAddress, setUserAddress } from "@/actions";
 import { useSession } from "next-auth/react";
 
 type FormInputs = {
@@ -59,9 +59,10 @@ export const AddressForm = ({countries}: Props) => {
 
     if (rememberAddress) {
       //TODO: Server action
-      const response = await setUserAddress(restAddress, session!.user.id)
+      setUserAddress(restAddress, session!.user.id)
     } else {
       //TODO: Server action
+      deleteUserAddress(session!.user.id)
     }
   };
 
