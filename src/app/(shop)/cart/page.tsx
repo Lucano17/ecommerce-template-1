@@ -1,7 +1,7 @@
 import { OrderSummary, Title } from "@/components";
 import Link from "next/link";
 import styles from "./page.module.css";
-import { ProductsGridCart } from "@/components";
+import { ProductsInCart } from "@/components";
 import { redirect } from "next/navigation";
 
 
@@ -16,7 +16,7 @@ export default function CartPage() {
       <div className={styles.carritoContainer}>
 
         <div className={styles.carrito}>
-          <ProductsGridCart />
+          <ProductsInCart />
           <Link href="/" className={styles.keepShoping}>Continúa comprando</Link>
         </div>
         

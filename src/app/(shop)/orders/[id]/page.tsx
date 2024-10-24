@@ -1,7 +1,7 @@
 "use client"
 import { IsPaid, Title } from "@/components";
 import styles from "./page.module.css";
-import ProductsGridCheckout from "@/components/products/product-grid-checkout/ProductsGridCheckout";
+import ProductsGridCheckout from "@/components/products/product-grid-checkout/ProductsInCheckout";
 import { useState } from "react";
 
 

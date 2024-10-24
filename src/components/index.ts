@@ -7,8 +7,8 @@ export * from "./product/slideshow/ProductMobileSlideShow"
 export * from "./product/slideshow/ProductSlideShow"
 export * from "./product/stock-label/StockLabel"
 
-export * from "./products/product-grid-cart/ProductsGridCart"
-export * from "./products/product-grid-checkout/ProductsGridCheckout"
+export * from "./products/product-grid-cart/ProductsInCart"
+export * from "./products/product-grid-checkout/ProductsInCheckout"
 export * from "./products/product-grid/ProductGrid"
 export * from "./products/product-grid/ProductGridItem"
 

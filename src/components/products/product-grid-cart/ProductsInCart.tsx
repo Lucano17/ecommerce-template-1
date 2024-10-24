@@ -2,7 +2,7 @@
 
 import { QuantitySelector, Title } from "@/components";
 import Image from "next/image";
-import styles from "./ProductsGridCart.module.css";
+import styles from "./ProductsInCart.module.css";
 import { FaTrashAlt } from "react-icons/fa";
 import { useCartStore } from "@/store";
 import { useEffect, useState } from "react";
@@ -12,7 +12,7 @@ import Link from "next/link";
 
 
 
-export const ProductsGridCart = () => {
+export const ProductsInCart = () => {
   const productsInCart = useCartStore((state) => state.cart);
   const [loaded, setLoaded] = useState(false);
   const updateProductQuantity = useCartStore((state) => state.updateProductQuantity)

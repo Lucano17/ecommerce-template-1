@@ -1,7 +1,7 @@
 import { Title } from "@/components";
 import Link from "next/link";
 import styles from "./page.module.css";
-import ProductsGridCheckout from "@/components/products/product-grid-checkout/ProductsGridCheckout";
+import ProductsInCheckout from "@/components/products/product-grid-checkout/ProductsInCheckout";
 
 export default function CheckoutPage() {
   return (
@@ -12,7 +12,7 @@ export default function CheckoutPage() {
           <Link href="/cart" className={styles.comeBack}>
             Editar carrito
           </Link>
-          <ProductsGridCheckout />
+          <ProductsInCheckout />
         </div>
 
         <div className={styles.checkOut}>
