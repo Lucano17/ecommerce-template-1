@@ -9,8 +9,11 @@
 
 .comeBack {
     display: flex;
+    margin: auto;
+    justify-content: center;
     margin-top: 30px;
-    margin-left: 25%;
+    border-bottom: 1px solid white;
+    width: 100px;
 }
 
 .checkOut {
@@ -57,7 +60,11 @@
 }
 
 .goToOrder {
-    margin-top: auto;
+    border-bottom: 1px solid white;
+    width: 150px;
+    margin: auto;
+    margin-top: 15px;
+    
 }
 
 @media (max-width: 800px) {
