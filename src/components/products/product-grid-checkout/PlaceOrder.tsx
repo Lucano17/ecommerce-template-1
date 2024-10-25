@@ -8,11 +8,32 @@ import { currencyFormat } from "@/utils";
 export const PlaceOrder = () => {
   const address = useAddressStore((state) => state.address);
   const [loaded, setLoaded] = useState(false);
-  const {itemsInCart, subtotal, tax, total} = useCartStore(state => state.getSummaryInformation())
+  const { itemsInCart, subtotal, tax, total } = useCartStore((state) =>
+    state.getSummaryInformation()
+  );
+  const [isPlacingOrder, setIsPlacingOrder] = useState(false);
+  const cart = useCartStore(state => state.cart)
+
 
   useEffect(() => {
     setLoaded(true);
   }, []);
+
+  const onPlaceOrder = async () => {
+    setIsPlacingOrder(true);
+
+    const productsToOrder = cart.map(product => ({
+        productId: product.id,
+        quantity: product.quantity,
+        size: product.size
+    }))
+
+    console.log(address, productsToOrder)
+
+
+
+    setIsPlacingOrder(false);
+  };
 
   if (!loaded) {
     return <p>Loading...</p>;
@@ -29,26 +50,50 @@ export const PlaceOrder = () => {
         <p>{address.address}</p>
         <p>{address.address2}</p>
         <p>P.C. {address.postalCode}</p>
-        <p>{address.city}, {address.country}</p>
+        <p>
+          {address.city}, {address.country}
+        </p>
       </div>
 
       <div className={styles.order}>
-      <h2>Resumen de orden</h2>
-      <p>Número de artículos<span>{itemsInCart}</span></p>
-      <p>Subtotal <span>{currencyFormat(subtotal)}</span></p>
-      <p>Impuestos (21%)<span>{currencyFormat(tax)}</span></p>
-      <p>Envío <span>$50</span></p>
-      <div className={styles.spacer} />
-      <p className={styles.totalPrice}>Total<span>{currencyFormat(total)}</span>
-      </p>
+        <h2>Resumen de orden</h2>
+        <p>
+          Número de artículos<span>{itemsInCart}</span>
+        </p>
+        <p>
+          Subtotal <span>{currencyFormat(subtotal)}</span>
+        </p>
+        <p>
+          Impuestos (21%)<span>{currencyFormat(tax)}</span>
+        </p>
+        <p>
+          Envío <span>$50</span>
+        </p>
+        <div className={styles.spacer} />
+        <p className={styles.totalPrice}>
+          Total<span>{currencyFormat(total)}</span>
+        </p>
       </div>
 
-      <div >
-        <button className={styles.goToOrder}
-        // href="/orders/123"
-        >
-          Colocar orden
-        </button>
+      <div>
+        {isPlacingOrder ? (
+          <button
+            className={styles.goToOrder}
+            // href="/orders/123"
+            onClick={onPlaceOrder}
+            disabled
+          >
+            Colocar orden
+          </button>
+        ) : (
+          <button
+            className={styles.goToOrder}
+            // href="/orders/123"
+            onClick={onPlaceOrder}
+          >
+            Colocar orden
+          </button>
+        )}
       </div>
     </div>
   );
