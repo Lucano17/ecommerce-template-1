@@ -16,56 +16,7 @@
     width: 100px;
 }
 
-.checkOut {
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.238);
-    box-shadow: 5px 5px 10px rgb(255, 255, 255);
-    padding: 20px;
-    height: 330px;
-}
 
-.checkOut p {
-    display: flex;
-    flex-direction: row;
-    margin-top: 5px;
-    font-size: 12px;
-    justify-content: space-between; /* Esto coloca el texto al inicio y el span al final */
-}
-
-.checkOut p span {
-    text-align: end;
-}
-
-.order {
-    margin-top: 15px;
-}
-
-.totalPrice {
-    display: flex;
-    font-size: 25px;
-}
-
-.spacer {
-    flex-grow: 1;
-}
-
-.checkOut h2 {
-    font-size: 20px;
-}
-.checkOut h3 {
-    font-size: 15px;
-    margin-top: 5px;
-    text-align: left;
-}
-
-.goToOrder {
-    border-bottom: 1px solid white;
-    width: 150px;
-    margin: auto;
-    margin-top: 15px;
-    
-}
 
 @media (max-width: 800px) {
     .carritoContainer {

@@ -13,7 +13,7 @@ export default function () {
   useEffect(() => {
     setLoaded(true);
   }, []);
-
+  
   if (!loaded) {
     return <p>Loading...</p>;
   }
@@ -34,7 +34,7 @@ export default function () {
 
           <div className={styles.productContentContainer}>
             <p className={styles.title}>
-              {product.size} - {product.title} ({product.quantity}u.)
+              {product.size} - {product.title} ({product.quantity})
             </p>
 
             <div className={styles.priceAndQuantity}>

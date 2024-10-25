@@ -22,7 +22,7 @@ export const OrderSummary = () => {
   return (
     <div className={styles.checkOut}>
       <h2>Resumen de orden</h2>
-      <p>Número de artículos<span>{currencyFormat(itemsInCart)}</span></p>
+      <p>Número de artículos<span>{itemsInCart}</span></p>
       <p>Subtotal <span>{currencyFormat(subtotal)}</span></p>
       <p>Impuestos (21%)<span>{currencyFormat(tax)}</span></p>
       <p>Envío <span>$50</span></p>

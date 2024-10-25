@@ -11,6 +11,7 @@ export * from "./products/product-grid-cart/ProductsInCart"
 export * from "./products/product-grid-checkout/ProductsInCheckout"
 export * from "./products/product-grid/ProductGrid"
 export * from "./products/product-grid/ProductGridItem"
+export * from "./products/product-grid-checkout/PlaceOrder"
 
 export * from "./provider/Provider"
 
