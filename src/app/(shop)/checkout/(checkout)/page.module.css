@@ -3,7 +3,6 @@
     flex-direction: row;
     justify-content: space-evenly;
     height: 100%;
-    margin-top: 30px;
 }
 
 
@@ -26,6 +25,5 @@
     }
     .carrito {
         margin: auto;
-        margin-top: 30px;
     }
 }
