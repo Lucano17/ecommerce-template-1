@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./PlaceOrder.module.css";
 import { useAddressStore, useCartStore } from "@/store";
 import { currencyFormat } from "@/utils";
+import { placeOrder } from "@/actions";
 
 export const PlaceOrder = () => {
   const address = useAddressStore((state) => state.address);
@@ -29,6 +30,9 @@ export const PlaceOrder = () => {
     }))
 
     console.log(address, productsToOrder)
+
+    const resp = await placeOrder(productsToOrder, address)
+    console.log(resp)
 
 
 
