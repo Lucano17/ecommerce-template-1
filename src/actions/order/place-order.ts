@@ -15,46 +15,90 @@ const taxIVARest = 0.21
 const taxIVA = 1.21
 
 export const placeOrder = async (productIds: ProductToOrder[], address: Address) => {
-    try {
-        const session = await auth()
-        const userId = session?.user.id
-        if (!userId) {
-            return {
-                ok: false,
-                message: "No hay sesión de usuario"
-            }
+    const session = await auth()
+    const userId = session?.user.id
+    if (!userId) {
+        return {
+            ok: false,
+            message: "No hay sesión de usuario"
         }
+    }
 
-        const products = await prisma.product.findMany({
-            where: {
-              id: {
+    const products = await prisma.product.findMany({
+        where: {
+            id: {
                 in: productIds.map((p) => p.productId),
-              },
             },
-          });
+        },
+    });
 
-        console.log("products:", products)
+    console.log("products:", products)
 
-        // Colocar los montos
-        const itemsInOrder = productIds.reduce((count, p)=> count + p.quantity, 0)
+    // Calcular los montos
+    const itemsInOrder = productIds.reduce((count, p) => count + p.quantity, 0)
 
-        // Colocar los totales de tax, subtotal y total
-        const {subtotal, tax, total} = productIds.reduce((totals, item) => {
-            const productQuantity = item.quantity;
-            const product = products.find(product => product.id === item.productId)
+    // Colocar los totales de tax, subtotal y total
+    const { subTotal: subtotal, tax, total } = productIds.reduce((totals, item) => {
+        const productQuantity = item.quantity;
+        const product = products.find((product) => product.id === item.productId)
 
-            if (!product) throw new Error(`${item.productId} no existe - 500`)
+        if (!product) throw new Error(`${item.productId} no existe - 500`)
 
-                const subtotal = product.price * productQuantity
+        const subTotal = product.price * productQuantity
 
-                totals.subtotal += subtotal
-                totals.tax += subtotal * taxIVARest
-                totals.total += subtotal * taxIVA
+        totals.subTotal += subTotal
+        totals.tax += subTotal * taxIVARest
+        totals.total += subTotal * taxIVA
 
-                return totals
-        }, {subtotal: 0, tax:0, total:0})
-        
-        console.log({subtotal, tax, total})
+        return totals
+    }, { subTotal: 0, tax: 0, total: 0 })
+
+    console.log({ subTotal: subtotal, tax, total })
+    try {
+
+        // Crear transacción en la base de datos
+
+        const prismaTx = await prisma.$transaction(async (tx) => {
+            // 1. Actualizar el stock de los productos
+
+
+
+
+            // 2. Crear la orden - Encabezado - Detalles
+            const order = await tx.order.create({
+                data: {
+                    userId: userId,
+                    itemsInOrder: itemsInOrder,
+                    subtotal: subtotal,
+                    tax: tax,
+                    total: total,
+
+                    OrderItem: {
+                        createMany: {
+                            data: productIds.map((p) => ({
+                                quantity: p.quantity,
+                                size: p.size,
+                                productId: p.productId,
+                                price: products.find((product) => product.id === p.productId)?.price ?? 0
+                            }))
+                        }
+                    }
+                }
+            })
+
+
+
+
+
+            // 3. Crear la dirección de la orden
+
+
+            return {
+                order: order,
+                updatedProducts: [],
+                orderAddress: {}
+            }
+        })
 
     } catch (error) {
         return {
