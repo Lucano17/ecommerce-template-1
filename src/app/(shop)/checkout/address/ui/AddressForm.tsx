@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import styles from "./AddressForm.module.css";
 import { useForm } from "react-hook-form";
-import { Address, Country } from "@/interfaces";
+import { UserAddress, Address, Country } from "@/interfaces";
 import { useAddressStore } from "@/store";
 import { deleteUserAddress, setUserAddress } from "@/actions";
 import { useSession } from "next-auth/react";
@@ -25,6 +25,7 @@ type FormInputs = {
 interface Props {
   countries: Country[]
   userStoreAddress?: Partial<Address>
+  //userStoreAddress?: Partial<UserAddress>
 }
 
 export const AddressForm = ({countries, userStoreAddress = {}}: Props) => {
