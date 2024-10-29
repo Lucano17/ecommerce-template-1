@@ -13,6 +13,7 @@ export const PlaceOrder = () => {
     state.getSummaryInformation()
   );
   const [isPlacingOrder, setIsPlacingOrder] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("")
   const cart = useCartStore(state => state.cart)
 
 
@@ -29,10 +30,14 @@ export const PlaceOrder = () => {
         size: product.size
     }))
 
-    console.log(address, productsToOrder)
-
     const resp = await placeOrder(productsToOrder, address)
-    console.log(resp)
+    if (!resp.ok) {
+      setIsPlacingOrder(false)
+      setErrorMessage(resp.message)
+      return
+    }
+
+    
 
 
 
@@ -79,6 +84,7 @@ export const PlaceOrder = () => {
         </p>
       </div>
 
+      <p>{errorMessage}</p>
       <div>
         {isPlacingOrder ? (
           <button
