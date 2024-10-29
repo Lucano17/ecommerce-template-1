@@ -146,7 +146,7 @@ export const placeOrder = async (productIds: ProductToOrder[], address: Address)
 
         return {
             ok: true,
-            order: prismaTx.order.id,
+            order: prismaTx.order,
             prismaTx: prismaTx,
         }
 

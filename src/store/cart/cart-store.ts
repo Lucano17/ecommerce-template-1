@@ -18,6 +18,8 @@ interface State {
         total: number;
         itemsInCart: number;
     }
+
+    clearCart: ()=> void
 }
 
 
@@ -99,6 +101,10 @@ export const useCartStore = create<State>()(
                     total: parseFloat(total.toFixed(2)),
                     itemsInCart
                 }
+            },
+
+            clearCart: ()=> {
+                set({cart: []})
             },
 
 

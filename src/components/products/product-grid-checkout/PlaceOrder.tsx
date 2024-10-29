@@ -5,8 +5,11 @@ import styles from "./PlaceOrder.module.css";
 import { useAddressStore, useCartStore } from "@/store";
 import { currencyFormat } from "@/utils";
 import { placeOrder } from "@/actions";
+import { useRouter } from "next/navigation";
 
 export const PlaceOrder = () => {
+
+  const router = useRouter()
   const address = useAddressStore((state) => state.address);
   const [loaded, setLoaded] = useState(false);
   const { itemsInCart, subtotal, tax, total } = useCartStore((state) =>
@@ -15,6 +18,7 @@ export const PlaceOrder = () => {
   const [isPlacingOrder, setIsPlacingOrder] = useState(false);
   const [errorMessage, setErrorMessage] = useState("")
   const cart = useCartStore(state => state.cart)
+  const clearCart = useCartStore(state => state.clearCart)
 
 
   useEffect(() => {
@@ -37,7 +41,9 @@ export const PlaceOrder = () => {
       return
     }
 
-    
+    clearCart()
+    router.replace( `/orders/${resp.order?.id}`)
+
 
 
 
@@ -84,7 +90,7 @@ export const PlaceOrder = () => {
         </p>
       </div>
 
-      <p>{errorMessage}</p>
+      <p className={styles.error}>{errorMessage}</p>
       <div>
         {isPlacingOrder ? (
           <button
