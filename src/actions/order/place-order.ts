@@ -54,13 +54,45 @@ export const placeOrder = async (productIds: ProductToOrder[], address: Address)
     }, { subTotal: 0, tax: 0, total: 0 })
 
     console.log({ subTotal: subtotal, tax, total })
+
+
     try {
 
         // Crear transacción en la base de datos
 
         const prismaTx = await prisma.$transaction(async (tx) => {
             // 1. Actualizar el stock de los productos
+            const updatedProductsPromises = products.map((product) => {
 
+                // Acumular los valores
+                const productQuantity = productIds.filter(
+                    p => p.productId === product.id
+                ).reduce((acc, item) => item.quantity + acc, 0)
+
+                if (productQuantity === 0) {
+                    throw new Error(`${product.id} no tiene cantidad definida`)
+                }
+
+
+
+                return tx.product.update({
+                    where: { id: product.id },
+                    data: {
+                        inStock: {
+                            decrement: productQuantity
+                        }
+                    }
+                })
+            })
+
+            const updatedProducts = await Promise.all(updatedProductsPromises)
+
+            // Verificar valores negativos en las existencias = no  hay stock
+            updatedProducts.forEach(product => {
+                if (product.inStock < 0) {
+                    throw new Error(`${product.title} no tiene inventario suficiente`)
+                }
+            });
 
 
 
@@ -85,14 +117,14 @@ export const placeOrder = async (productIds: ProductToOrder[], address: Address)
                     }
                 }
             })
-            
+
             // 3. Crear la dirección de la orden
 
             const { country, ...restAddress } = address;
             const orderAddress = await tx.orderAddress.create({
                 data: {
-                    firstName: restAddress.firstName,             
-                    lastName: restAddress.lastName, 
+                    firstName: restAddress.firstName,
+                    lastName: restAddress.lastName,
                     address: restAddress.address,
                     address2: restAddress.address2,
                     postalCode: restAddress.postalCode,
@@ -100,22 +132,28 @@ export const placeOrder = async (productIds: ProductToOrder[], address: Address)
                     phone: restAddress.phone,
                     //...restAddress,     
                     orderId: order.id,
-                    countryId: country, 
+                    countryId: country,
                 }
             })
 
 
             return {
                 order: order,
-                updatedProducts: orderAddress,
-                orderAddress: {}
+                updatedProducts: updatedProducts,
+                orderAddress: orderAddress,
             }
         })
 
-    } catch (error) {
+        return {
+            ok: true,
+            order: prismaTx.order.id,
+            prismaTx: prismaTx,
+        }
+
+    } catch (error: any) {
         return {
             ok: false,
-            message: "Somthing went wrong"
+            message: error?.message
         }
     }
 }
