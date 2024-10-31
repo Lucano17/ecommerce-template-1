@@ -5,6 +5,7 @@ import ProductsGridCheckout from "@/components/products/product-grid-checkout/Pr
 import { useState } from "react";
 import { getOrderById } from "@/actions";
 import { redirect } from "next/navigation";
+import { UserAddressData } from "@/components/address/UserAddressData";
 
 interface Props {
   params: {
@@ -34,14 +35,7 @@ export default async function OrdersByIdPage({ params }: Props) {
         </div>
 
         <div className={styles.checkOut}>
-          <div className={styles.address}>
-            <h2>Dirección de entrega</h2>
-            <h3>Lucas de la Fuente</h3>
-            <p>Buenos Aires, Argentina</p>
-            <p>Del Viso</p>
-            <p>CP: 1669</p>
-            <p>Juan XXIII 5250</p>
-          </div>
+          <UserAddressData params={params}/>
 
           <div className={styles.order}>
             <h2>Resumen de orden</h2>

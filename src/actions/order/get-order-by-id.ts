@@ -22,8 +22,8 @@ export const getOrderById = async (id: string) => {
                 OrderAddress: true,
                 OrderItem: {
                     select: {
-                        id: true,         // Incluye el campo `id`
-                        orderId: true,    // Incluye `orderId`
+                        id: true,         
+                        orderId: true,    
                         productId: true,
                         price: true,
                         quantity: true,
