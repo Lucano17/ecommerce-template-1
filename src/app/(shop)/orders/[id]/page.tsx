@@ -6,6 +6,7 @@ import { useState } from "react";
 import { getOrderById } from "@/actions";
 import { redirect } from "next/navigation";
 import { UserAddressData } from "@/components/address/UserAddressData";
+import { currencyFormat } from "@/utils";
 
 interface Props {
   params: {
@@ -21,8 +22,6 @@ export default async function OrdersByIdPage({ params }: Props) {
   if (!ok) {
     redirect("/")
   }
-
-  const address = order?.OrderAddress
 
   return (
     <div className={styles.container}>
@@ -40,13 +39,13 @@ export default async function OrdersByIdPage({ params }: Props) {
           <div className={styles.order}>
             <h2>Resumen de orden</h2>
             <p>
-              Número de productos <span>3</span>
+              Número de productos <span>{order?.itemsInOrder}</span>
             </p>
             <p>
-              Subtotal <span>$150</span>
+              Subtotal <span>{currencyFormat(order!.subtotal)}</span>
             </p>
             <p>
-              Impuestos (21%)<span></span>
+              Impuestos (21%)<span>{currencyFormat(order!.tax)}</span>
             </p>
             <p>
               Envío <span>$50</span>
@@ -54,7 +53,7 @@ export default async function OrdersByIdPage({ params }: Props) {
 
             <div className={styles.spacer} />
             <p className={styles.totalPrice}>
-              Total <span>$500</span>
+              Total <span>{currencyFormat(order!.total)}</span>
             </p>
           </div>
 

@@ -19,12 +19,12 @@ export const UserAddressData = async({ params }: Props) => {
     <div className={styles.address}>
       <h2>Dirección de entrega</h2>
       <h3>
-       {address?.lastName} {address?.firstName}
+       {address?.lastName} <span>{address?.firstName}</span>
       </h3>
-      <p>Dirección: {address?.address}</p>
-      <p>Ciudad: {address?.city}</p>
-      <p>Código postal: {address?.postalCode}</p>
-      <p>País y estado: {address?.countryId}</p>
+      <p>Dirección: <span>{address?.address}</span></p>
+      <p>Ciudad: <span>{address?.city}</span></p>
+      <p>Código postal: <span>{address?.postalCode}</span></p>
+      <p>País y estado: <span>{address?.countryId}</span></p>
     </div>
   );
 };
