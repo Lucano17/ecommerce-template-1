@@ -1,6 +1,7 @@
 "use server"
 
 import { auth } from "@/auth.config";
+import { OrderType } from "@/interfaces";
 import prisma from "@/lib/prisma";
 
 export const getOrderById = async (id: string) => {
@@ -21,6 +22,9 @@ export const getOrderById = async (id: string) => {
                 OrderAddress: true,
                 OrderItem: {
                     select: {
+                        id: true,         // Incluye el campo `id`
+                        orderId: true,    // Incluye `orderId`
+                        productId: true,
                         price: true,
                         quantity: true,
                         size: true,
@@ -45,7 +49,7 @@ export const getOrderById = async (id: string) => {
 
         if (!order) throw `${id} no existe`
 
-        if (session.user.role === "user"){
+        if (session.user.role === "user") {
             if (session.user.id !== order.userId) {
                 throw `${id} no es de ese usuario`
             }
@@ -59,6 +63,7 @@ export const getOrderById = async (id: string) => {
 
         return {
             ok: false,
+            order: null,
             message: "Orden no existe"
         }
     }

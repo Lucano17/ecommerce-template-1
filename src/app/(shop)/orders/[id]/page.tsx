@@ -1,4 +1,4 @@
-"use client";
+
 import { IsPaid, Title } from "@/components";
 import styles from "./page.module.css";
 import ProductsGridCheckout from "@/components/products/product-grid-checkout/ProductsInCheckout";
@@ -21,7 +21,8 @@ export default async function OrdersByIdPage({ params }: Props) {
     redirect("/")
   }
 
-  //Todo: verificar => redirect("/")
+  const address = order?.OrderAddress
+
   return (
     <div className={styles.container}>
       <Title title={`Orden #${id.split("-").at(-1)}`} />
@@ -29,7 +30,7 @@ export default async function OrdersByIdPage({ params }: Props) {
         <div className={styles.carrito}>
           <IsPaid />
 
-          <ProductsGridCheckout />
+          <ProductsGridCheckout params={params}/>
         </div>
 
         <div className={styles.checkOut}>

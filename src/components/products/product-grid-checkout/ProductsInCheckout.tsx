@@ -4,11 +4,32 @@ import Image from "next/image";
 import { useCartStore } from "@/store";
 import { useEffect, useState } from "react";
 import styles from "./ProductsInCheckout.module.css";
+import { getOrderById } from "@/actions";
 import { currencyFormat } from "@/utils";
+import { OrderType } from "@/interfaces";
 
-export default function () {
-  const productsInCart = useCartStore((state) => state.cart);
+interface Props {
+  params: {
+    id: string;
+  };}
+
+export default function ({params}:Props) {
+  // const productsInCart = useCartStore((state) => state.cart);
   const [loaded, setLoaded] = useState(false);
+  const [order, setOrder] = useState<OrderType | null | undefined>(null);
+  
+  const { id } = params;
+  
+  useEffect(() => {
+    const getOrder = async () => {
+      const { ok, order } = await getOrderById(id);
+      if (ok) {
+        setOrder(order);
+      }
+    };
+    getOrder();
+  }, [id]);
+  
 
   useEffect(() => {
     setLoaded(true);
@@ -20,25 +41,25 @@ export default function () {
 
   return (
     <div className={styles.container}>
-      {productsInCart.map((product) => (
+      {order?.OrderItem.map((item) => (
         <div
-          key={`${product.slug} - ${product.size}`}
+          key={`${item.product.slug} - ${item.size}`}
           className={styles.productsContainer}
         >
           <Image
-            src={`/products/${product.image}`}
+            src={`/products/${item.product.ProductImage[0]?.url}`}
             width={50}
             height={55}
-            alt={product.title}
+            alt="imagen"
           />
 
           <div className={styles.productContentContainer}>
             <p className={styles.title}>
-              {product.size} - {product.title} ({product.quantity})
+              {item.size} - {item.product.title} ({item.quantity})
             </p>
 
             <div className={styles.priceAndQuantity}>
-              <p className={styles.subtotalArticle}>{currencyFormat(product.price * product.quantity)}</p>
+              <p className={styles.subtotalArticle}>{currencyFormat(item.price * item.quantity)}</p>
             </div>
           </div>
         </div>
