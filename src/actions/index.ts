@@ -13,8 +13,9 @@ export {registerUser} from "./auth/register"
 export {getCountries} from "./country/get-countries"
 
 export {placeOrder} from "./order/place-order"
+export {getOrderById} from "./order/get-order-by-id"
+export {getOrdersByUser} from "./order/get-order-by-user"
 
 export {getPaginatedProductsWithImages} from "./product/product-pagination"
 export {getProductBySlug} from "./product/get-product-slug"
 export {getStockBySlug} from "./product/get-stock-by-slug"
-export {getOrderById} from "./order/get-order-by-id"
