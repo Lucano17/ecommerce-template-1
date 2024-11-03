@@ -1,9 +1,14 @@
 import { PlaceOrder, Title } from "@/components";
 import Link from "next/link";
 import styles from "./page.module.css";
-import ProductsInCheckout from "@/components/products/product-grid-checkout/ProductsInCheckout";
+import ProductsInCheckout from "./ui/ProductsInCheckout";
 
-export default function CheckoutPage() {
+interface Props {
+  params: {
+    id: string;
+  };}
+
+export default function CheckoutPage({params}:Props) {
   return (
     <div className={styles.container}>
       <Title title="Verificar orden" />
@@ -12,7 +17,7 @@ export default function CheckoutPage() {
           <Link href="/cart" className={styles.comeBack}>
             Editar carrito
           </Link>
-          <ProductsInCheckout />
+          <ProductsInCheckout/>
         </div>
         <PlaceOrder/>
       </div>
