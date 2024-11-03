@@ -37,7 +37,7 @@ export default async function OrdersPage({ params }: Props) {
                 <tr key={order.id}>
                   <td>{order.id.split("-").at(-1)}</td>
                   <td>{order.OrderAddress?.lastName}, {order.OrderAddress?.firstName}</td>
-                  <td>
+                  <td className={styles.tdContainer}>
                     {
                       order.isPaid
                       ? (

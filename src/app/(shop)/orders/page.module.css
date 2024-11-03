@@ -25,6 +25,9 @@
 }
 
 .state {
-    width: 50%;
     margin: auto;
+}
+
+.tdContainer {
+    display: flex;
 }

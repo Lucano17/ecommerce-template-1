@@ -6,7 +6,14 @@
     margin-top: 30px;
 }
 
+.state {
+    display: flex;
+}
 
+.carrito {
+    display: flex;
+    flex-direction: column;
+}
 .comeBack {
     display: flex;
     margin-top: 30px;
