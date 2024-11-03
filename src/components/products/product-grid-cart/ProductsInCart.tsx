@@ -7,6 +7,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import { useCartStore } from "@/store";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { currencyFormat } from "@/utils";
 
 
 
@@ -46,7 +47,7 @@ export const ProductsInCart = () => {
             </Link>
 
             <div className={styles.priceAndQuantity}>
-              <p className={styles.price}>{product.price}</p>
+              <p className={styles.price}>{currencyFormat(product.price)}</p>
               <div className={styles.quantitySelector}>
                 <QuantitySelector
                   quantity={product.quantity}

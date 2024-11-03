@@ -12,7 +12,8 @@ TypeScript.js, Next.JS, Node.JS, PostgreSQL & Prisma.
 4. Up database ```docker compose up -d```.
 5. Run Prisma migrations ```pnpm dlx prisma migrate dev --name (migration_name)```.
 6. Execute seed ```pnpm run seed```.
-6. Run the project ```pnpm run dev```.
+7. Run the project ```pnpm run dev```.
+8. Clear the localStorage of the web.
 
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
