@@ -18,6 +18,10 @@ export default async function OrdersPage({ params }: Props) {
     redirect("/auth/login");
   }
 
+  if (!orders || orders.length === 0) {
+    return <p>Todavía no tienes ninguna orden. Visita nuestra tienda!</p>;
+  }
+
   return (
     <>
       <Title title="Orders" />
