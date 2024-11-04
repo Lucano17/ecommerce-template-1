@@ -27,7 +27,7 @@ export default async function OrdersByIdPage({ params }: Props) {
       <Title title={`Orden #${id.split("-").at(-1)}`} />
       <div className={styles.carritoContainer}>
         <div className={styles.carrito}>
-          <span className={styles.state}><IsPaid params={params}/></span>
+          <span className={styles.state}><IsPaid id={id}/></span>
 
           <ProductsGridCheckout params={params}/>
         </div>

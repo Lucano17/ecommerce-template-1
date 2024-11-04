@@ -6,12 +6,10 @@ import { redirect } from "next/navigation";
 
 
 interface Props {
-  params: {
     id: string;
-  };
 }
 
-export default async function OrdersPage({ params }: Props) {
+export default async function OrdersPage({ id }: Props) {
   const { ok, orders } = await getOrdersByUser();
 
   if (!ok) {
@@ -42,15 +40,7 @@ export default async function OrdersPage({ params }: Props) {
                   <td>{order.id.split("-").at(-1)}</td>
                   <td>{order.OrderAddress?.lastName}, {order.OrderAddress?.firstName}</td>
                   <td className={styles.tdContainer}>
-                    {
-                      order.isPaid
-                      ? (
-                        <span className={styles.state}><IsPaid params={params}/></span>
-                      )
-                      : (
-                        <span className={styles.state}><IsPaid params={params}/></span>
-                      )
-                    }
+                    <span className={styles.state}><IsPaid id={order.id}/></span>
                   </td>
                   <td>
                     <Link href={`/orders/${order.id}`}>Ver orden</Link>
