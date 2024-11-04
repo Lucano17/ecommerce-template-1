@@ -13,7 +13,7 @@ export * from "./products/product-grid/ProductGrid"
 export * from "./products/product-grid/ProductGridItem"
 export * from "./products/product-grid-checkout/PlaceOrder"
 
-export * from "./provider/Provider"
+export * from "./providers/Providers"
 
 export * from "./ui/footer/Footer"
 export * from "./ui/not-found/PageNotFound"
