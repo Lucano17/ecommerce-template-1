@@ -22,3 +22,5 @@ export * from "./ui/sideBar/SideBar"
 export * from "./ui/title/Title"
 export * from "./ui/top-menu/TopMenu"
 
+export * from "./cart/payment/payment-models/PayPalButton"
+
