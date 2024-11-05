@@ -54,6 +54,7 @@ export default async function OrdersByIdPage({ params }: Props) {
             <p className={styles.totalPrice}>
               Total <span>{currencyFormat(order!.total)}</span>
             </p>
+            <button>PAGAR</button>
           </div>
         </div>
       </div>
