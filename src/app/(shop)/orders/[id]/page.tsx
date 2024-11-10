@@ -6,6 +6,7 @@ import { getOrderById } from "@/actions";
 import { redirect } from "next/navigation";
 import { UserAddressData } from "@/components/address/UserAddressData";
 import { currencyFormat } from "@/utils";
+import Link from "next/link";
 
 interface Props {
   params: {
@@ -21,7 +22,6 @@ export default async function OrdersByIdPage({ params }: Props) {
   if (!ok) {
     redirect("/")
   }
-
   return (
     <div className={styles.container}>
       <Title title={`Orden #${id.split("-").at(-1)}`} />
@@ -54,7 +54,7 @@ export default async function OrdersByIdPage({ params }: Props) {
             <p className={styles.totalPrice}>
               Total <span>{currencyFormat(order!.total)}</span>
             </p>
-            <button>PAGAR</button>
+            <Link href={`/checkout/payment/${id}`}>PAGAR</Link>
           </div>
         </div>
       </div>
