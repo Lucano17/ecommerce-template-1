@@ -35,7 +35,6 @@ export default async function OrdersPage({ id }: Props) {
           </thead>
           <tbody>
             {orders?.map((order) => (
-              <>
                 <tr key={order.id}>
                   <td>{order.id.split("-").at(-1)}</td>
                   <td>{order.OrderAddress?.lastName}, {order.OrderAddress?.firstName}</td>
@@ -46,7 +45,6 @@ export default async function OrdersPage({ id }: Props) {
                     <Link href={`/orders/${order.id}`}>Ver orden</Link>
                   </td>
                 </tr>
-              </>
             ))}
           </tbody>
         </table>

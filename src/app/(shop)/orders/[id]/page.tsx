@@ -54,7 +54,7 @@ export default async function OrdersByIdPage({ params }: Props) {
             <p className={styles.totalPrice}>
               Total <span>{currencyFormat(order!.total)}</span>
             </p>
-            <Link href={`/checkout/payment/${id}`}>PAGAR</Link>
+            <Link href={`/checkout/payment/${id}`} target="_blank">PAGAR</Link>
           </div>
         </div>
       </div>
