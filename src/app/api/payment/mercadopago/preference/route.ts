@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createMercadoPagoPreference } from "@/actions/payment/mercado-pago-preference";
+import { createMercadoPagoPreference } from "@/actions";
 
 export async function POST(req: NextRequest) {
   try {

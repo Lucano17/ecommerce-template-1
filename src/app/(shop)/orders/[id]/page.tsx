@@ -1,10 +1,10 @@
 
 import { IsPaid, Title } from "@/components";
 import styles from "./page.module.css";
-import ProductsGridCheckout from "@/components/products/product-grid-checkout/ProductsInCheckout";
+import {ProductsInCheckout} from "@/components";
 import { getOrderById } from "@/actions";
 import { redirect } from "next/navigation";
-import { UserAddressData } from "@/components/address/UserAddressData";
+import { UserAddressData } from "@/components";
 import { currencyFormat } from "@/utils";
 import Link from "next/link";
 
@@ -29,7 +29,7 @@ export default async function OrdersByIdPage({ params }: Props) {
         <div className={styles.carrito}>
           <span className={styles.state}><IsPaid id={id}/></span>
 
-          <ProductsGridCheckout params={params}/>
+          <ProductsInCheckout params={params}/>
         </div>
 
         <div className={styles.checkOut}>

@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useCartStore } from "@/store";
 import { useEffect, useState } from "react";
 import styles from "./ProductsInCheckout.module.css";
 import { getOrderById } from "@/actions";
@@ -13,8 +12,7 @@ interface Props {
     id: string;
   };}
 
-export default function ({params}:Props) {
-  // const productsInCart = useCartStore((state) => state.cart);
+export const ProductsInCheckout = ({params}:Props) => {
   const [loaded, setLoaded] = useState(false);
   const [order, setOrder] = useState<OrderType | null | undefined>(null);
   

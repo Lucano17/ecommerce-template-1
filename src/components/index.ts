@@ -6,6 +6,7 @@ export * from "./product/size-selector/SizeSelector"
 export * from "./product/slideshow/ProductMobileSlideShow"
 export * from "./product/slideshow/ProductSlideShow"
 export * from "./product/stock-label/StockLabel"
+export * from "./products/product-grid-checkout/ProductsInCheckout"
 
 export * from "./products/product-grid-cart/ProductsInCart"
 export * from "./products/product-grid-checkout/ProductsInCheckout"
@@ -22,7 +23,10 @@ export * from "./ui/sideBar/SideBar"
 export * from "./ui/title/Title"
 export * from "./ui/top-menu/TopMenu"
 
-export * from "./cart/payment/payment-models/PayPalButton"
+export * from "./cart/payment/payment-methods/PayPalButton"
+export * from "./cart/payment/payment-methods/MercadoPagoButton"
 
 export * from "./skeleton/Skeleton"
+
+export * from "./address/UserAddressData"
 

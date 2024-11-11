@@ -1,7 +1,6 @@
 "use client";
-import { Title, PayPalButton } from "@/components";
+import { Title, PayPalButton, MercadoPagoButton } from "@/components";
 import styles from "./page.module.css";
-import { MercadoPagoButton } from "@/components/cart/payment/payment-models/MercadoPagoButton";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Skeleton from "@/components/skeleton/Skeleton";
