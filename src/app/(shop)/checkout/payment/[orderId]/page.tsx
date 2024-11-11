@@ -40,7 +40,10 @@ export default function PaymentPage({ params }: Props) {
   return (
     <div className={styles.container}>
       <Title title="Payment" />
+      <div className={styles.paymentButtons}>
+
       {preferenceId && <MercadoPagoButton preferenceId={preferenceId} />}
+      </div>
     </div>
   );
 }
