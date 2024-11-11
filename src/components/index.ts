@@ -24,3 +24,5 @@ export * from "./ui/top-menu/TopMenu"
 
 export * from "./cart/payment/payment-models/PayPalButton"
 
+export * from "./skeleton/Skeleton"
+

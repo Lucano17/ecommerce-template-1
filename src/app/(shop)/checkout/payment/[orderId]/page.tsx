@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import { MercadoPagoButton } from "@/components/cart/payment/payment-models/MercadoPagoButton";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Skeleton from "@/components/skeleton/Skeleton";
 
 interface Props {
   params: { orderId: string };
@@ -12,6 +13,7 @@ interface Props {
 export default function PaymentPage({ params }: Props) {
   const { orderId } = params;
   const [preferenceId, setPreferenceId] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -30,6 +32,8 @@ export default function PaymentPage({ params }: Props) {
         }
       } catch {
         router.push("/orders");
+      } finally {
+        setIsLoading(false)
       }
     };
 
@@ -40,9 +44,17 @@ export default function PaymentPage({ params }: Props) {
   return (
     <div className={styles.container}>
       <Title title="Payment" />
-      <div className={styles.paymentButtons}>
+      <div className={styles.paymentContainer}>
+        
+      {isLoading ? (
+        <Skeleton/>
+      ) : (
+        
+        <div className={styles.paymentButtons}>
 
       {preferenceId && <MercadoPagoButton preferenceId={preferenceId} />}
+      </div>
+      )}
       </div>
     </div>
   );

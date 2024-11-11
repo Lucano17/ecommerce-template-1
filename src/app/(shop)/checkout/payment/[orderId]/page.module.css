@@ -3,7 +3,8 @@
     flex-direction: column;
 }
 
-.paymentButtons {
+.paymentContainer {
+    margin-top: 20px;
     width: 285px;
     margin: auto;
 }
