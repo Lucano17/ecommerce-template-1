@@ -1,4 +1,4 @@
-import { MercadoPagoConfig, Preference, Payment } from "mercadopago"
+import { MercadoPagoConfig, Preference} from "mercadopago"
 import { getOrderById } from "../order/get-order-by-id";
 import dotenv from "dotenv";
 dotenv.config();
@@ -30,6 +30,7 @@ export const createMercadoPagoPreference = async ({ id }: Props) => {
             currency_id: "ARS",
           },
         ],
+        external_reference: id,
         back_urls: {
           success: `${process.env.NEXT_PUBLIC_APP_URL}/payment/success`,
           failure: `${process.env.NEXT_PUBLIC_APP_URL}/payment/failure`,
