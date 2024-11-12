@@ -21,7 +21,9 @@ export async function POST(req: NextRequest) {
 
     if (response.ok) {
       const data = await response.json();
-      console.log(data)
+      console.log("Webhook response:", data)
+    } else {
+      console.log("No se ha logrado conectar correctamente con el webhook")
     }
 
 
