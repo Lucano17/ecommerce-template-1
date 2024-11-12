@@ -20,5 +20,5 @@ export {getPaginatedProductsWithImages} from "./product/product-pagination"
 export {getProductBySlug} from "./product/get-product-slug"
 export {getStockBySlug} from "./product/get-stock-by-slug"
 
-export {createMercadoPagoPreference} from "./payment/mercado-pago-preference"
+export * from "./payment/mercado-pago-preference"
 export {updateOrderStatus} from "./order/update-order-status"

@@ -1,4 +1,4 @@
-// update-order-status.ts en actions/order/update-order-status.ts
+"use server"
 
 import prisma from "@/lib/prisma"; // o el cliente de tu base de datos
 

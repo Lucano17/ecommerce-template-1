@@ -32,11 +32,13 @@ export const createMercadoPagoPreference = async ({ id }: Props) => {
         ],
         external_reference: id,
         back_urls: {
-          success: `${process.env.NEXT_PUBLIC_APP_URL}/payment/success`,
-          failure: `${process.env.NEXT_PUBLIC_APP_URL}/payment/failure`,
-          pending: `${process.env.NEXT_PUBLIC_APP_URL}/payment/pending`,
+          success: `${process.env.NEXT_PUBLIC_APP_URL}/orders`,
+          failure: `${process.env.NEXT_PUBLIC_APP_URL}/orders`,
+          pending: `${process.env.NEXT_PUBLIC_APP_URL}/orders`,
         },
         auto_return: "approved",
+        notification_url: "https://b0vd0lvs-3000.brs.devtunnels.ms/webhook",
+        
       },
 
     });
