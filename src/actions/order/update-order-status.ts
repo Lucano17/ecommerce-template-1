@@ -1,6 +1,6 @@
 "use server"
 
-import prisma from "@/lib/prisma"; // o el cliente de tu base de datos
+import prisma from "@/lib/prisma";
 
 export const updateOrderStatus = async (orderId: string, paymentStatus: string) => {
   try {

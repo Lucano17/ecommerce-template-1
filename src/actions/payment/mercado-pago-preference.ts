@@ -1,4 +1,4 @@
-import { MercadoPagoConfig, Preference} from "mercadopago"
+import { MercadoPagoConfig, Preference } from "mercadopago"
 import { getOrderById } from "../order/get-order-by-id";
 import dotenv from "dotenv";
 dotenv.config();
@@ -37,17 +37,11 @@ export const createMercadoPagoPreference = async ({ id }: Props) => {
           pending: `${process.env.NEXT_PUBLIC_APP_URL}/orders/${id}`,
         },
         auto_return: "approved",
-        notification_url: "https://b0vd0lvs-3000.brs.devtunnels.ms",
-        
+        notification_url: "https://b0vd0lvs-3000.brs.devtunnels.ms/api/payment/mercadopago/webhook",
+
       },
-
     });
-    
-    
-    
-    
     return preference.id
-
   } catch (error) {
     console.log(error)
   }
