@@ -18,9 +18,7 @@ export const UserAddressData = async({ params }: Props) => {
   return (
     <div className={styles.address}>
       <h2>Dirección de entrega</h2>
-      <h3>
-       {address?.lastName} <span>{address?.firstName}</span>
-      </h3>
+      <p>Receptor:  <span>{address?.lastName}, {address?.firstName}</span></p>
       <p>Dirección: <span>{address?.address}</span></p>
       <p>Ciudad: <span>{address?.city}</span></p>
       <p>Código postal: <span>{address?.postalCode}</span></p>
