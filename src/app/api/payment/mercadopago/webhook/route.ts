@@ -26,14 +26,19 @@ export async function POST(req: NextRequest) {
       const data = await response.json();
       console.log("Payment data from Mercado Pago:", data);
       // Update to Database
-      await updateOrderStatus(data.external_reference, data.status);
+      await updateOrderStatus(
+        data.external_reference,
+        data.status,
+        data.id,
+        data.date_approved ? new Date(data.date_approved) : null
+      );
 
       return NextResponse.json({ message: "Webhook received and processed" });
-    } 
+    }
 
     console.log(topic === "merchant_order" ? "Notificación de merchant_order recibida" : "Tipo de notificación no soportado.");
     return NextResponse.json(
-      { message: topic === "merchant_order" ? "Notificación de merchant_order recibida" : "Tipo de notificación no soportado" }, 
+      { message: topic === "merchant_order" ? "Notificación de merchant_order recibida" : "Tipo de notificación no soportado" },
       { status: topic === "merchant_order" ? 200 : 400 }
     );
 
