@@ -18,6 +18,7 @@ export default function PaymentPage({ params }: Props) {
   useEffect(() => {
     const fetchPreference = async () => {
       try {
+        
         const response = await fetch("/api/payment/mercadopago/preference", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -29,6 +30,8 @@ export default function PaymentPage({ params }: Props) {
         } else {
           throw new Error("No preference ID returned");
         }
+
+        console.log(preferenceId)
       } catch {
         router.push("/orders");
       } finally {
