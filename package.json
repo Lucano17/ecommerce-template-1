@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@mercadopago/sdk-react": "^0.0.19",
+    "@paypal/paypal-js": "^8.1.2",
     "@paypal/react-paypal-js": "^8.7.0",
     "@prisma/client": "5.20.0",
     "axios": "^1.7.7",
