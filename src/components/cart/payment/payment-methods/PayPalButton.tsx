@@ -21,7 +21,7 @@ export const PayPalButton = ({orderId, amount}: Props) => {
   
   const createOrder = async (data: CreateOrderData, actions: CreateOrderActions): Promise<string> => {
     const transactionId = await actions.order.create({
-      intent: "CAPTURE", // Se añade el intent aquí
+      intent: "CAPTURE",
       purchase_units: [{
         amount: {
           value: `${rountedAmount}`,

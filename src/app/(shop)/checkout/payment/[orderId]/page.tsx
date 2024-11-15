@@ -22,8 +22,9 @@ export default function PaymentPage({ params }: Props) {
   const router = useRouter();
 
   useEffect(() => {
-    if (preferenceId) return;  // Evitar hacer la llamada si ya tenemos preferenceId
+    if (preferenceId) return;
     const fetchPreference = async () => {
+
       try {
         const response = await fetch("/api/payment/mercadopago/preference", {
           method: "POST",
@@ -49,7 +50,7 @@ export default function PaymentPage({ params }: Props) {
 
   useEffect(() => {
     if (preferenceId) {
-      console.log("Updated preferenceId:", preferenceId);  // Este log muestra el valor actualizado de preferenceId
+      console.log("Updated preferenceId:", preferenceId);
     }
   }, [preferenceId]);  // Este effect se ejecuta cada vez que preferenceId cambia
 
@@ -58,11 +59,11 @@ export default function PaymentPage({ params }: Props) {
       const { ok, order } = await getOrderById(id);
 
       if (ok) {
-        setOrder(order); // Almacenar la orden en el estado
+        setOrder(order);
       } else {
-        router.push("/orders"); // Redirigir si no se encuentra la orden
+        router.push("/orders");
       }
-      setIsLoading(false); // Dejar de cargar una vez que se haya recibido la orden
+      setIsLoading(false);
     };
 
     getOrder();
