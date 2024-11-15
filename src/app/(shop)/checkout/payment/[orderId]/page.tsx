@@ -40,7 +40,7 @@ export default function PaymentPage({ params }: Props) {
     };
 
     fetchPreference();
-  }, [orderId, preferenceId, router]);
+  }, [orderId, router]);
 
   useEffect(() => {
     if (preferenceId) {
