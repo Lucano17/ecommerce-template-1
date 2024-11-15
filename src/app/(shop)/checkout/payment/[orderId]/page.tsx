@@ -16,15 +16,16 @@ export default function PaymentPage({ params }: Props) {
   const router = useRouter();
 
   useEffect(() => {
+    if (preferenceId) return
     const fetchPreference = async () => {
       try {
-        
         const response = await fetch("/api/payment/mercadopago/preference", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ orderId }),
         });
         const data = await response.json();
+        console.log("Data received from API:", data)
         if (data.preferenceId) {
           setPreferenceId(data.preferenceId);
         } else {
@@ -41,7 +42,7 @@ export default function PaymentPage({ params }: Props) {
 
     fetchPreference();
 
-  }, [orderId, router]);
+  }, [orderId, preferenceId, router]);
 
   return (
     <div className={styles.container}>
