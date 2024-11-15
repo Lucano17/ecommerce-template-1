@@ -2,18 +2,23 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Title, MercadoPagoButton } from "@/components";
+import { Title, MercadoPagoButton, PayPalButton } from "@/components";
+import { getOrderById } from "@/actions";
 import styles from "./page.module.css";
 import Skeleton from "@/components/skeleton/Skeleton";
 
 interface Props {
-  params: { orderId: string };
+  params: {
+    orderId: string
+    id: string
+   };
 }
 
 export default function PaymentPage({ params }: Props) {
-  const { orderId } = params;
+  const { orderId, id } = params;
   const [preferenceId, setPreferenceId] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [order, setOrder] = useState<any>(null)
   const router = useRouter();
 
   useEffect(() => {
@@ -48,6 +53,21 @@ export default function PaymentPage({ params }: Props) {
     }
   }, [preferenceId]);  // Este effect se ejecuta cada vez que preferenceId cambia
 
+  useEffect(() => {
+    const getOrder = async () => {
+      const { ok, order } = await getOrderById(id);
+
+      if (ok) {
+        setOrder(order); // Almacenar la orden en el estado
+      } else {
+        router.push("/orders"); // Redirigir si no se encuentra la orden
+      }
+      setIsLoading(false); // Dejar de cargar una vez que se haya recibido la orden
+    };
+
+    getOrder();
+  }, [id, router]);
+
   return (
     <div className={styles.container}>
       <Title title="Payment" />
@@ -57,6 +77,9 @@ export default function PaymentPage({ params }: Props) {
         ) : (
           <div className={styles.paymentButtons}>
             {preferenceId && <MercadoPagoButton preferenceId={preferenceId} />}
+            <PayPalButton 
+            amount={order!.total} 
+            orderId={order!.id}/>
           </div>
         )}
       </div>

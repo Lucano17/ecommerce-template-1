@@ -28,7 +28,6 @@ export default async function OrdersByIdPage({ params }: Props) {
       <div className={styles.carritoContainer}>
         <div className={styles.carrito}>
           <span className={styles.state}><IsPaid id={id}/></span>
-
           <ProductsInCheckout params={params}/>
         </div>
 
@@ -54,7 +53,7 @@ export default async function OrdersByIdPage({ params }: Props) {
             <p className={styles.totalPrice}>
               Total <span>{currencyFormat(order!.total)}</span>
             </p>
-            <Link href={`/checkout/payment/${id}`} target="_blank">PAGAR</Link>
+            <Link href={`/checkout/payment/${id}`}>PAGAR</Link>
           </div>
         </div>
       </div>
