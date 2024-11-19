@@ -1,3 +1,4 @@
+import { paypalCheckPayment } from "./payment/paypal-check-payment"
 
 
 export {setUserAddress} from "./address/set-user-address"
@@ -21,4 +22,6 @@ export {getProductBySlug} from "./product/get-product-slug"
 export {getStockBySlug} from "./product/get-stock-by-slug"
 
 export * from "./payment/mercado-pago-preference"
+export {paypalCheckPayment} from "./payment/paypal-check-payment"
+
 export {updateOrderStatus} from "./order/update-order-status"

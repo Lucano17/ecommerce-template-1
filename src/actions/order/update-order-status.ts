@@ -18,7 +18,7 @@ export const updateOrderStatus = async (
         // paidAt: date_approved,
         transactionId: String(transactionId),
         paidAt: paidAt,
-        isPaid: paymentStatus == "approved" || paymentStatus == "completed",
+        isPaid: paymentStatus === "approved" || paymentStatus === "COMPLETED",
         // currency_id: currency_id
         // total_paid_amount: total_paid_amount
 
