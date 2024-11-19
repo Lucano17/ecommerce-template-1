@@ -27,10 +27,10 @@ export async function POST(req: NextRequest) {
       console.log("Payment data from Mercado Pago:", data);
       // Update to Database
       await updateOrderStatus(
-        data.external_reference,
-        data.status,
-        data.id,
-        data.date_approved ? new Date(data.date_approved) : null
+        data.external_reference, // Refers to an orderId
+        data.id, //transactionId
+        data.status, //paymentStatus => isPaid
+        data.date_approved ? new Date(data.date_approved) : null //paidAt
       );
 
       return NextResponse.json({ message: "Webhook received and processed" });

@@ -3,6 +3,7 @@
 import Skeleton from '@/components/skeleton/Skeleton';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import { CreateOrderData, CreateOrderActions } from '@paypal/paypal-js';
+import { updateOrderStatus } from '@/actions';
 
 interface Props {
   orderId: string;
@@ -29,6 +30,12 @@ export const PayPalButton = ({orderId, amount}: Props) => {
         },
       }],
     });
+
+    const {ok} = await updateOrderStatus(orderId!, transactionId!)
+
+    if (!ok) {
+      throw new Error("No se pudo actualizar la orden")
+    }
     
     return transactionId;
   };

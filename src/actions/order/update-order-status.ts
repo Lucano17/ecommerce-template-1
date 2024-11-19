@@ -26,6 +26,8 @@ export const updateOrderStatus = async (
 
       },
     });
+
+    return {ok: true}
   } catch (error) {
     console.error("Error updating order status:", error);
     throw new Error("Failed to update order status");
