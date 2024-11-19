@@ -61,7 +61,7 @@ export default function PaymentPage({ params }: Props) {
       if (ok) {
         setOrder(order);
       } else {
-        router.push("/orders");
+        console.log("No se ha encontrado una orden")
       }
       setIsLoading(false);
     };
@@ -78,9 +78,9 @@ export default function PaymentPage({ params }: Props) {
         ) : (
           <div className={styles.paymentButtons}>
             {preferenceId && <MercadoPagoButton preferenceId={preferenceId} />}
-            <PayPalButton 
+            {/* <PayPalButton 
             amount={order!.total} 
-            orderId={order!.id}/>
+            orderId={order!.id}/> */}
           </div>
         )}
       </div>

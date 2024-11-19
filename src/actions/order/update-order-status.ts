@@ -4,9 +4,9 @@ import prisma from "@/lib/prisma";
 
 export const updateOrderStatus = async (
   orderId: string,
-  paymentStatus: string,
   transactionId: string,
-  paidAt: Date | null
+  paymentStatus?: string,
+  paidAt?: Date | null
 ) => {
   try {
     await prisma.order.update({
