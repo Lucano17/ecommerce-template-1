@@ -4,13 +4,32 @@ import { PayPalOrderStatusResponse } from "@/interfaces"
 
 export const paypalCheckPayment = async (transactionId: string) => {
     console.log(transactionId)
-    const authToken = getPayPalBearerToken()
+    const authToken = await getPayPalBearerToken()
 
     if(!authToken) {
         return {
             ok: false,
             message: "No se pudo obtener el token de verificación"}
     }
+
+    const resp = await verifyPayPalPayment(transactionId, authToken)
+
+    if (!resp) {
+        return {
+            ok: false,
+            message: "Error al verificar el pago"
+        }
+    }
+
+    const {status, purchase_units} = resp
+
+    if (status !== "COMPLETED") {
+        return {
+            ok: false,
+            message: "Aún no se ha pagado en PayPal"
+        }
+    }
+    // const {} = purchase_units[0]
 }
 
 const getPayPalBearerToken = async() => {
