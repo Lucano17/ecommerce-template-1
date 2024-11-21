@@ -16,6 +16,7 @@ export {getCountries} from "./country/get-countries"
 export {placeOrder} from "./order/place-order"
 export {getOrderById} from "./order/get-order-by-id"
 export {getOrdersByUser} from "./order/get-order-by-user"
+export {getPaginatedOrders} from "./order/get-paginated-orders"
 
 export {getPaginatedProductsWithImages} from "./product/product-pagination"
 export {getProductBySlug} from "./product/get-product-slug"
