@@ -112,7 +112,7 @@ export const SideBar = () => {
                 </Link>
 
                 <Link
-                  href={"/"}
+                  href={"/admin/users"}
                   className={styles.navLinks}
                   onClick={() => closeSideMenu()}
                 >

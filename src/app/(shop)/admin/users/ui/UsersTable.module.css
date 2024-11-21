@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(240, 248, 255, 0.041);
+}
+
+.container th, .container td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.container th {
+    background-color: #353535; /* Añade un color de fondo a los headers */
+}
+
+.container td {
+    vertical-align: middle;
+}
+
+.state {
+    margin: auto;
+}
+
+.tdContainer {
+    display: flex;
+}

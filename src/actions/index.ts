@@ -26,3 +26,5 @@ export * from "./payment/mercado-pago-preference"
 export {paypalCheckPayment} from "./payment/paypal-check-payment"
 
 export {updateOrderStatus} from "./order/update-order-status"
+
+export {getPaginatedUsers} from "./users/get-paginated-users"

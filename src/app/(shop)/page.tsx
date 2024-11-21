@@ -1,12 +1,9 @@
 import { ProductGrid, Title, Pagination } from "@/components";
-// import { initialData } from "@/seed/seed";
 import styles from "./page.module.css";
 import { getPaginatedProductsWithImages } from "@/actions";
 import { redirect } from "next/navigation";
 
 export const revalidate = 60
-
-// const products = initialData.products;
 
 interface Props {
   searchParams: {
