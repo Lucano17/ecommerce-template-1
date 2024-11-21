@@ -5,7 +5,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { User } from "@/interfaces";
 import styles from "./UsersTable.module.css";
-import { getPaginatedUsers } from "@/actions";
+import { changeUserRole, getPaginatedUsers } from "@/actions";
 
 interface Props {
   users: User[];
@@ -33,7 +33,7 @@ export const UsersTable = ({ users }: Props) => {
               <td>
                 <select
                     value={user.role}
-                    onChange={e => console.log(e.target.value)}>
+                    onChange={e => changeUserRole(user.id, e.target.value)}>
                         <option value="admin">Admin</option>
                         <option value="user">User</option>
                 </select>

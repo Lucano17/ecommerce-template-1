@@ -1,4 +1,5 @@
 import { paypalCheckPayment } from "./payment/paypal-check-payment"
+import { changeUserRole } from "./users/change-user-role"
 
 
 export {setUserAddress} from "./address/set-user-address"
@@ -28,3 +29,4 @@ export {paypalCheckPayment} from "./payment/paypal-check-payment"
 export {updateOrderStatus} from "./order/update-order-status"
 
 export {getPaginatedUsers} from "./users/get-paginated-users"
+export {changeUserRole} from "./users/change-user-role"
