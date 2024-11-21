@@ -3,8 +3,8 @@
 import prisma from "@/lib/prisma";
 
 export const updateOrderStatus = async (
-  orderId: string,
   transactionId: string,
+  orderId?: string,
   paymentStatus?: string,
   paidAt?: Date | null
 ) => {
@@ -12,18 +12,12 @@ export const updateOrderStatus = async (
     await prisma.order.update({
       where: { id: orderId },
       data: {
-        status: paymentStatus,
-        // status_detailed: status_detailed,
-        // transactionId: id,
-        // paidAt: date_approved,
         transactionId: String(transactionId),
+        status: paymentStatus,
         paidAt: paidAt,
         isPaid: paymentStatus === "approved" || paymentStatus === "COMPLETED",
         // currency_id: currency_id
         // total_paid_amount: total_paid_amount
-
-
-
       },
     });
 
