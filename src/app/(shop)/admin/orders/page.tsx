@@ -1,28 +1,26 @@
 import { IsPaid, Title } from "@/components";
 import Link from "next/link";
-import styles from "./page.module.css";
-import { getOrdersByUser } from "@/actions";
+import { getPaginatedOrders } from "@/actions";
 import { redirect } from "next/navigation";
+import styles from "./page.module.css";
 
 
-interface Props {
-    id: string;
-}
 
-export default async function UsersOrdersPage({ id }: Props) {
-  const { ok, orders } = await getOrdersByUser();
+
+export default async function UsersOrdersPage() {
+  const { ok, orders = []} = await getPaginatedOrders();
 
   if (!ok) {
     redirect("/auth/login");
   }
 
   if (!orders || orders.length === 0) {
-    return <p>Todavía no tienes ninguna orden. Visita nuestra tienda!</p>;
+    return <p>Todavía ningún usuario ha realizado una orden de compra!</p>;
   }
 
   return (
     <>
-      <Title title="Orders" />
+      <Title title="Órdenes de los usuarios" />
       <div className={styles.container}>
         <table>
           <thead>

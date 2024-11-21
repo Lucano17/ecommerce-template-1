@@ -103,12 +103,12 @@ export const SideBar = () => {
                 </Link>
 
                 <Link
-                  href={"/orders"}
+                  href={"/admin/orders"}
                   className={styles.navLinks}
                   onClick={() => closeSideMenu()}
                 >
                   <IoTicketOutline className={styles.navIcon} size={25} />
-                  <span className={styles.navLinksText}>Órdenes</span>
+                  <span className={styles.navLinksText}>Órdenes de usuarios</span>
                 </Link>
 
                 <Link
