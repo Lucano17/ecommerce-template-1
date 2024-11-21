@@ -1,7 +1,6 @@
-
 import { IsPaid, Title } from "@/components";
 import styles from "./page.module.css";
-import {ProductsInCheckout} from "@/components";
+import { ProductsInCheckout } from "@/components";
 import { getOrderById } from "@/actions";
 import { redirect } from "next/navigation";
 import { UserAddressData } from "@/components";
@@ -20,19 +19,21 @@ export default async function OrdersByIdPage({ params }: Props) {
   const { ok, order } = await getOrderById(id);
 
   if (!ok) {
-    redirect("/")
+    redirect("/");
   }
   return (
     <div className={styles.container}>
       <Title title={`Orden #${id.split("-").at(-1)}`} />
       <div className={styles.carritoContainer}>
         <div className={styles.carrito}>
-          <span className={styles.state}><IsPaid id={id}/></span>
-          <ProductsInCheckout params={params}/>
+          <span className={styles.state}>
+            <IsPaid id={id} />
+          </span>
+          <ProductsInCheckout params={params} />
         </div>
 
         <div className={styles.checkOut}>
-          <UserAddressData params={params}/>
+          <UserAddressData params={params} />
 
           <div className={styles.order}>
             <h2>Resumen de orden</h2>
@@ -53,7 +54,12 @@ export default async function OrdersByIdPage({ params }: Props) {
             <p className={styles.totalPrice}>
               Total <span>{currencyFormat(order!.total)}</span>
             </p>
-            <Link href={`/checkout/payment/${id}`}>PAGAR</Link>
+
+            {order?.isPaid ? (
+              <Link href={`/checkout/shipping/${id}`}>Detalles del envío</Link>
+            ) : (
+              <Link href={`/checkout/payment/${id}`}>PAGAR</Link>
+            )}
           </div>
         </div>
       </div>
