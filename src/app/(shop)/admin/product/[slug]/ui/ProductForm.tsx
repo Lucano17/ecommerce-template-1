@@ -2,39 +2,63 @@
 
 import { Category, Product } from "@/interfaces";
 import styles from "./ProductForm.module.css";
+import { useForm } from "react-hook-form";
 
 interface Props {
   product: Product;
   categories: Category[];
 }
 
+interface FormInputs {
+    title: string;
+    slug: string;
+    description: string;
+    price: number;
+    inStock: number;
+    sizes: string[];
+    tags: string;
+    gender: "men" | "women" | "kid" | "unisex";
+    categoryId: string;
+}
+
 const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
 
 export const ProductForm = ({ product, categories }: Props) => {
+    const {
+        handleSubmit,
+        register,
+        formState: {isValid},
+    } = useForm<FormInputs>({
+        defaultValues: {
+            ...product,
+            tags: product.tags.join(", "),
+            sizes: product.sizes ?? [],
+        }
+    });
 
-    
+
   return (
     <form className={styles.formContainer}>
       {/* Textos */}
       <div className={styles.productDataContainer}>
         <div className={styles.productData}>
           <span>Título</span>
-          <input type="text" />
+          <input type="text" {...register("title", {required: true})}/>
         </div>
 
         <div className={styles.productData}>
           <span>Slug</span>
-          <input type="text" />
+          <input type="text" {...register("slug", {required: true})}/>
         </div>
 
         <div className={styles.productData}>
           <span>Descripción</span>
-          <textarea rows={5}></textarea>
+          <textarea rows={5} {...register("description", {required: true})}></textarea>
         </div>
 
         <div className={styles.productData}>
           <span>Price</span>
-          <input type="number" />
+          <input type="number" {...register("price", {required: true, min: 0})}/>
         </div>
       </div>
 
@@ -57,7 +81,7 @@ export const ProductForm = ({ product, categories }: Props) => {
 
         <div className={styles.productData}>
           <span>Gender</span>
-          <select>
+          <select {...register("gender", {required: true})}>
             <option value="">[Seleccione]</option>
             <option value="men">Men</option>
             <option value="women">Women</option>
@@ -68,12 +92,12 @@ export const ProductForm = ({ product, categories }: Props) => {
 
         <div className={styles.productData}>
           <span>Tags</span>
-          <input type="text" />
+          <input type="text" {...register("tags", {required: true})}/>
         </div>
 
         <div className={styles.productData}>
           <span>Categoría</span>
-          <select>
+          <select {...register("categoryId", {required: true})}>
             <option value="">[Seleccione]</option>
                 {
                     categories?.map(category =>( 
