@@ -1,0 +1,70 @@
+.formContainer {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.formContainer .productData {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.formContainer .productData span {
+    display: flex;
+    text-align: left;
+    font-weight: bold;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.formContainer .productData input {
+    display: flex;
+    width: 300px;
+    padding: 5px;
+}
+
+.formContainer .productData textarea {
+    display: flex;
+    overflow: scroll;
+    resize: none;
+    width: 300px;
+    height: 150px;
+    overflow-x: hidden;
+    white-space: nowrap;
+    padding: 5px;
+}
+
+.formContainer .productData select {
+    display: flex;
+    width: 300px;
+    padding: 5px;
+}
+
+.sizesContainer {
+    display: flex;
+    flex-direction: column; /* Coloca el título y las tallas en columna */
+    gap: 10px; /* Espaciado entre el título y las tallas */
+  }
+  
+  .sizesTitle {
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .sizeMap {
+    display: flex;
+    flex-direction: row; /* Asegura que las tallas estén en fila */
+    gap: 10px; /* Espaciado entre las tallas */
+  }
+  
+
+
+
+.saveButton {
+    display: flex;
+    justify-content: center;
+    width: 75px;
+    margin-top: 30px;
+}
+
