@@ -30,3 +30,5 @@ export {updateOrderStatus} from "./order/update-order-status"
 
 export {getPaginatedUsers} from "./users/get-paginated-users"
 export {changeUserRole} from "./users/change-user-role"
+
+export {getCategories} from "./product/category/get-categories"
