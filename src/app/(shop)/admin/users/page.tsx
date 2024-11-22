@@ -22,7 +22,7 @@ export default async function UsersManagmentPage() {
 
   return (
     <>
-      <Title title="Órdenes de los usuarios" />
+      <Title title="Lista de usuarios" />
       <div className={styles.container}>
         <UsersTable users={users}/>
       </div>

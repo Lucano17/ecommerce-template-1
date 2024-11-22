@@ -94,7 +94,7 @@ export const SideBar = () => {
                 <div className={styles.navMidLine} />
 
                 <Link
-                  href={"/"}
+                  href={"/admin/products"}
                   className={styles.navLinks}
                   onClick={() => closeSideMenu()}
                 >
