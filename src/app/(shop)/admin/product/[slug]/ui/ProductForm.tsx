@@ -36,6 +36,7 @@ export const ProductForm = ({ product, categories }: Props) => {
     formState: { isValid },
     getValues,
     setValue,
+    watch,
   } = useForm<FormInputs>({
     defaultValues: {
       ...product,
@@ -44,20 +45,16 @@ export const ProductForm = ({ product, categories }: Props) => {
     },
   });
 
+  
+
   const toggleSize = (size: string) => {
-    const currentSizes = [...selectedSizes];
-    if (currentSizes.includes(size)) {
-      // Deseleccionar
-      const newSizes = currentSizes.filter((s) => s !== size);
-      setSelectedSizes(newSizes);
-      setValue("sizes", newSizes);
-    } else {
-      // Seleccionar
-      currentSizes.push(size);
-      setSelectedSizes(currentSizes);
-      setValue("sizes", currentSizes);
-    }
+    const sizes = new Set(getValues("sizes"))
+    sizes.has(size) ? sizes.delete(size) : sizes.add(size)
+    setSelectedSizes(Array.from(sizes))
+    setValue("sizes", Array.from(sizes))
   };
+
+  // watch("sizes") para renderizar siempre que los sizes cambien
 
   const onSubmit = async (data: FormInputs) => {
     console.log({ data });
