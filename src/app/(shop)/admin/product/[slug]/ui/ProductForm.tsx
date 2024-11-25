@@ -4,6 +4,7 @@ import { Category, Product, ProductImage } from "@/interfaces";
 import styles from "./ProductForm.module.css";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 interface Props {
   product: Product & { ProductImage?: ProductImage[] };
@@ -25,10 +26,16 @@ interface FormInputs {
 const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
 
 export const ProductForm = ({ product, categories }: Props) => {
+  const [selectedSizes, setSelectedSizes] = useState<string[]>(
+    product.sizes ?? []
+  );
+
   const {
     handleSubmit,
     register,
     formState: { isValid },
+    getValues,
+    setValue,
   } = useForm<FormInputs>({
     defaultValues: {
       ...product,
@@ -37,13 +44,27 @@ export const ProductForm = ({ product, categories }: Props) => {
     },
   });
 
+  const toggleSize = (size: string) => {
+    const currentSizes = [...selectedSizes];
+    if (currentSizes.includes(size)) {
+      // Deseleccionar
+      const newSizes = currentSizes.filter((s) => s !== size);
+      setSelectedSizes(newSizes);
+      setValue("sizes", newSizes);
+    } else {
+      // Seleccionar
+      currentSizes.push(size);
+      setSelectedSizes(currentSizes);
+      setValue("sizes", currentSizes);
+    }
+  };
+
   const onSubmit = async (data: FormInputs) => {
     console.log({ data });
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
-      {/* Textos */}
       <div className={styles.productDataContainer}>
         <div className={styles.productData}>
           <span>Título</span>
@@ -78,12 +99,21 @@ export const ProductForm = ({ product, categories }: Props) => {
 
         <div className={styles.productData}>
           <div className={styles.sizesTitle}>
-            <span>Tallas</span>
+            <span>Tallas disponibles</span>
           </div>
           <div className={styles.sizeMap}>
             {sizes.map((size) => (
               <div key={size} className={styles.sizes}>
-                <span>{size}</span>
+                <span
+                  className={
+                    selectedSizes.includes(size)
+                      ? styles.sizeSelected
+                      : styles.sizeNonSelected
+                  }
+                  onClick={() => toggleSize(size)}
+                >
+                  {size}
+                </span>
               </div>
             ))}
           </div>
@@ -126,18 +156,22 @@ export const ProductForm = ({ product, categories }: Props) => {
           />
           <div className={styles.photosGrid}>
             {product.ProductImage?.map((image) => (
-              <div key={image.id} >
+              <div key={image.id}>
                 <div className={styles.imageContainer}>
-                <Image
-                  alt={product.title ?? ""}
-                  src={`/products/${image.url}`}
-                  width={75}
-                  height={75}
-                />
-                <button
-                type="submit"
-                onClick={()=>{console.log(product)}}
-                >Eliminar</button>
+                  <Image
+                    alt={product.title ?? ""}
+                    src={`/products/${image.url}`}
+                    width={75}
+                    height={75}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      console.log(image.id, image.url);
+                    }}
+                  >
+                    Eliminar
+                  </button>
                 </div>
               </div>
             ))}
