@@ -126,7 +126,7 @@ export const ProductForm = ({ product, categories }: Props) => {
           />
           <div className={styles.photosGrid}>
             {product.ProductImage?.map((image) => (
-              <div key={image.id}>
+              <div key={image.id} >
                 <div className={styles.imageContainer}>
                 <Image
                   alt={product.title ?? ""}
@@ -134,7 +134,10 @@ export const ProductForm = ({ product, categories }: Props) => {
                   width={75}
                   height={75}
                 />
-                <button>Eliminar</button>
+                <button
+                type="submit"
+                onClick={()=>{console.log(product)}}
+                >Eliminar</button>
                 </div>
               </div>
             ))}
