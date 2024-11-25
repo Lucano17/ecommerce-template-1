@@ -1,64 +1,74 @@
 "use client";
 
-import { Category, Product } from "@/interfaces";
+import { Category, Product, ProductImage } from "@/interfaces";
 import styles from "./ProductForm.module.css";
 import { useForm } from "react-hook-form";
+import Image from "next/image";
 
 interface Props {
-  product: Product;
+  product: Product & { ProductImage?: ProductImage[] };
   categories: Category[];
 }
 
 interface FormInputs {
-    title: string;
-    slug: string;
-    description: string;
-    price: number;
-    inStock: number;
-    sizes: string[];
-    tags: string;
-    gender: "men" | "women" | "kid" | "unisex";
-    categoryId: string;
+  title: string;
+  slug: string;
+  description: string;
+  price: number;
+  inStock: number;
+  sizes: string[];
+  tags: string;
+  gender: "men" | "women" | "kid" | "unisex";
+  categoryId: string;
 }
 
 const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
 
 export const ProductForm = ({ product, categories }: Props) => {
-    const {
-        handleSubmit,
-        register,
-        formState: {isValid},
-    } = useForm<FormInputs>({
-        defaultValues: {
-            ...product,
-            tags: product.tags.join(", "),
-            sizes: product.sizes ?? [],
-        }
-    });
+  const {
+    handleSubmit,
+    register,
+    formState: { isValid },
+  } = useForm<FormInputs>({
+    defaultValues: {
+      ...product,
+      tags: product.tags.join(", "),
+      sizes: product.sizes ?? [],
+    },
+  });
 
+  const onSubmit = async (data: FormInputs) => {
+    console.log({ data });
+  };
 
   return (
-    <form className={styles.formContainer}>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
       {/* Textos */}
       <div className={styles.productDataContainer}>
         <div className={styles.productData}>
           <span>Título</span>
-          <input type="text" {...register("title", {required: true})}/>
+          <input type="text" {...register("title", { required: true })} />
         </div>
 
         <div className={styles.productData}>
           <span>Slug</span>
-          <input type="text" {...register("slug", {required: true})}/>
+          <input type="text" {...register("slug", { required: true })} />
         </div>
 
         <div className={styles.productData}>
           <span>Descripción</span>
-          <textarea rows={5} {...register("description", {required: true})}></textarea>
+          <textarea
+            rows={5}
+            {...register("description", { required: true })}
+          ></textarea>
         </div>
 
         <div className={styles.productData}>
           <span>Price</span>
-          <input type="number" {...register("price", {required: true, min: 0})}/>
+          <input
+            type="number"
+            {...register("price", { required: true, min: 0 })}
+          />
         </div>
       </div>
 
@@ -81,7 +91,7 @@ export const ProductForm = ({ product, categories }: Props) => {
 
         <div className={styles.productData}>
           <span>Gender</span>
-          <select {...register("gender", {required: true})}>
+          <select {...register("gender", { required: true })}>
             <option value="">[Seleccione]</option>
             <option value="men">Men</option>
             <option value="women">Women</option>
@@ -92,18 +102,18 @@ export const ProductForm = ({ product, categories }: Props) => {
 
         <div className={styles.productData}>
           <span>Tags</span>
-          <input type="text" {...register("tags", {required: true})}/>
+          <input type="text" {...register("tags", { required: true })} />
         </div>
 
         <div className={styles.productData}>
           <span>Categoría</span>
-          <select {...register("categoryId", {required: true})}>
+          <select {...register("categoryId", { required: true })}>
             <option value="">[Seleccione]</option>
-                {
-                    categories?.map(category =>( 
-                        <option key={category.id} value={category.id}>{category.name}</option>
-                    ))
-                }
+            {categories?.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
           </select>
         </div>
         <div className={styles.productData}>
@@ -114,6 +124,21 @@ export const ProductForm = ({ product, categories }: Props) => {
             multiple
             accept="image/png, image/jpeg"
           />
+          <div className={styles.photosGrid}>
+            {product.ProductImage?.map((image) => (
+              <div key={image.id}>
+                <div className={styles.imageContainer}>
+                <Image
+                  alt={product.title ?? ""}
+                  src={`/products/${image.url}`}
+                  width={75}
+                  height={75}
+                />
+                <button>Eliminar</button>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
         <button className={styles.saveButton}>Guardar</button>
       </div>
