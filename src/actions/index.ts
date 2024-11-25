@@ -22,6 +22,7 @@ export {getPaginatedOrders} from "./order/get-paginated-orders"
 export {getPaginatedProductsWithImages} from "./product/product-pagination"
 export {getProductBySlug} from "./product/get-product-slug"
 export {getStockBySlug} from "./product/get-stock-by-slug"
+export {createUpdateProduct} from "./product/create-update-product"
 
 export * from "./payment/mercado-pago-preference"
 export {paypalCheckPayment} from "./payment/paypal-check-payment"
