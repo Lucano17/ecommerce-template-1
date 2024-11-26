@@ -7,14 +7,28 @@ interface Props {
   className?: React.StyleHTMLAttributes<HTMLImageElement>["className"];
   width: number;
   height: number;
+  priority?: boolean;
+  onMouseEnter?: any;
+  onMouseLeave?: any;
 }
 
-export const ProductImage = ({ src, alt, className, width, height }: Props) => {
-  const localSrc = src
-    ? src?.startsWith("http")
+export const ProductImage = ({
+  src,
+  alt,
+  className,
+  width,
+  height,
+  priority,
+  onMouseEnter,
+  onMouseLeave,
+}: Props) => {
+    const localSrc = ( src ) 
+    ? src.startsWith('http') // https://urlcompletodelaimagen.jpg
       ? src
-      : `/products/${src}`
-    : "/imgs/placeholder.jpg";
+      : `/products/${ src }`
+    : '/imgs/placeholder.jpg';
+
+  console.log("localSrc:", localSrc); // Verifica la URL final aquí
 
   return <Image src={localSrc} width={width} height={height} alt={alt} />;
 };

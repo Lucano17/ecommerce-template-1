@@ -8,9 +8,9 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import Image from "next/image";
 
-import styles from "./ProductSlideShow.module.css"
+import styles from "./ProductSlideShow.module.css";
+import { ProductImage } from "@/components";
 
 interface Props {
   images: string[];
@@ -20,6 +20,9 @@ interface Props {
 
 export const ProductSlideShow = ({ images, title, className }: Props) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperObject>();
+
+  // Si no hay imágenes, usa el placeholder
+  const displayImages = images.length > 0 ? images : ["/imgs/placeholder.jpg"];
 
   return (
     <div>
@@ -36,40 +39,41 @@ export const ProductSlideShow = ({ images, title, className }: Props) => {
         modules={[FreeMode, Navigation, Thumbs]}
         className={styles.mySwiper2}
       >
-        {images.map((image) => (
+        {displayImages.map((image) => (
           <SwiperSlide key={image}>
-            <Image
-            width={423}
-            height={350}
-            src={`/products/${image}`}
-            alt={title}
-            priority={true}/>
+            <ProductImage
+              width={423}
+              height={350}
+              src={image}
+              alt={title}
+              priority={true}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
-        <div>
+      <div>
         <Swiper
-        onSwiper={setThumbsSwiper}
-        spaceBetween={10}
-        slidesPerView={4}
-        freeMode={true}
-        watchSlidesProgress={true}
-        modules={[FreeMode, Navigation, Thumbs]}
-        className={styles.mySwiper}
-      >
-         {images.map((image) => (
-          <SwiperSlide key={image}>
-            <Image
-            width={100}
-            height={100}
-            src={`/products/${image}`}
-            alt={title}
-            priority={false}/>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-        </div>
-      
+          onSwiper={setThumbsSwiper}
+          spaceBetween={10}
+          slidesPerView={4}
+          freeMode={true}
+          watchSlidesProgress={true}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className={styles.mySwiper}
+        >
+          {displayImages.map((image) => (
+            <SwiperSlide key={image}>
+              <ProductImage
+                width={100}
+                height={100}
+                src={image}
+                alt={title}
+                priority={true}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
   );
 };

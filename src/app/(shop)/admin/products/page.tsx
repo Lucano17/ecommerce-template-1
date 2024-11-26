@@ -1,4 +1,4 @@
-import { Pagination, Title } from "@/components";
+import { Pagination, ProductImage, Title } from "@/components";
 import { getPaginatedProductsWithImages } from "@/actions";
 import styles from "./page.module.css";
 import Link from "next/link";
@@ -41,8 +41,8 @@ export default async function ProductsManagmentPage({ searchParams }: Props) {
                 <td>{product.id.split("-").at(0)}</td>
                 <td>
                   <Link href={`/product/${product.slug}`}>
-                    <Image
-                      src={`/products/${product.ProductImage[0].url}`}
+                    <ProductImage
+                      src={product.ProductImage[0]?.url}
                       width={80}
                       height={80}
                       alt={product.title}

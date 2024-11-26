@@ -1,6 +1,6 @@
 "use client";
 
-import { QuantitySelector, Title } from "@/components";
+import { ProductImage, QuantitySelector, Title } from "@/components";
 import Image from "next/image";
 import styles from "./ProductsInCart.module.css";
 import { FaTrashAlt } from "react-icons/fa";
@@ -34,8 +34,8 @@ export const ProductsInCart = () => {
           key={`${product.slug} - ${product.size}`}
           className={styles.productsContainer}
         >
-          <Image
-            src={`/products/${product.image}`}
+          <ProductImage
+            src={product.image}
             width={50}
             height={55}
             alt={product.title}
