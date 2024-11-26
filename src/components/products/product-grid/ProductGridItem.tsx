@@ -6,6 +6,7 @@ import { Product } from "@/interfaces";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./ProductGridItem.module.css"
+import { ProductImage } from "@/components";
 
 interface Props {
   product: Product;
@@ -17,9 +18,9 @@ export const ProductGridItem = ({ product }: Props) => {
   return (
     <div className={styles.container}>
       <Link href={`/product/${product.slug}`}>
-        <Image
+        <ProductImage
         className={styles.productImage}
-          src={`/products/${displayImage}`}
+          src={displayImage}
           alt={product.title}
           width={250}
           height={250}
