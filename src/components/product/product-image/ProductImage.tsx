@@ -22,13 +22,12 @@ export const ProductImage = ({
   onMouseEnter,
   onMouseLeave,
 }: Props) => {
-    const localSrc = ( src ) 
-    ? src.startsWith('http') // https://urlcompletodelaimagen.jpg
-      ? src
-      : `/products/${ src }`
-    : '/imgs/placeholder.jpg';
-
-  console.log("localSrc:", localSrc); // Verifica la URL final aquí
+  const localSrc =
+    src && src.trim() !== "" && !src.startsWith("/imgs/") // Asegúrate de no procesar si ya es el placeholder
+      ? src.startsWith("http")
+        ? src
+        : `/products/${src}`
+      : "/imgs/placeholder.jpg";
 
   return <Image src={localSrc} width={width} height={height} alt={alt} />;
 };
