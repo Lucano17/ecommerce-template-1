@@ -13,9 +13,9 @@ const productSchema = z.object({
         .min(0)
         .transform(val => Number(val.toFixed(2))),
     inStock: z.coerce
-    .number()
-    .min(0)
-    .transform(val => Number(val.toFixed(0))),
+        .number()
+        .min(0)
+        .transform(val => Number(val.toFixed(0))),
     sizes: z
         .string()
         .transform((val) => val.split(",").map((v) => v.trim() as Size))
@@ -32,9 +32,9 @@ export const createUpdateProduct = async (formData: FormData) => {
         const productParsed = productSchema.safeParse(data)
 
         if (!productParsed.success) {
-            
+
             console.log(productParsed.error)
-            return {ok: false}
+            return { ok: false }
 
         } else {
 
@@ -42,18 +42,18 @@ export const createUpdateProduct = async (formData: FormData) => {
 
             product.slug = product.slug.toLowerCase().replace(/ /g, "-").trim()
 
-            const {id, ...rest} = product
+            const { id, ...rest } = product
 
-            const prismaTx = prisma.$transaction(async(tx) => {
+            const prismaTx = prisma.$transaction(async (tx) => {
 
                 let product: Product
 
-                const tagsArray = rest.tags.split(",").map( tag => tag.trim().toLowerCase())
+                const tagsArray = rest.tags.split(",").map(tag => tag.trim().toLowerCase())
                 const sizesArray = (rest.sizes as string[]).map((size) => size.trim() as Size);
 
                 if (id) {
                     product = await prisma.product.update({
-                        where: {id},
+                        where: { id },
                         data: {
                             ...rest,
                             sizes: {
@@ -66,15 +66,28 @@ export const createUpdateProduct = async (formData: FormData) => {
                     })
 
 
-                    console.log({updatedProduct: product})
+                    console.log({ updatedProduct: product })
 
                 } else {
+                    product = await prisma.product.create({
+                        data: {
+                            ...rest,
+                            sizes: {
+                                set: sizesArray
+                            },
+                            tags: {
+                                set: tagsArray
+                            }
+                        }
+                    })
 
+
+
+                    console.log({ createdProduct: product })
                 }
 
-
                 return {
-                    
+                    product
                 }
             })
 
