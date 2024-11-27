@@ -204,7 +204,7 @@ export const ProductForm = ({ product, categories }: Props) => {
                     width={75}
                     height={75}
                   />
-                  <button
+                  <button className={styles.deleteButton}
                     type="button"
                     onClick={() => {
                       deleteProductImage(image.id, image.url);
