@@ -100,12 +100,23 @@
     cursor: pointer;
 }
 
-
-
-
-
 .saveButton {
     display: flex;
     justify-content: center;
     width: 75px;
+}
+
+@media (max-width: 800px) {
+    .formContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+    }
+    .productDataContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+    }
 }
