@@ -19,12 +19,10 @@ export async function POST(req: NextRequest) {
       });
 
       if (!response.ok) {
-        console.log("No se ha logrado conectar correctamente con el webhook de Mercado Pago");
         return NextResponse.json({ error: "Failed to connect to Mercado Pago" }, { status: 500 });
       }
 
       const data = await response.json();
-      console.log("Payment data from Mercado Pago:", data);
       // Update to Database
       await updateOrderStatus(
         data.id, //transactionId
@@ -38,7 +36,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: "Webhook received and processed" });
     }
 
-    console.log(topic === "merchant_order" ? "Notificación de merchant_order recibida" : "Tipo de notificación no soportado.");
     return NextResponse.json(
       { message: topic === "merchant_order" ? "Notificación de merchant_order recibida" : "Tipo de notificación no soportado" },
       { status: topic === "merchant_order" ? 200 : 400 }

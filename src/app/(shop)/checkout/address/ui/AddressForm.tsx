@@ -49,8 +49,6 @@ export const AddressForm = ({countries, userStoreAddress = {}}: Props) => {
   const setAddress = useAddressStore(state => state.setAddress)
   const address = useAddressStore(state => state.address)
   
-  console.log(session?.user.id)
-  
   useEffect(()=>{
     if (address.firstName) {
       reset(address)
@@ -58,7 +56,6 @@ export const AddressForm = ({countries, userStoreAddress = {}}: Props) => {
   },[])
   
   const onSubmit = async(data: FormInputs) => {
-    console.log("Formulario enviado:", data)
     const {rememberAddress, ...restAddress} = data
     setAddress(restAddress)
 

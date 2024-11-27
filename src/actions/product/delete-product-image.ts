@@ -20,9 +20,11 @@ export const deleteProductImage = async (imageId: number, imageUrl: string) => {
         .pop()
         ?.split(".")[0] ?? ""
     
-        console.log({imageName})
         if (!imageName) {
-            console.log("No se pudo encontrar el imageName")
+            return {
+                ok: false,
+                message: "No se ha encontrado el imageName"
+            }
         }
 
         try {
@@ -46,7 +48,6 @@ export const deleteProductImage = async (imageId: number, imageUrl: string) => {
 
 
     } catch (error) {
-        console.log(error)
         return {
             ok: false,
             message: "No se pudo eliminar la imagen"

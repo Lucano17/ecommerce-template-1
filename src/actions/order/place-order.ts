@@ -51,9 +51,6 @@ export const placeOrder = async (productIds: ProductToOrder[], address: Address)
         return totals
     }, { subTotal: 0, tax: 0, total: 0 })
 
-    console.log({ subTotal: subtotal, tax, total })
-
-
     try {
 
         // Crear transacción en la base de datos

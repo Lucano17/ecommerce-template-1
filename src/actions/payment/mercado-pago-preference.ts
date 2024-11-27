@@ -15,8 +15,6 @@ export const mercadopago = new MercadoPagoConfig({
 
 export const createMercadoPagoPreference = async ({ id }: Props) => {
   const accessToken = process.env.NEXT_PUBLIC_MERCADO_PAGO_PUBLIC_KEY;
-
-  console.log("MP_access_token:", accessToken)
   const { order } = await getOrderById(id)
   try {
     const preference = await new Preference(mercadopago).create({
@@ -43,7 +41,10 @@ export const createMercadoPagoPreference = async ({ id }: Props) => {
     });
     return preference.id
   } catch (error) {
-    console.log(error)
+    return {
+      ok: false,
+      message: "Error creando el preferenceId"
+    }
   }
 
 }

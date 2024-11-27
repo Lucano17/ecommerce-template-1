@@ -6,7 +6,6 @@ import { updateOrderStatus } from "@/actions"
 import { revalidatePath } from "next/cache"
 
 export const paypalCheckPayment = async (transactionId: string) => {
-    console.log(transactionId)
     const authToken = await getPayPalBearerToken()
 
     if (!authToken) {
@@ -61,7 +60,6 @@ export const paypalCheckPayment = async (transactionId: string) => {
         return {ok: true}
 
     } catch (error) {
-        console.log("Status:", status, "Purchase Units:", purchase_units)
         return {
             ok: false,
             message: "500 - El pago no se pudo realizar"
@@ -99,7 +97,6 @@ const getPayPalBearerToken = async () => {
         }).then((r) => r.json());
         return result.access_token;
     } catch (error) {
-        console.log(error);
         return null;
     }
 };
@@ -127,11 +124,9 @@ const verifyPayPalPayment = async (
             ...requestOptions,
             cache: 'no-store'
         }).then(r => r.json());
-        console.log({ resp });
         return resp;
 
     } catch (error) {
-        console.log(error);
         return null;
     }
 

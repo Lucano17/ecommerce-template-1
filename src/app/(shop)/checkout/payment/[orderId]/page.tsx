@@ -32,7 +32,7 @@ export default function PaymentPage({ params }: Props) {
           body: JSON.stringify({ orderId }),
         });
         const data = await response.json();
-        console.log("Data received from API:", data);
+
         if (data.preferenceId) {
           setPreferenceId(data.preferenceId);
         } else {
@@ -49,9 +49,6 @@ export default function PaymentPage({ params }: Props) {
   }, [orderId, router]);
 
   useEffect(() => {
-    if (preferenceId) {
-      console.log("Updated preferenceId:", preferenceId);
-    }
   }, [preferenceId]);  // Este effect se ejecuta cada vez que preferenceId cambia
 
   useEffect(() => {
@@ -61,7 +58,9 @@ export default function PaymentPage({ params }: Props) {
       if (ok) {
         setOrder(order);
       } else {
-        console.log("No se ha encontrado una orden")
+        return {
+          message: "No se ha encontrado la orden"
+        }
       }
       setIsLoading(false);
     };

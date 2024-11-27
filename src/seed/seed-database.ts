@@ -66,8 +66,6 @@ async function main() {
             data: imagesData
         })
     })
-
-    console.log("Seed executed correctly")
 }
 
 
