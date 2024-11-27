@@ -19,10 +19,11 @@ export {getOrderById} from "./order/get-order-by-id"
 export {getOrdersByUser} from "./order/get-order-by-user"
 export {getPaginatedOrders} from "./order/get-paginated-orders"
 
+export {createUpdateProduct} from "./product/create-update-product"
+export {deleteProductImage} from "./product/delete-product-image"
 export {getPaginatedProductsWithImages} from "./product/product-pagination"
 export {getProductBySlug} from "./product/get-product-slug"
 export {getStockBySlug} from "./product/get-stock-by-slug"
-export {createUpdateProduct} from "./product/create-update-product"
 
 export * from "./payment/mercado-pago-preference"
 export {paypalCheckPayment} from "./payment/paypal-check-payment"

@@ -32,8 +32,6 @@ export const placeOrder = async (productIds: ProductToOrder[], address: Address)
         },
     });
 
-    console.log("products:", products)
-
     // Calcular los montos
     const itemsInOrder = productIds.reduce((count, p) => count + p.quantity, 0)
 

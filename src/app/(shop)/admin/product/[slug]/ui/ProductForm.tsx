@@ -3,9 +3,8 @@
 import { Category, Product, ProductImage as ProductWithImage } from "@/interfaces";
 import styles from "./ProductForm.module.css";
 import { useForm } from "react-hook-form";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import { createUpdateProduct } from "@/actions";
+import { useState } from "react";
+import { createUpdateProduct, deleteProductImage } from "@/actions";
 import { useRouter } from "next/navigation";
 import { ProductImage } from "@/components";
 
@@ -208,7 +207,7 @@ export const ProductForm = ({ product, categories }: Props) => {
                   <button
                     type="button"
                     onClick={() => {
-                      console.log(image.id, image.url);
+                      deleteProductImage(image.id, image.url);
                     }}
                   >
                     Eliminar

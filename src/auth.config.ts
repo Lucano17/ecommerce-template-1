@@ -18,19 +18,6 @@ export const authConfig = {
 
   callbacks: {
 
-    // authorized({ auth, request: { nextUrl } }) {
-    //   console.log({auth})
-    //   const isLoggedIn = !!auth?.user;
-    //   const isOnDashboard = nextUrl.pathname.startsWith(`${authenticatedRoutes}`);
-    //   if (isOnDashboard) {
-    //     if (isLoggedIn) return true;
-    //     return false; // Redirect unauthenticated users to login page
-    //   } else if (isLoggedIn) {
-    //     return Response.redirect(new URL('/', nextUrl));
-    //   }
-    //   return true;
-    // },
-
     jwt({ token, user }) {
       if (user) {
         token.data = user
@@ -62,16 +49,7 @@ export const authConfig = {
         }
 
         if (!bcryptjs.compareSync(password, user.password)) return null
-
-        // const isPasswordCorrect = await bcryptjs.compare(password, user.password);
-        // console.log("Password Match:", isPasswordCorrect); // Log para ver si las contraseñas coinciden
-
-        // if (!isPasswordCorrect) {
-        //   console.log("Incorrect password."); // Log si la contraseña es incorrecta
-        //   return null;
-        // }
-
-       
+        
         const { password: _, ...rest } = user;  // Eliminar la contraseña del objeto usuario
         return rest; // Devuelve el usuario sin la contraseña
       },
