@@ -83,16 +83,20 @@ export const createUpdateProduct = async (formData: FormData) => {
                     })
                     console.log({ createdProduct: product })
                 }
+
+                if (formData.getAll("images")){
+                    console.log(formData.getAll("images"))
+                }
                 
                 return {
                     product
                 }
-
-                revalidatePath("/admin/products")
-                revalidatePath(`/admin/products/${product.slug}`)
-                revalidatePath(`/products/${product.slug}`)
-
             })
+
+            revalidatePath("/admin/products")
+            revalidatePath(`/admin/products/${product.slug}`)
+            revalidatePath(`/products/${product.slug}`)
+
             return {
                 ok: true,
                 product: (await prismaTx).product,

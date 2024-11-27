@@ -79,12 +79,18 @@ export const ProductForm = ({ product, categories }: Props) => {
     formData.append("categoryId", productToSave.categoryId ?? "");
     formData.append("gender", productToSave.gender ?? "");
 
-    const { ok, product: updatedProduct } = await createUpdateProduct(formData);
-
-    if (!ok) {
-      alert("El producto no se pudo actualizar")
-      return
+    if (images) {
+      for (let i = 0; i < images.length; i++) {
+        formData.append("images", images[i])
+      }
     }
+
+      const { ok, product: updatedProduct } = await createUpdateProduct(formData);
+      
+      if (!ok) {
+        alert("El producto no se pudo actualizar")
+        return
+      }
 
     router.replace(`/admin/product/${updatedProduct?.slug}`)
   };
@@ -184,8 +190,9 @@ export const ProductForm = ({ product, categories }: Props) => {
           <input
             className={styles.photosInput}
             type="file"
+            {...register("images")}
             multiple
-            accept="image/png, image/jpeg"
+            accept="image/png, image/jpeg, image/avif"
           />
           <div className={styles.photosGrid}>
             {product.ProductImage?.map((image) => (
