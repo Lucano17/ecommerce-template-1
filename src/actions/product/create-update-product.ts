@@ -1,6 +1,7 @@
 "use server"
 import prisma from "@/lib/prisma"
 import { Gender, Product, Size } from "@prisma/client"
+import { revalidatePath } from "next/cache"
 import { z } from "zod"
 
 const productSchema = z.object({
@@ -27,23 +28,23 @@ const productSchema = z.object({
     gender: z.nativeEnum(Gender),
 })
 export const createUpdateProduct = async (formData: FormData) => {
-    try {
-        const data = Object.fromEntries(formData)
-        const productParsed = productSchema.safeParse(data)
 
-        if (!productParsed.success) {
+    const data = Object.fromEntries(formData)
+    const productParsed = productSchema.safeParse(data)
 
-            console.log(productParsed.error)
-            return { ok: false }
+    if (!productParsed.success) {
 
-        } else {
+        console.log(productParsed.error)
+        return { ok: false }
 
-            const product = productParsed.data
+    } else {
 
-            product.slug = product.slug.toLowerCase().replace(/ /g, "-").trim()
+        const product = productParsed.data
 
-            const { id, ...rest } = product
+        product.slug = product.slug.toLowerCase().replace(/ /g, "-").trim()
 
+        const { id, ...rest } = product
+        try {
             const prismaTx = prisma.$transaction(async (tx) => {
 
                 let product: Product
@@ -80,28 +81,29 @@ export const createUpdateProduct = async (formData: FormData) => {
                             }
                         }
                     })
-
-
-
                     console.log({ createdProduct: product })
                 }
-
+                
                 return {
                     product
                 }
+
+                revalidatePath("/admin/products")
+                revalidatePath(`/admin/products/${product.slug}`)
+                revalidatePath(`/products/${product.slug}`)
+
             })
-
+            return {
+                ok: true,
+                product: (await prismaTx).product,
+            }
+        } catch (error) {
+            console.log("Error creando o actualizando el producto")
+            return {
+                ok: false,
+                message: "Error creando o actualizando el producto"
+            }
         }
 
-        return {
-            ok: true,
-        }
-    } catch (error) {
-        console.log("Error creando o actualizando el producto")
-        return {
-            ok: false,
-            message: "Error creando o actualizando el producto"
-        }
     }
-
 }

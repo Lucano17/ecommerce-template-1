@@ -29,5 +29,14 @@ export const ProductImage = ({
         : `/products/${src}`
       : "/imgs/placeholder.jpg";
 
-  return <Image src={localSrc} width={width} height={height} alt={alt} />;
+  return (
+    <Image
+      src={localSrc}
+      width={width}
+      height={height}
+      alt={alt}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    />
+  );
 };

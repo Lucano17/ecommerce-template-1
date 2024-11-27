@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { createUpdateProduct } from "@/actions";
+import { useRouter } from "next/navigation";
 
 interface Props {
   product: Partial<Product> & { ProductImage?: ProductImage[] };
@@ -32,6 +33,8 @@ export const ProductForm = ({ product, categories }: Props) => {
   const [selectedSizes, setSelectedSizes] = useState<string[]>(
     product.sizes ?? []
   );
+
+  const router = useRouter()
 
   const {
     handleSubmit,
@@ -76,7 +79,14 @@ export const ProductForm = ({ product, categories }: Props) => {
     formData.append("categoryId", productToSave.categoryId ?? "");
     formData.append("gender", productToSave.gender ?? "");
 
-    const { ok } = await createUpdateProduct(formData);
+    const { ok, product: updatedProduct } = await createUpdateProduct(formData);
+
+    if (!ok) {
+      alert("El producto no se pudo actualizar")
+      return
+    }
+
+    router.replace(`/admin/product/${updatedProduct?.slug}`)
   };
 
   return (
