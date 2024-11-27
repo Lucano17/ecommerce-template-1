@@ -1,15 +1,16 @@
 "use client";
 
-import { Category, Product, ProductImage } from "@/interfaces";
+import { Category, Product, ProductImage as ProductWithImage } from "@/interfaces";
 import styles from "./ProductForm.module.css";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { createUpdateProduct } from "@/actions";
 import { useRouter } from "next/navigation";
+import { ProductImage } from "@/components";
 
 interface Props {
-  product: Partial<Product> & { ProductImage?: ProductImage[] };
+  product: Partial<Product> & { ProductImage?: ProductWithImage[] };
   categories: Category[];
 }
 
@@ -198,9 +199,9 @@ export const ProductForm = ({ product, categories }: Props) => {
             {product.ProductImage?.map((image) => (
               <div key={image.id}>
                 <div className={styles.imageContainer}>
-                  <Image
+                  <ProductImage
                     alt={product.title ?? ""}
-                    src={`/products/${image.url}`}
+                    src={image.url}
                     width={75}
                     height={75}
                   />
