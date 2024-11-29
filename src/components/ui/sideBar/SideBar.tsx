@@ -21,7 +21,9 @@ export const SideBar = () => {
   const closeSideMenu = useUIStore((state) => state.closeSideMenu);
   const { data: session } = useSession();
   const isAuthenticated = !!session?.user;
-  const isAdmin = (session?.user.role === "admin");
+  const isAdmin = session?.user.role === "admin";
+
+  
 
   return (
     <div>
@@ -65,16 +67,6 @@ export const SideBar = () => {
                   <IoTicketOutline className={styles.navIcon} size={25} />
                   <span className={styles.navLinksText}>Orders</span>
                 </Link>
-
-                <button
-                  className={styles.authButton}
-                  onClick={() => {
-                    onLogout(), closeSideMenu();
-                  }}
-                >
-                  <IoLogOutOutline className={styles.navIcon} size={25} />
-                  <span className={styles.authText}>Salir</span>
-                </button>
               </div>
             )}
 
@@ -108,7 +100,9 @@ export const SideBar = () => {
                   onClick={() => closeSideMenu()}
                 >
                   <IoTicketOutline className={styles.navIcon} size={25} />
-                  <span className={styles.navLinksText}>Órdenes de usuarios</span>
+                  <span className={styles.navLinksText}>
+                    Órdenes de usuarios
+                  </span>
                 </Link>
 
                 <Link
@@ -121,6 +115,17 @@ export const SideBar = () => {
                 </Link>
               </div>
             )}
+            {isAuthenticated && (
+            <button
+              className={styles.authButton}
+              onClick={() => {
+                onLogout(), closeSideMenu();
+              }}
+            >
+
+              <IoLogOutOutline className={styles.navIcon} size={25} />
+              <span className={styles.authText}>Salir</span>
+            </button>)}
           </nav>
         )}
       </div>
