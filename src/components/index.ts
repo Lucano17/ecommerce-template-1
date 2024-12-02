@@ -16,6 +16,7 @@ export * from "./products/product-grid-checkout/PlaceOrder"
 
 export * from "./providers/Providers"
 
+export * from "./ui/category-menu/CategoryMenu"
 export * from "./ui/footer/Footer"
 export * from "./ui/not-found/PageNotFound"
 export * from "./ui/pagination/Pagination"

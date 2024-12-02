@@ -13,7 +13,7 @@ import {
 } from "react-icons/io5";
 import Link from "next/link";
 import { useUIStore } from "@/store";
-import { logout, onLogout } from "@/actions";
+import { onLogout } from "@/actions";
 import { useSession } from "next-auth/react";
 
 export const SideBar = () => {
@@ -24,7 +24,6 @@ export const SideBar = () => {
   const isAdmin = session?.user.role === "admin";
 
   
-
   return (
     <div>
       {isSideMenuOpen && <div className={styles.blackBackground}></div>}

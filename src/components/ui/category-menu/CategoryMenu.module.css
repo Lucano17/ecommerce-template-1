@@ -1,0 +1,81 @@
+.container {
+    display: flex;
+}
+
+.categoryContainer {
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    color: black;
+    background-color: antiquewhite;
+    border-radius: 9px;
+    padding: 10px;
+    margin-top: 4vh;
+    min-width: 200px;
+    min-height: 125px;
+    gap: 40px;
+    z-index: 11;
+}
+
+.categoryContainer::before {
+    content: "";
+    position: absolute;
+    top: -10px; /* Ajusta esta distancia según el tamaño de la flecha */
+    left: 5px; /* Ajusta para posicionar la flecha en la esquina superior izquierda */
+    width: 1px;
+    height: 1px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid antiquewhite; /* El mismo color que el fondo */}
+
+.blackBackground {
+    position: fixed;
+    background-color: rgb(0, 0, 0, 0.30);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+.blurBackground {
+    position: fixed;
+    backdrop-filter: blur(2px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+.categoryContainer li {
+    list-style: none;
+}
+
+.categorySection ul {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 0; 
+}
+
+.categoryAside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.closeIcon {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    color: black;
+    border: 1px solid black;
+    border-radius: 99px;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+}
