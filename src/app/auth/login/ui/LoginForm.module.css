@@ -72,7 +72,10 @@
 }
 
 .p {
-    margin-top: 30px;
+    display: flex;
+    margin: auto;
+    margin-top: 50px;
+    width: 250px;
 }
 
 @media (max-width: 600px) {
