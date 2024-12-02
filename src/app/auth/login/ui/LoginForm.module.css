@@ -74,3 +74,10 @@
 .p {
     margin-top: 30px;
 }
+
+@media (max-width: 600px) {
+    .registerLink {
+        display: flex;
+        width: 150px;
+    }
+}
