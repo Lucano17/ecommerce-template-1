@@ -13,6 +13,7 @@ import { CategoryMenu } from "@/components";
 export const TopMenu = () => {
   const openSideMenu = useUIStore((state) => state.openSideMenu);
   const openCategoryMenu = useUIStore((state) => state.openCategoryMenu);
+  const closeCategoryMenu = useUIStore((state) => state.closeCategoryMenu);
   const totalItemsInCart = useCartStore((state) => state.getTotalItems());
   const [loaded, setLoaded] = useState(false);
   const [categories, setCategories] = useState<{ id: string; name: string }[]>(
@@ -31,7 +32,7 @@ export const TopMenu = () => {
   return (
     <nav className={styles.nav}>
       <div className={styles.container}>
-        <Link href="/">
+        <Link href="/" onClick={closeCategoryMenu}>
           <span
             className={`
                 ${titleFont.className}
@@ -48,7 +49,7 @@ export const TopMenu = () => {
           <CategoryMenu categories={categories} />
         </div>
 
-        <div className={styles.items}>
+        <div className={styles.items} onClick={closeCategoryMenu}>
           <Link href="/search" className={styles.navItem}>
             <IoSearchOutline />
           </Link>
