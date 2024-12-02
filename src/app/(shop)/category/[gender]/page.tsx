@@ -1,13 +1,10 @@
 import { notFound, redirect } from "next/navigation";
-// import { initialData } from "@/seed/seed"; ESTO ES CON LA SEED INICIAL
 import { Pagination, ProductGrid, Title } from "@/components";
 import { getPaginatedProductsWithImages } from "@/actions";
 import { Gender } from "@prisma/client";
 import styles from "./page.module.css"
 
 export const revalidate = 60
-
-// const seedProducts = initialData.products; ESTO ES CON LA SEED INICIAL
 interface Props {
   params: {
     gender: string; // sino Type Category
