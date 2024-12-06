@@ -20,6 +20,27 @@ export const TopMenu = () => {
     []
   );
 
+  const [topMenuFull, setTopMenuFull] = useState(true);
+  const [windowDimention, setWindowDimention] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  const detectDimention = () => {
+    setWindowDimention({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", detectDimention);
+    windowDimention.width > 750 && setTopMenuFull(true);
+    return () => {
+      window.removeEventListener("resize", detectDimention);
+    };
+  }, [windowDimention]);
+
   useEffect(() => {
     const fetchCategories = async () => {
       const categories = await getCategories();
@@ -42,18 +63,25 @@ export const TopMenu = () => {
             <span> | Shop</span>
           </span>
         </Link>
-        <div>
-          <button className={styles.navMenu} onClick={openCategoryMenu}>
-            Productos
-          </button>
-          <CategoryMenu categories={categories} />
+        <div className={styles.navLinksContainer}>
+          <div>
+            <button className={styles.navMenu} onClick={openCategoryMenu}>
+              Productos
+            </button>
+            <CategoryMenu categories={categories} />
+          </div>
+          {windowDimention.width > 750 && (
+            <Link href="/about" className={styles.navLink}>
+              Conócenos!
+            </Link>
+          )}
         </div>
-          <Link href="/about">Conócenos!</Link>
-
         <div className={styles.items} onClick={closeCategoryMenu}>
-          <Link href="/search" className={styles.navItem}>
-            <IoSearchOutline />
-          </Link>
+          {windowDimention.width > 750 && (
+            <Link href="/search" className={styles.navItem}>
+              <IoSearchOutline />
+            </Link>
+          )}
           <Link href={totalItemsInCart === 0 && loaded ? "/empty" : "/cart"}>
             <div className={styles.navItem}>
               {loaded && totalItemsInCart > 0 && (
