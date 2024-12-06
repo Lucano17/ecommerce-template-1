@@ -1,10 +1,9 @@
 "use client";
 
-// import React, { useState } from "react";
 import styles from "./TopMenu.module.css";
 import Link from "next/Link";
 import { titleFont } from "@/fonts/fonts";
-import { IoSearchOutline, IoCartOutline } from "react-icons/io5";
+import { IoSearchOutline, IoCartOutline, IoMenuSharp } from "react-icons/io5";
 import { useCartStore, useUIStore } from "@/store";
 import { useEffect, useState } from "react";
 import { getCategories } from "@/actions";
@@ -21,24 +20,26 @@ export const TopMenu = () => {
   );
 
   const [topMenuFull, setTopMenuFull] = useState(true);
-  const [windowDimention, setWindowDimention] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+  const [windowDimention, setWindowDimention] = useState({ width: 0, height: 0 });
 
-  const detectDimention = () => {
-    setWindowDimention({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
-  };
-
-  useEffect(() => {
+  useEffect(()=>{
+    const detectDimention = () => {
+      setWindowDimention({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+    detectDimention();
     window.addEventListener("resize", detectDimention);
-    windowDimention.width > 750 && setTopMenuFull(true);
+    window.addEventListener("resize", detectDimention);
     return () => {
       window.removeEventListener("resize", detectDimention);
     };
+
+  },[])
+
+  useEffect(() => {
+    if (windowDimention.width > 750) setTopMenuFull(true);
   }, [windowDimention]);
 
   useEffect(() => {
@@ -92,7 +93,11 @@ export const TopMenu = () => {
           </Link>
 
           <button className={styles.navMenu} onClick={openSideMenu}>
-            Menu
+            {
+              windowDimention.width > 750
+              ? "Menu"
+              : <IoMenuSharp className={styles.icon}/>
+            }
           </button>
         </div>
       </div>

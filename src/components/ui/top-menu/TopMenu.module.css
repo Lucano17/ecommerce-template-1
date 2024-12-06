@@ -71,6 +71,7 @@
     background: none;
     border: none;
     cursor: pointer;
+    color: rgb(223, 219, 219)
 }
 
 .navMenu:hover {
@@ -85,6 +86,16 @@
 .navLink {
     font-size: 15px;
     font-weight: 600;
+    color: rgb(223, 219, 219)
+}
+
+.navLink:hover {
+    box-shadow: 0px 3px 2px -2px rgb(255, 255, 255);
+}
+
+.icon {
+    display: flex;
+    font-size: 25px;
 }
 
 @keyframes shine {
@@ -93,5 +104,11 @@
     }
     100% {
       background-position: 200%;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .container {
+        gap: 27px;
     }
   }
