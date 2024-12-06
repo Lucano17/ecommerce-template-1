@@ -48,6 +48,7 @@ export const TopMenu = () => {
           </button>
           <CategoryMenu categories={categories} />
         </div>
+          <Link href="/about">Conócenos!</Link>
 
         <div className={styles.items} onClick={closeCategoryMenu}>
           <Link href="/search" className={styles.navItem}>
