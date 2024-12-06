@@ -3,6 +3,8 @@
 import styles from "./SideBar.module.css";
 import {
   IoCloseOutline,
+  IoHome,
+  IoHomeOutline,
   IoLogInOutline,
   IoLogOutOutline,
   IoPeopleOutline,
@@ -15,6 +17,7 @@ import Link from "next/link";
 import { useUIStore } from "@/store";
 import { onLogout } from "@/actions";
 import { useSession } from "next-auth/react";
+import { BsShop } from "react-icons/bs";
 
 export const SideBar = () => {
   const isSideMenuOpen = useUIStore((state) => state.isSideMenuOpen);
@@ -23,7 +26,6 @@ export const SideBar = () => {
   const isAuthenticated = !!session?.user;
   const isAdmin = session?.user.role === "admin";
 
-  
   return (
     <div>
       {isSideMenuOpen && <div className={styles.blackBackground}></div>}
@@ -47,6 +49,24 @@ export const SideBar = () => {
               />
             </div>
 
+            <Link
+              href={"/"}
+              className={styles.navLinks}
+              onClick={() => closeSideMenu()}
+            >
+              <IoHomeOutline className={styles.navIcon} size={25} />
+              <span className={styles.navLinksText}>Inicio</span>
+            </Link>
+
+            <Link
+              href={"/about"}
+              className={styles.navLinks}
+              onClick={() => closeSideMenu()}
+            >
+              <BsShop className={styles.navIcon} size={25} />
+              <span className={styles.navLinksText}>Conócenos</span>
+            </Link>
+
             {isAuthenticated && (
               <div>
                 <Link
@@ -64,7 +84,7 @@ export const SideBar = () => {
                   onClick={() => closeSideMenu()}
                 >
                   <IoTicketOutline className={styles.navIcon} size={25} />
-                  <span className={styles.navLinksText}>Orders</span>
+                  <span className={styles.navLinksText}>Mis órdenes</span>
                 </Link>
               </div>
             )}
@@ -115,16 +135,16 @@ export const SideBar = () => {
               </div>
             )}
             {isAuthenticated && (
-            <button
-              className={styles.authButton}
-              onClick={() => {
-                onLogout(), closeSideMenu();
-              }}
-            >
-
-              <IoLogOutOutline className={styles.navIcon} size={25} />
-              <span className={styles.authText}>Salir</span>
-            </button>)}
+              <button
+                className={styles.authButton}
+                onClick={() => {
+                  onLogout(), closeSideMenu();
+                }}
+              >
+                <IoLogOutOutline className={styles.navIcon} size={25} />
+                <span className={styles.authText}>Salir</span>
+              </button>
+            )}
           </nav>
         )}
       </div>
