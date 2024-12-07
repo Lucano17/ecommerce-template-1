@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -6,25 +6,25 @@ import { Title, MercadoPagoButton, PayPalButton } from "@/components";
 import { getOrderById } from "@/actions";
 import styles from "./page.module.css";
 import Skeleton from "@/components/skeleton/Skeleton";
+import AlertMessage from "@/components/ui/alert/AlertMessage";
 
 interface Props {
   params: {
-    orderId: string
-    id: string
-   };
+    orderId: string;
+    id: string;
+  };
 }
 
 export default function PaymentPage({ params }: Props) {
   const { orderId, id } = params;
   const [preferenceId, setPreferenceId] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [order, setOrder] = useState<any>(null)
+  const [order, setOrder] = useState<any>(null);
   const router = useRouter();
 
   useEffect(() => {
     if (preferenceId) return;
     const fetchPreference = async () => {
-
       try {
         const response = await fetch("/api/payment/mercadopago/preference", {
           method: "POST",
@@ -48,8 +48,7 @@ export default function PaymentPage({ params }: Props) {
     fetchPreference();
   }, [orderId, router]);
 
-  useEffect(() => {
-  }, [preferenceId]);  // Este effect se ejecuta cada vez que preferenceId cambia
+  useEffect(() => {}, [preferenceId]); // Este effect se ejecuta cada vez que preferenceId cambia
 
   useEffect(() => {
     const getOrder = async () => {
@@ -59,8 +58,8 @@ export default function PaymentPage({ params }: Props) {
         setOrder(order);
       } else {
         return {
-          message: "No se ha encontrado la orden"
-        }
+          message: "No se ha encontrado la orden",
+        };
       }
       setIsLoading(false);
     };
@@ -70,6 +69,9 @@ export default function PaymentPage({ params }: Props) {
 
   return (
     <div className={styles.container}>
+      <AlertMessage alertMessage="RECUERDA QUE ESTA ES UNA TIENDA DE PRUEBA. 
+        Por favor, utiliza cuentas de prueba para realizar los pagos"/>
+
       <Title title="Payment" />
       <div className={styles.paymentContainer}>
         {isLoading ? (

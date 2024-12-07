@@ -9,18 +9,15 @@ import {
   IoLogoWhatsapp,
 } from "react-icons/io5";
 import { Map } from "@/components";
+import AlertMessage from "@/components/ui/alert/AlertMessage";
 
 export default async function AboutPage() {
   const categories = await getCategories();
   return (
     <>
       <div className={styles.container}>
-        <span>
-          RECUERDA QUE ESTA ES UNA TIENDA DE PRUEBA PARA MI PORTFOLIO <br />
-          Por favor, utiliza cuentas de prueba para navegar y realizar pagos.{" "}
-          <br />
-          No nos haremos cargo por cualquier inconveniente.
-        </span>
+      <AlertMessage alertMessage="RECUERDA QUE ESTA ES UNA TIENDA DE PRUEBA. 
+        Por favor, utiliza cuentas de prueba para realizar los pagos"/>
         <div>
           <Title title="Teslo Shop" />
           <h3>La tienda de indumentaria online más grande de Argentina</h3>
