@@ -1,64 +1,62 @@
 "use server"
 
 import prisma from "@/lib/prisma"
-import { Gender } from "@prisma/client";
+import { Category, Gender } from "@prisma/client";
 
 
 
 interface PaginationOptions {
     page?: number;
     take?: number;
-    id?: string;
-    gender?: Gender
-}
-
-
-export const getPaginatedProductsWithImages = async({
+    gender?: Gender;
+    category?: string;
+  }
+  
+  export const getPaginatedProductsWithImages = async ({
     page = 1,
     take = 12,
     gender,
-}:PaginationOptions)=> {
-    if (isNaN(Number(page))) page = 1
-    if (page < 1) page = 1
-
-
+    category,
+  }: PaginationOptions) => {
     try {
-        // 1. Obtener el total de productos
-        const products = await prisma.product.findMany({
-            take: take,
-            skip: (page - 1) * take,
-            include: {
-                ProductImage: {
-                    take: 2,
-                    select: {
-                        url: true
-                    }
-                }
-            },
-            where: {
-                gender: gender
-            }
-        })
-
-        // 2. Obtener el total de páginas
-        const totalCount = await prisma.product.count({
-            where: {
-                gender: gender
-            }
-        })
-        const totalPages = Math.ceil(totalCount / take)
-
-
-        return {
-            currentPage: page,
-            totalPages: totalPages,
-            products: products.map( product => ({
-                ...product,
-                images: product.ProductImage.map(image => image.url)
-            }))
-        }
-
+      const whereClause: any = {};
+  
+      if (gender) {
+        whereClause.gender = gender;
+      }
+  
+      if (category) {
+        whereClause.category = {
+          name: category,
+        };
+      }
+  
+      const products = await prisma.product.findMany({
+        take,
+        skip: (page - 1) * take,
+        include: {
+          ProductImage: {
+            take: 2,
+            select: { url: true },
+          },
+        },
+        where: whereClause,
+      });
+  
+      const totalCount = await prisma.product.count({ where: whereClause });
+      const totalPages = Math.ceil(totalCount / take);
+  
+      return {
+        currentPage: page,
+        totalPages,
+        products: products.map((product) => ({
+          ...product,
+          images: product.ProductImage.map((image) => image.url),
+        })),
+      };
     } catch (error) {
-        throw new Error ("No se pudieron cargar los productos")
+      console.error("Error al cargar los productos:", error);
+      throw new Error("No se pudieron cargar los productos");
     }
-}
+  };
+  

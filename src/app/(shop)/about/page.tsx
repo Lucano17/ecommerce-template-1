@@ -37,13 +37,13 @@ export default async function AboutPage() {
                 </p>
 
                 <div className={styles.categoriesLinksContainer}>
-                  <Link href="/category/men" className={styles.categoryLink}>
+                  <Link href="/gender/men" className={styles.categoryLink}>
                     Ropa para<span>hombres</span>
                   </Link>
-                  <Link href="/category/" className={styles.categoryLink}>
+                  <Link href="/gender/women" className={styles.categoryLink}>
                     Ropa para<span>mujeres</span>
                   </Link>
-                  <Link href="/category/" className={styles.categoryLink}>
+                  <Link href="/gender/kid" className={styles.categoryLink}>
                     Ropa para<span>niños</span>
                   </Link>
                   {/* <Link href="/category/" className={styles.categoryLink}>Ropa<span>unisex</span></Link> */}

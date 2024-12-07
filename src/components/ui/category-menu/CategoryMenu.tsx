@@ -34,7 +34,7 @@ export const CategoryMenu = ({ categories }: Props) => {
               <ul>
                 <li>
                   <Link
-                    href="/category/men"
+                    href="/gender/men"
                     onClick={() => closeCategoryMenu()}
                   >
                     Hombres
@@ -42,7 +42,7 @@ export const CategoryMenu = ({ categories }: Props) => {
                 </li>
                 <li>
                   <Link
-                    href="/category/women"
+                    href="/gender/women"
                     onClick={() => closeCategoryMenu()}
                   >
                     Mujeres
@@ -50,7 +50,7 @@ export const CategoryMenu = ({ categories }: Props) => {
                 </li>
                 <li>
                   <Link
-                    href="/category/kid"
+                    href="/gender/kid"
                     onClick={() => closeCategoryMenu()}
                   >
                     Niños
