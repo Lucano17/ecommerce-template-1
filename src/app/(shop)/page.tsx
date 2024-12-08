@@ -1,42 +1,43 @@
-import { ProductGrid, Title, Pagination } from "@/components";
-import styles from "./page.module.css";
+import { ProductGrid, Title, Pagination, Filter } from "@/components";
 import { getPaginatedProductsWithImages } from "@/actions";
 import { redirect } from "next/navigation";
 import AlertMessage from "@/components/ui/alert/AlertMessage";
-
-export const revalidate = 60;
+import { Sorter } from "@/components/ui/filter/Sorter";
 
 interface Props {
   searchParams: {
     page?: string;
+    sortBy?: string;
   };
 }
 
 export default async function ShopPage({ searchParams }: Props) {
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
+  const sortBy = searchParams.sortBy || "price_asc";  // Valor por defecto
 
-  const { products, currentPage, totalPages } =
-    await getPaginatedProductsWithImages({ page });
+  // Obtenemos los productos filtrados y paginados desde el servidor
+  const { products, currentPage, totalPages } = await getPaginatedProductsWithImages({
+    page,
+    sortBy,
+  });
 
   if (products.length === 0) {
-    redirect("/");
+    return <AlertMessage alertMessage="No hay productos disponibles." />;
   }
 
   return (
     <>
-      <div className={styles.container}>
-
-        <AlertMessage alertMessage="RECUERDA QUE ESTA ES UNA TIENDA DE PRUEBA. 
-        Por favor, utiliza cuentas de prueba para realizar los pagos"/>
-
-        <Title
-          className={styles.title}
-          title="Tienda"
-          subtitle="Todos los productos"
-        />
+      <div>
+        <AlertMessage alertMessage="RECUERDA QUE ESTA ES UNA TIENDA DE PRUEBA." />
+        
+        <Title title="Tienda" subtitle="Todos los productos" />
+        
+        {/* Filter maneja el estado de los filtros en el lado del cliente */}
+        <Filter />
         <ProductGrid products={products} />
       </div>
-      <div className={styles.pagination}>
+
+      <div>
         <Pagination totalPages={totalPages} />
       </div>
     </>
