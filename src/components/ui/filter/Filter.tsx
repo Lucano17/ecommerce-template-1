@@ -1,6 +1,7 @@
 "use client"
 
 import { useRouter, usePathname } from "next/navigation";
+import styles from "./Filter.module.css"
 
 export const Filter = () => {
   const router = useRouter();
@@ -23,6 +24,8 @@ export const Filter = () => {
 
   return (
     <>
+    <div className={styles.container}>
+      <div className={styles.sortContainer}>
       <label htmlFor="sort">Ordenar por:</label>
       <select id="sort" onChange={handleSortChange}>
         <option value="price_asc">Precio (menor a mayor)</option>
@@ -30,6 +33,8 @@ export const Filter = () => {
         <option value="name_asc">Nombre (A-Z)</option>
         <option value="name_desc">Nombre (Z-A)</option>
       </select>
+      </div>
+    </div>
     </>
   );
 };
