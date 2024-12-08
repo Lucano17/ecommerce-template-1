@@ -1,5 +1,5 @@
 import { notFound, redirect } from "next/navigation";
-import { Pagination, ProductGrid, Title } from "@/components";
+import { Filter, Pagination, ProductGrid, Title } from "@/components";
 import { getPaginatedProductsWithImages } from "@/actions";
 import { Gender } from "@prisma/client";
 import styles from "./page.module.css";
@@ -12,12 +12,14 @@ interface Props {
   };
   searchParams: {
     page?: string;
+    sortBy?: string;
   };
 }
 
 export default async function GendersByIdPage({ params, searchParams }: Props) {
   const { gender } = params;
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
+  const sortBy = searchParams.sortBy || "price_asc";  // Valor por defecto
 
   if (!Object.values(Gender).includes(gender as Gender)) {
     notFound();
@@ -25,6 +27,7 @@ export default async function GendersByIdPage({ params, searchParams }: Props) {
 
   const { products, currentPage, totalPages } = await getPaginatedProductsWithImages({
     page,
+    sortBy,
     gender: gender as Gender,
   });
 
@@ -42,6 +45,7 @@ export default async function GendersByIdPage({ params, searchParams }: Props) {
   return (
     <div className={styles.container}>
       <Title title={`Indumentaria para ${labels[gender]}`} />
+      <Filter />
       <ProductGrid products={products} />
       <Pagination totalPages={totalPages} />
     </div>

@@ -1,16 +1,25 @@
 "use client"
 
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 export const Filter = () => {
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const sortBy = event.target.value;
-    // Redirigimos a la misma página con el nuevo parámetro sortBy en la URL
-    console.log(`/?page=1&sortBy=${sortBy}`);
-    router.push(`/?page=1&sortBy=${sortBy}`);  // Asegúrate de tener la ruta correcta
+
+    if (pathname.startsWith("/shop")) {
+      router.push(`/shop?page=1&sortBy=${sortBy}`);
+    } else if (pathname.startsWith("/gender")) {
+      router.push(`/gender/${pathname.split("/")[2]}?page=1&sortBy=${sortBy}`);
+    } else if (pathname.startsWith("/category")) {
+      router.push(`/category/${pathname.split("/")[2]}?page=1&sortBy=${sortBy}`);
+    } else {
+      router.push(`/?page=1&sortBy=${sortBy}`);
+    }
   };
+  
 
   return (
     <>

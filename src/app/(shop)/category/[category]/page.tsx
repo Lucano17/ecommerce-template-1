@@ -1,5 +1,5 @@
 import { notFound, redirect } from "next/navigation";
-import { Pagination, ProductGrid, Title } from "@/components";
+import { Filter, Pagination, ProductGrid, Title } from "@/components";
 import { getPaginatedProductsWithImages } from "@/actions";
 import styles from "./page.module.css";
 import prisma from "@/lib/prisma";
@@ -12,12 +12,14 @@ interface Props {
   };
   searchParams: {
     page?: string;
+    sortBy?: string
   };
 }
 
 export default async function TypeByIdPage({ params, searchParams }: Props) {
   const { category } = params;
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
+  const sortBy = searchParams.sortBy || "price_asc";  // Valor por defecto
 
   const existingCategory = await prisma.category.findUnique({
     where: { name: category },
@@ -30,6 +32,7 @@ export default async function TypeByIdPage({ params, searchParams }: Props) {
   const { products, currentPage, totalPages } = await getPaginatedProductsWithImages({
     page,
     category,
+    sortBy,
   });
 
   if (products.length === 0) {
@@ -39,6 +42,7 @@ export default async function TypeByIdPage({ params, searchParams }: Props) {
   return (
     <div className={styles.container}>
       <Title title={`Categoría: ${category}`} />
+      <Filter/>
       <ProductGrid products={products} />
       <Pagination totalPages={totalPages} />
     </div>

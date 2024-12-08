@@ -2,7 +2,6 @@ import { ProductGrid, Title, Pagination, Filter } from "@/components";
 import { getPaginatedProductsWithImages } from "@/actions";
 import { redirect } from "next/navigation";
 import AlertMessage from "@/components/ui/alert/AlertMessage";
-import { Sorter } from "@/components/ui/filter/Sorter";
 
 interface Props {
   searchParams: {
