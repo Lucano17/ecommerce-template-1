@@ -13,7 +13,7 @@ interface Props {
 
 export const UsersTable = ({ users }: Props) => {
   return (
-    <div>
+    <div className={styles.container}>
       <table>
         <thead>
           <tr>
