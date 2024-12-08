@@ -2,6 +2,7 @@ import { ProductGrid, Title, Pagination, Filter } from "@/components";
 import { getPaginatedProductsWithImages } from "@/actions";
 import { redirect } from "next/navigation";
 import AlertMessage from "@/components/ui/alert/AlertMessage";
+import styles from "./page.module.css"
 
 interface Props {
   searchParams: {
@@ -26,7 +27,7 @@ export default async function ShopPage({ searchParams }: Props) {
 
   return (
     <>
-      <div>
+      <div className={styles.container}>
         <AlertMessage alertMessage="RECUERDA QUE ESTA ES UNA TIENDA DE PRUEBA." />
         
         <Title title="Tienda" subtitle="Todos los productos" />
@@ -36,7 +37,7 @@ export default async function ShopPage({ searchParams }: Props) {
         <ProductGrid products={products} />
       </div>
 
-      <div>
+      <div className={styles.pagination}>
         <Pagination totalPages={totalPages} />
       </div>
     </>
