@@ -16,6 +16,7 @@
 .topMenuSpan {
     margin-left: 50px;
     font-weight: 700;
+    font-size: 1.2rem;
     text-align: center;
     background: linear-gradient(90deg, #ababab, #ababab, rgb(255, 255, 255), #ababab, #ababab);
     -webkit-background-clip: text;
