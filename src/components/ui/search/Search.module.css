@@ -17,4 +17,5 @@
     background-color: rgb(17, 17, 17);
     padding: 2px 4px;
     border-radius: 0px 5px 5px 0px;
+    cursor: pointer;
 }
