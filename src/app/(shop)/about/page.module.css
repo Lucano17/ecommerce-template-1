@@ -1,96 +1,161 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .aboutContainer {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 .categoriesContainer {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .categoriesLinksContainer {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
 }
 
 .categoryLink {
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
 }
 
 .typesContainer {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .typesContainer ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 10px;
-    gap: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 30px;
 }
 
 .typesContainer li {
-    list-style: none;
+  list-style: none;
 }
 
 .socialContainer {
-    display: flex;
-    flex-direction: column;
-    margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
 }
 
 .socialContainer h4 {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .socialContainer p {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .socialWebsContainer {
-    display: flex;
-    justify-content: center;
-    font-size: 30px;
-    gap: 30px;
-    margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  gap: 30px;
+  margin-top: 10px;
 }
 
 .mapContainer {
-    margin-top: 20px;
-    padding: 0 20px;
+  margin-top: 20px;
+  padding: 0 20px;
 }
 
 .map {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .categoryLink {
-    background-color: black;
-    border: 1px solid white;
-    border-radius: 5px;
-    padding: 4px 5px;
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 4px 5px;
+}
+
+.logoWhatsApp {
+  color: rgb(0, 169, 0);
+}
+
+.logoFacebook {
+  color: rgb(07, 102, 255);
+}
+
+.logoTwitter {
+  color: rgb(8, 160, 233);
+}
+
+.logoInstagram {
+  background: radial-gradient(
+      circle farthest-corner at 35% 90%,
+      #fec564,
+      transparent 50%
+    ),
+    radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%),
+    radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%),
+    radial-gradient(
+      ellipse farthest-corner at 20% -50%,
+      #5258cf,
+      transparent 50%
+    ),
+    radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%),
+    radial-gradient(
+      ellipse farthest-corner at 60% -20%,
+      #893dc2,
+      transparent 50%
+    ),
+    radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent),
+    linear-gradient(
+      #6559ca,
+      #bc318f 30%,
+      #e33f5f 50%,
+      #f77638 70%,
+      #fec66d 100%
+    );
+  background: -moz-linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  background: -webkit-linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
 }
 
 @media (max-width: 800px) {
-    .container {
-        display: flex;
-        margin: auto;
-        width: 70%;
-    }
-    .aboutContainer {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-    .mapContainer {
-        padding: 0;
-    }
+  .container {
+    display: flex;
+    margin: auto;
+    width: 70%;
+  }
+  .aboutContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .mapContainer {
+    padding: 0;
+  }
 }

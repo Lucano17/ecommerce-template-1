@@ -16,8 +16,8 @@ export default async function AboutPage() {
   return (
     <>
       <div className={styles.container}>
-      <AlertMessage alertMessage="RECUERDA QUE ESTA ES UNA TIENDA DE PRUEBA. 
-        Por favor, utiliza cuentas de prueba para realizar los pagos"/>
+        {/* <AlertMessage alertMessage="RECUERDA QUE ESTA ES UNA TIENDA DE PRUEBA. 
+        Por favor, utiliza cuentas de prueba para realizar los pagos"/> */}
         <div>
           <Title title="Teslo Shop" />
           <h3>La tienda de indumentaria online más grande de Argentina</h3>
@@ -55,7 +55,10 @@ export default async function AboutPage() {
                 <ul>
                   {categories?.map((category) => (
                     <li key={category.id}>
-                      <Link href={`/category/${category.name}`} className={styles.categoryLink}>
+                      <Link
+                        href={`/category/${category.name}`}
+                        className={styles.categoryLink}
+                      >
                         {category.name}
                       </Link>
                     </li>
@@ -70,24 +73,41 @@ export default async function AboutPage() {
               <h4>Entérate de nuevos productos y las súper ofertas </h4>
               <span>que tenemos para vos</span>
               <p>(De momento las redes sociales no están disponibles)</p>
+              <svg width="0" height="0">
+                  <defs>
+                    <radialGradient
+                      id="gradient-instagram"
+                      cx="80%"
+                      cy="50%"
+                      r="110%"
+                      gradientTransform="rotate(45)"
+                    >
+                      <stop offset="10%" stopColor="#feda75" /> {/*lightYellow*/}
+                      <stop offset="25%" stopColor="#fa7e1e" /> {/*orange*/}
+                      <stop offset="50%" stopColor="#d62976" /> {/*pink*/}
+                      <stop offset="75%" stopColor="#962fbf" /> {/*purple*/}
+                      <stop offset="100%" stopColor="#4f5bd5" /> {/*blue*/}
+                    </radialGradient>
+                  </defs>
+                </svg>
               <div className={styles.socialWebsContainer}>
-                <IoLogoWhatsapp />
-                <IoLogoInstagram />
-                <IoLogoFacebook />
-                <IoLogoTwitter />
+                <IoLogoWhatsapp className={styles.logoWhatsApp} />
+                <IoLogoInstagram style={{ fill: "url(#gradient-instagram)" }} />
+                <IoLogoFacebook className={styles.logoFacebook} />
+                <IoLogoTwitter className={styles.logoTwitter} />
               </div>
             </div>
           </aside>
         </div>
         <div className={styles.mapContainer}>
-        <p>
-          También visita nuestro local en: <br />
-          Avenida Siempre Viva 742 Springfield
-        </p>
-        <div className={styles.map}>
-        <Map/>
-          {/* Coordenadas de Buenos Aires */}
-        </div>
+          <p>
+            También visita nuestro local en: <br />
+            Avenida Siempre Viva 742 Springfield
+          </p>
+          <div className={styles.map}>
+            <Map />
+            {/* Coordenadas de Buenos Aires */}
+          </div>
         </div>
       </div>
     </>
