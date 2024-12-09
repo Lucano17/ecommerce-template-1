@@ -55,7 +55,7 @@ export default async function AboutPage() {
                 <ul>
                   {categories?.map((category) => (
                     <li key={category.id}>
-                      <Link href={`/category/${category.name}`}>
+                      <Link href={`/category/${category.name}`} className={styles.categoryLink}>
                         {category.name}
                       </Link>
                     </li>

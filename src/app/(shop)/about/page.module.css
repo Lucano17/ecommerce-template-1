@@ -72,6 +72,13 @@
     margin-top: 20px;
 }
 
+.categoryLink {
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 4px 5px;
+}
+
 @media (max-width: 800px) {
     .container {
         display: flex;
