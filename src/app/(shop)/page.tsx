@@ -1,4 +1,4 @@
-import { ProductGrid, Title, Pagination, Filter } from "@/components";
+import { ProductGrid, Title, Pagination, Filter, Search } from "@/components";
 import { getPaginatedProductsWithImages } from "@/actions";
 import { redirect } from "next/navigation";
 import AlertMessage from "@/components/ui/alert/AlertMessage";
@@ -31,9 +31,12 @@ export default async function ShopPage({ searchParams }: Props) {
         <AlertMessage alertMessage="RECUERDA QUE ESTA ES UNA TIENDA DE PRUEBA." />
         
         <Title title="Tienda" subtitle="Todos los productos" />
-        
-        {/* Filter maneja el estado de los filtros en el lado del cliente */}
+
+        <div className={styles.filters}>
+        <Search styleClass={styles.search}/>
         <Filter />
+        </div>
+        
         <ProductGrid products={products} />
       </div>
 

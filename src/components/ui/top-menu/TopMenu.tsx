@@ -8,6 +8,7 @@ import { useCartStore, useUIStore } from "@/store";
 import { useEffect, useState } from "react";
 import { getCategories } from "@/actions";
 import { CategoryMenu } from "@/components";
+import { Search } from "../search/Search";
 
 export const TopMenu = () => {
   const openSideMenu = useUIStore((state) => state.openSideMenu);
@@ -78,11 +79,6 @@ export const TopMenu = () => {
           )}
         </div>
         <div className={styles.items} onClick={closeCategoryMenu}>
-          {windowDimention.width > 750 && (
-            <Link href="/search" className={styles.navItem}>
-              <IoSearchOutline />
-            </Link>
-          )}
           <Link href={totalItemsInCart === 0 && loaded ? "/empty" : "/cart"}>
             <div className={styles.navItem}>
               {loaded && totalItemsInCart > 0 && (

@@ -1,0 +1,20 @@
+.search {
+    display: flex;
+    max-width: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+.search input {
+    display: flex;
+    width: 150px;
+    font-size: 12px;
+    padding: 3px 4px;
+    border-radius: 5px 0px 0px 5px;
+}
+
+.search button {
+    background-color: rgb(17, 17, 17);
+    padding: 2px 4px;
+    border-radius: 0px 5px 5px 0px;
+}
