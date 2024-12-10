@@ -106,5 +106,9 @@
   }
   .mapContainer {
     padding: 0;
+    width: 100%;
+  }
+  .map {
+    width: 100%;
   }
 }
