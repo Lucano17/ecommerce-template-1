@@ -25,7 +25,7 @@ export const OrderSummary = () => {
       <p>Número de artículos<span>{itemsInCart}</span></p>
       <p>Subtotal <span>{currencyFormat(subtotal)}</span></p>
       <p>Impuestos (21%)<span>{currencyFormat(tax)}</span></p>
-      <p>Envío <span>$50</span></p>
+      {/* <p>Envío <span>$50</span></p> */}
       <div className={styles.spacer} />
       <p className={styles.totalPrice}>Total<span>{currencyFormat(total)}</span>
       </p>

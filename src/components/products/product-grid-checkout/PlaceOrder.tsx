@@ -81,9 +81,9 @@ export const PlaceOrder = () => {
         <p>
           Impuestos (21%)<span>{currencyFormat(tax)}</span>
         </p>
-        <p>
+        {/* <p>
           Envío <span>$50</span>
-        </p>
+        </p> */}
         <div className={styles.spacer} />
         <p className={styles.totalPrice}>
           Total<span>{currencyFormat(total)}</span>

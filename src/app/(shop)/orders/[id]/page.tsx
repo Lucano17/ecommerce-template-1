@@ -46,9 +46,9 @@ export default async function OrdersByIdPage({ params }: Props) {
             <p>
               Impuestos (21%)<span>{currencyFormat(order!.tax)}</span>
             </p>
-            <p>
+            {/* <p>
               Envío <span>$50</span>
-            </p>
+            </p> */}
 
             <div className={styles.spacer} />
             <p className={styles.totalPrice}>
