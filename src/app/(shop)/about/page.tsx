@@ -22,6 +22,16 @@ export default async function AboutPage() {
           <Title title="Teslo Shop" />
           <h3>La tienda de indumentaria online más grande de Argentina</h3>
         </div>
+        <div className={styles.mainContent}>
+          <p>
+            Teslo Shop es una tienda de ropa con más de 15 años brindando a
+            nuestros clientes los mejores productos, con la mejor calidad.
+            Contamos con indumentaria y accesorios de industria nacional, y
+            también importados de los mejores proveedores del exterior. Contamos
+            con ropa de marca al precio más económico y asequible. Disfruta de
+            nuestra tienda, ¡y esperamos saber más de vos pronto!
+          </p>
+        </div>
         <div className={styles.aboutContainer}>
           <div>
             <section>
@@ -74,22 +84,22 @@ export default async function AboutPage() {
               <span>que tenemos para vos</span>
               <p>(De momento las redes sociales no están disponibles)</p>
               <svg width="0" height="0">
-                  <defs>
-                    <radialGradient
-                      id="gradient-instagram"
-                      cx="80%"
-                      cy="50%"
-                      r="110%"
-                      gradientTransform="rotate(45)"
-                    >
-                      <stop offset="10%" stopColor="#feda75" /> {/*lightYellow*/}
-                      <stop offset="25%" stopColor="#fa7e1e" /> {/*orange*/}
-                      <stop offset="50%" stopColor="#d62976" /> {/*pink*/}
-                      <stop offset="75%" stopColor="#962fbf" /> {/*purple*/}
-                      <stop offset="100%" stopColor="#4f5bd5" /> {/*blue*/}
-                    </radialGradient>
-                  </defs>
-                </svg>
+                <defs>
+                  <radialGradient
+                    id="gradient-instagram"
+                    cx="80%"
+                    cy="50%"
+                    r="110%"
+                    gradientTransform="rotate(45)"
+                  >
+                    <stop offset="10%" stopColor="#feda75" /> {/*lightYellow*/}
+                    <stop offset="25%" stopColor="#fa7e1e" /> {/*orange*/}
+                    <stop offset="50%" stopColor="#d62976" /> {/*pink*/}
+                    <stop offset="75%" stopColor="#962fbf" /> {/*purple*/}
+                    <stop offset="100%" stopColor="#4f5bd5" /> {/*blue*/}
+                  </radialGradient>
+                </defs>
+              </svg>
               <div className={styles.socialWebsContainer}>
                 <IoLogoWhatsapp className={styles.logoWhatsApp} />
                 <IoLogoInstagram style={{ fill: "url(#gradient-instagram)" }} />

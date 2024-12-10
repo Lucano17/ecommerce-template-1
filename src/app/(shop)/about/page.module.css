@@ -4,6 +4,13 @@
   gap: 20px;
 }
 
+.mainContent {
+  display: flex;
+  text-justify: auto;
+  width: 80%;
+  margin: auto;
+}
+
 .aboutContainer {
   display: flex;
   justify-content: space-around;
