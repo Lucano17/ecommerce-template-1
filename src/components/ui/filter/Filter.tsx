@@ -9,17 +9,25 @@ export const Filter = () => {
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const sortBy = event.target.value;
+    const searchParams = new URLSearchParams(window.location.search);
 
-    if (pathname.startsWith("/shop")) {
-      router.push(`/shop?page=1&sortBy=${sortBy}`);
-    } else if (pathname.startsWith("/gender")) {
-      router.push(`/gender/${pathname.split("/")[2]}?page=1&sortBy=${sortBy}`);
-    } else if (pathname.startsWith("/category")) {
-      router.push(`/category/${pathname.split("/")[2]}?page=1&sortBy=${sortBy}`);
-    } else {
-      router.push(`/?page=1&sortBy=${sortBy}`);
-    }
-  };
+    searchParams.set("sortBy", sortBy); // Actualiza el parámetro sortBy
+  searchParams.set("page", "1"); // Reinicia la paginación
+
+  const newPath = `${pathname}?${searchParams.toString()}`;
+  router.push(newPath);
+};
+
+    // if (pathname.startsWith("/")) {
+    //   router.push(`/?page=1&sortBy=${sortBy}`);
+    // } else if (pathname.startsWith("/gender")) {
+    //   router.push(`/gender/${pathname.split("/")[2]}?page=1&sortBy=${sortBy}`);
+    // } else if (pathname.startsWith("/category")) {
+    //   router.push(`/category/${pathname.split("/")[2]}?page=1&sortBy=${sortBy}`);
+    // } else {
+    //   router.push(`/?page=1&sortBy=${sortBy}`);
+    // }
+
   
 
   return (

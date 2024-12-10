@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import styles from "./Search.module.css"
+import styles from "./Search.module.css";
 import { useRouter } from "next/navigation";
 
 interface SearchProps {
@@ -9,7 +9,10 @@ interface SearchProps {
   styleClass?: string;
 }
 
-export const Search = ({ placeholder = "Buscar productos...", styleClass, }: SearchProps) => {
+export const Search = ({
+  placeholder = "Buscar productos...",
+  styleClass,
+}: SearchProps) => {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -19,7 +22,11 @@ export const Search = ({ placeholder = "Buscar productos...", styleClass, }: Sea
 
     setLoading(true);
     try {
-      router.push(`/?q=${encodeURIComponent(query)}`)
+      const searchParams = new URLSearchParams(); // Crea nuevos parámetros de búsqueda
+      searchParams.set("q", query); // Agrega el parámetro de búsqueda
+      searchParams.set("page", "1"); // Reinicia la paginación
+
+      router.push(`/?${searchParams.toString()}`); // Redirige con los nuevos parámetros
     } catch (error) {
       console.error("Error al buscar productos:", error);
     } finally {
@@ -36,7 +43,11 @@ export const Search = ({ placeholder = "Buscar productos...", styleClass, }: Sea
         placeholder={placeholder}
         className={styles.input}
       />
-      <button onClick={handleSearch} disabled={loading} className={styles.button}>
+      <button
+        onClick={handleSearch}
+        disabled={loading}
+        className={styles.button}
+      >
         {loading ? "Buscando..." : "Buscar"}
       </button>
       {/* {results.length > 0 && (
