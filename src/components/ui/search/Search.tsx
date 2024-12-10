@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import styles from "./Search.module.css"
-import router from "next/router";
 import { useRouter } from "next/navigation";
 
 interface SearchProps {

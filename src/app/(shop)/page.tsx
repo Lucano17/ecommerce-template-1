@@ -35,12 +35,9 @@ export default async function ShopPage({ searchParams }: Props) {
         
         <Title title="Tienda" subtitle="Todos los productos" />
 
-        <div className={styles.filters}>
-        <Search styleClass={styles.search}/>
-        <Filter />
-        </div>
 
-        <ProductGrid products={products} />
+
+        <ProductGrid products={products} searchParams={searchParams}/>
       </div>
 
       <div className={styles.pagination}>

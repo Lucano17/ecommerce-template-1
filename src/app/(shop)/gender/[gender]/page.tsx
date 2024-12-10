@@ -13,6 +13,7 @@ interface Props {
   searchParams: {
     page?: string;
     sortBy?: string;
+    q?: string
   };
 }
 
@@ -20,6 +21,8 @@ export default async function GendersByIdPage({ params, searchParams }: Props) {
   const { gender } = params;
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
   const sortBy = searchParams.sortBy || "price_asc";  // Valor por defecto
+  const query = searchParams.q || "";
+
 
   if (!Object.values(Gender).includes(gender as Gender)) {
     notFound();
@@ -29,6 +32,7 @@ export default async function GendersByIdPage({ params, searchParams }: Props) {
     page,
     sortBy,
     gender: gender as Gender,
+    query,
   });
 
   if (products.length === 0) {
@@ -45,8 +49,7 @@ export default async function GendersByIdPage({ params, searchParams }: Props) {
   return (
     <div className={styles.container}>
       <Title title={`Indumentaria para ${labels[gender]}`} />
-      <Filter />
-      <ProductGrid products={products} />
+      <ProductGrid products={products} searchParams={searchParams}/>
       <Pagination totalPages={totalPages} />
     </div>
   );
