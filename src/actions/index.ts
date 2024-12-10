@@ -1,6 +1,3 @@
-import { paypalCheckPayment } from "./payment/paypal-check-payment"
-import { changeUserRole } from "./users/change-user-role"
-
 
 export {setUserAddress} from "./address/set-user-address"
 export {deleteUserAddress} from "./address/delete-user-address"

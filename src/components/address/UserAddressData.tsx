@@ -1,6 +1,6 @@
 
 
-import React, { useEffect } from "react";
+import React from "react";
 import { getOrderById } from "@/actions/order/get-order-by-id";
 import styles from "./UserAddressData.module.css";
 

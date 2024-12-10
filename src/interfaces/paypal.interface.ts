@@ -52,7 +52,7 @@ export interface PurchaseUnit {
   payee: Payee;
   shipping: Shipping;
   payments: Payments;
-  invoice_id: String;
+  invoice_id: string;
 }
 
 export interface Amount {

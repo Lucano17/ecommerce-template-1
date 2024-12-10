@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import styles from "./AddressForm.module.css";
 import { useForm } from "react-hook-form";
-import { UserAddress, Address, Country } from "@/interfaces";
+import { Address, Country } from "@/interfaces";
 import { useAddressStore } from "@/store";
 import { deleteUserAddress, setUserAddress } from "@/actions";
 import { useSession } from "next-auth/react";
@@ -52,7 +52,7 @@ export const AddressForm = ({countries, userStoreAddress = {}}: Props) => {
     if (address.firstName) {
       reset(address)
     }
-  },[])
+  },[address, reset])
   
   const onSubmit = async(data: FormInputs) => {
     const {rememberAddress, ...restAddress} = data

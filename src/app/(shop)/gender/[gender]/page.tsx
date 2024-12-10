@@ -1,5 +1,5 @@
 import { notFound, redirect } from "next/navigation";
-import { Filter, Pagination, ProductGrid, Title } from "@/components";
+import { Pagination, ProductGrid, Title } from "@/components";
 import { getPaginatedProductsWithImages } from "@/actions";
 import { Gender } from "@prisma/client";
 import styles from "./page.module.css";

@@ -9,7 +9,7 @@ interface Props {
 export default function AlertMessage({alertMessage}: Props) {
   useEffect(() => {
     alert(alertMessage);
-  }, []);
+  }, [alertMessage]);
 
   return null; // No necesitamos renderizar nada, solo mostrar la alerta
 }

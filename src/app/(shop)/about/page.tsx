@@ -9,7 +9,6 @@ import {
   IoLogoWhatsapp,
 } from "react-icons/io5";
 import { Map } from "@/components";
-import AlertMessage from "@/components/ui/alert/AlertMessage";
 
 export default async function AboutPage() {
   const categories = await getCategories();

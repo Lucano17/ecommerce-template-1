@@ -1,8 +1,7 @@
 "use client";
 
 import { getStockBySlug } from "@/actions";
-import { Suspense, useEffect, useState } from "react";
-import styles from "./StockLabel.module.css"
+import { useEffect, useState } from "react";
 
 interface Props {
   slug: string;
@@ -13,29 +12,22 @@ export const StockLabel = ({ slug }: Props) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    const getStock = async () => {
+      const inStock = await getStockBySlug(slug);
+      setStock(inStock);
+      setIsLoading(false);
+    };
     getStock();
-  }, []);
-
-  const getStock = async () => {
-    const inStock = await getStockBySlug(slug);
-    setStock(inStock);
-    setIsLoading(false);
-  };
+  }, [slug]);
 
   return (
     <>
-    {
-      isLoading
-      ? (
-          // <h3 className={styles.skeleton}>&nbsp;</h3>
-          <span>Cargando stock...</span>
-      )
-      : (
-        <span>
-          Stock: {stock}
-        </span>
-      )
-    }
+      {isLoading ? (
+        // <h3 className={styles.skeleton}>&nbsp;</h3>
+        <span>Cargando stock...</span>
+      ) : (
+        <span>Stock: {stock}</span>
+      )}
     </>
   );
 };

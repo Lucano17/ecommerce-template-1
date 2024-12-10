@@ -1,7 +1,6 @@
 "use client";
 
 import { ProductImage, QuantitySelector, Title } from "@/components";
-import Image from "next/image";
 import styles from "./ProductsInCart.module.css";
 import { FaTrashAlt } from "react-icons/fa";
 import { useCartStore } from "@/store";

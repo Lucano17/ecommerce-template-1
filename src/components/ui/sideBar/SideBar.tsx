@@ -3,7 +3,6 @@
 import styles from "./SideBar.module.css";
 import {
   IoCloseOutline,
-  IoHome,
   IoHomeOutline,
   IoLogInOutline,
   IoLogOutOutline,

@@ -2,10 +2,9 @@
 
 import React from "react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import { User } from "@/interfaces";
 import styles from "./UsersTable.module.css";
-import { changeUserRole, getPaginatedUsers } from "@/actions";
+import { changeUserRole } from "@/actions";
 
 interface Props {
   users: User[];

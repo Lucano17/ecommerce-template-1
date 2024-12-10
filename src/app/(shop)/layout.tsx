@@ -1,6 +1,6 @@
 import "../globals.css";
 import type { Metadata } from "next";
-import { inter, geistMono, geistSans } from "@/fonts/fonts";
+// import { inter, geistMono, geistSans } from "@/fonts/fonts";
 import { SideBar, TopMenu } from "@/components";
 import Footer from "@/components/ui/footer/Footer";
 import styles from "./layout.module.css"

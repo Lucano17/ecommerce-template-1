@@ -1,6 +1,5 @@
-import Image from "next/image";
+
 import styles from "./page.module.css";
-import { titleFont } from "../../fonts/fonts";
 
 export default function Auth() {
   return (

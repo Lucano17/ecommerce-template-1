@@ -3,12 +3,11 @@
 import styles from "./TopMenu.module.css";
 import Link from "next/Link";
 import { titleFont } from "@/fonts/fonts";
-import { IoSearchOutline, IoCartOutline, IoMenuSharp } from "react-icons/io5";
+import { IoCartOutline, IoMenuSharp } from "react-icons/io5";
 import { useCartStore, useUIStore } from "@/store";
 import { useEffect, useState } from "react";
 import { getCategories } from "@/actions";
 import { CategoryMenu } from "@/components";
-import { Search } from "../search/Search";
 
 export const TopMenu = () => {
   const openSideMenu = useUIStore((state) => state.openSideMenu);

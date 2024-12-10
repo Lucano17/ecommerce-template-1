@@ -1,10 +1,8 @@
-import { IsPaid, Title } from "@/components";
-import Link from "next/link";
-import { getPaginatedOrders, getPaginatedUsers } from "@/actions";
+import { Title } from "@/components";
+import { getPaginatedUsers } from "@/actions";
 import { redirect } from "next/navigation";
 import styles from "./page.module.css";
 import { UsersTable } from "./ui/UsersTable";
-import { User } from "@/interfaces";
 
 
 

@@ -1,14 +1,10 @@
 import { PlaceOrder, Title } from "@/components";
 import Link from "next/link";
 import styles from "./page.module.css";
-import ProductsInCheckout from "./ui/ProductsInCheckout";
+import {ProductsInCheckout} from "./ui/ProductsInCheckout";
 
-interface Props {
-  params: {
-    id: string;
-  };}
 
-export default function CheckoutPage({params}:Props) {
+export default function CheckoutPage() {
   return (
     <div className={styles.container}>
       <Title title="Verificar orden" />

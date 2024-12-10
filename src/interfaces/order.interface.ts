@@ -1,4 +1,4 @@
-import { OrderAddress, OrderItem, Size } from "@prisma/client";
+import { Size } from "@prisma/client";
 
 export interface OrderType {
   OrderItem: {

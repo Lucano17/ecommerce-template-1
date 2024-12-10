@@ -1,6 +1,6 @@
 import "./globals2.css";
 import type { Metadata } from "next";
-import { inter, geistMono, geistSans } from "@/fonts/fonts";
+import { geistMono, geistSans } from "@/fonts/fonts";
 import { Providers } from "@/components";
 
 export const metadata: Metadata = {

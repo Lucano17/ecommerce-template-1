@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Title, MercadoPagoButton, PayPalButton } from "@/components";
+import { Title, MercadoPagoButton } from "@/components";
 import { getOrderById } from "@/actions";
 import styles from "./page.module.css";
 import Skeleton from "@/components/skeleton/Skeleton";
@@ -46,9 +46,9 @@ export default function PaymentPage({ params }: Props) {
     };
 
     fetchPreference();
-  }, [orderId, router]);
+  }, [orderId, router, preferenceId]);
 
-  useEffect(() => {}, [preferenceId]); // Este effect se ejecuta cada vez que preferenceId cambia
+  
 
   useEffect(() => {
     const getOrder = async () => {

@@ -1,4 +1,4 @@
-import { auth, authConfig } from "@/auth.config";
+import { auth } from "@/auth.config";
 import { Title } from "@/components";
 import { redirect } from "next/navigation";
 import React from "react";

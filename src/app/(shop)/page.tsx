@@ -1,6 +1,5 @@
-import { ProductGrid, Title, Pagination, Filter, Search } from "@/components";
+import { ProductGrid, Title, Pagination } from "@/components";
 import { getPaginatedProductsWithImages } from "@/actions";
-import { redirect } from "next/navigation";
 import AlertMessage from "@/components/ui/alert/AlertMessage";
 import styles from "./page.module.css"
 

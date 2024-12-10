@@ -5,10 +5,6 @@ import { getOrdersByUser } from "@/actions";
 import { redirect } from "next/navigation";
 
 
-interface Props {
-    id: string;
-}
-
 export default async function OrdersPage() {
   const { ok, orders } = await getOrdersByUser();
 

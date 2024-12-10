@@ -2,7 +2,6 @@ import { OrderSummary, Title } from "@/components";
 import Link from "next/link";
 import styles from "./page.module.css";
 import { ProductsInCart } from "@/components";
-import { redirect } from "next/navigation";
 
 
 

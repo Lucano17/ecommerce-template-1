@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Pagination.module.css";
 import { IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
 import { usePathname, useSearchParams } from "next/navigation";

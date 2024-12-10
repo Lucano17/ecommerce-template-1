@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React from 'react'
 import { IoAddCircleOutline, IoRemoveCircleOutline} from 'react-icons/io5'
 import styles from "./QuantitySelector.module.css"
 

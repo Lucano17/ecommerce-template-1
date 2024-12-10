@@ -1,7 +1,6 @@
 "use server"
 
 import { auth } from "@/auth.config";
-import { OrderType } from "@/interfaces";
 import prisma from "@/lib/prisma";
 
 export const getOrderById = async (id: string) => {

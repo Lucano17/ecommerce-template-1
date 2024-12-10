@@ -3,8 +3,7 @@
 "use server"
 
 import prisma from "@/lib/prisma"
-import { Category, Gender } from "@prisma/client";
-import { title } from "process";
+import { Gender } from "@prisma/client";
 
 interface PaginationOptions {
   page?: number;

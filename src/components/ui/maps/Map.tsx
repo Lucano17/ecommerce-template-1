@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 // Interfaz para las propiedades del componente
 interface MapProps {
@@ -10,14 +9,7 @@ interface MapProps {
 }
 
 // Componente Map
-export const Map: React.FC<MapProps> = ({
-  lat = -34.603722,
-  lng = -58.381592,
-}) => {
-  const containerStyle = {
-    width: "100%",
-    height: "400px", // Ajusta el tamaño según tu diseño
-  };
+export const Map: React.FC<MapProps> = () => {
 
   const [windowDimention, setWindowDimention] = useState({ width: 0, height: 0 });
   const [mapFull, setMapFull] = useState(true)

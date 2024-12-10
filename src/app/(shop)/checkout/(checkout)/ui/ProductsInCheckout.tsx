@@ -4,20 +4,17 @@ import Image from "next/image";
 import { useCartStore } from "@/store";
 import { useEffect, useState } from "react";
 import styles from "./ProductsInCheckout.module.css";
-import { getOrderById } from "@/actions";
 import { currencyFormat } from "@/utils";
-import { OrderType } from "@/interfaces";
 
-export default function () {
+export const ProductsInCheckout = () => {
   // const productsInCart = useCartStore((state) => state.cart);
   const [loaded, setLoaded] = useState(false);
-  const productsInCart = useCartStore( state => state.cart );
-  
+  const productsInCart = useCartStore((state) => state.cart);
 
   useEffect(() => {
     setLoaded(true);
   }, []);
-  
+
   if (!loaded) {
     return <p>Loading...</p>;
   }
@@ -42,11 +39,13 @@ export default function () {
             </p>
 
             <div className={styles.priceAndQuantity}>
-              <p className={styles.subtotalArticle}>{currencyFormat(product.price * product.quantity)}</p>
+              <p className={styles.subtotalArticle}>
+                {currencyFormat(product.price * product.quantity)}
+              </p>
             </div>
           </div>
         </div>
       ))}
     </div>
   );
-}
+};

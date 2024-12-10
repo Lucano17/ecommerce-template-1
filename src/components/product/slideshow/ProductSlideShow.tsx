@@ -18,7 +18,7 @@ interface Props {
   className?: string;
 }
 
-export const ProductSlideShow = ({ images, title, className }: Props) => {
+export const ProductSlideShow = ({ images, title }: Props) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperObject>();
 
   // Si no hay imágenes, usa el placeholder

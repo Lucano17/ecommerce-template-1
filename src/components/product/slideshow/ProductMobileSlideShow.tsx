@@ -6,7 +6,6 @@ import { FreeMode, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import Image from "next/image";
 
 import styles from "./ProductMobileSlideShow.module.css";
 import { ProductImage } from "@/components";

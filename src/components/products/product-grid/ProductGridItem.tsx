@@ -3,7 +3,6 @@
 import React from "react";
 import { useState } from "react";
 import { Product } from "@/interfaces";
-import Image from "next/image";
 import Link from "next/link";
 import styles from "./ProductGridItem.module.css"
 import { ProductImage } from "@/components";
