@@ -21,6 +21,7 @@ export async function GET(request: Request) {
         id: true,
         title: true,
         price: true,
+        slug: true
       },
     });
     return NextResponse.json(products);

@@ -12,6 +12,7 @@ interface PaginationOptions {
   gender?: Gender;
   category?: string;
   sortBy?: string; // Agregar el campo sortBy
+  query?: string
 }
 
 export const getPaginatedProductsWithImages = async ({
@@ -20,6 +21,7 @@ export const getPaginatedProductsWithImages = async ({
   gender,
   category,
   sortBy = "price_asc", // Valor por defecto si no se pasa sortBy
+  query,
 }: PaginationOptions) => {
   try {
     const whereClause: any = {};
@@ -32,6 +34,13 @@ export const getPaginatedProductsWithImages = async ({
       whereClause.category = {
         name: category,
       };
+    }
+
+    if (query) {
+      whereClause.OR = [
+        {title: {contains: query, mode: "insensitive"}},
+        {category: {name: {contains: query, mode: "insensitive"}}},
+      ]
     }
 
     // Lógica para ordenar los productos

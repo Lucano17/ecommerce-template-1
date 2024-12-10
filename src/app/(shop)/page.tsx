@@ -8,17 +8,20 @@ interface Props {
   searchParams: {
     page?: string;
     sortBy?: string;
+    q?: string
   };
 }
 
 export default async function ShopPage({ searchParams }: Props) {
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
   const sortBy = searchParams.sortBy || "price_asc";  // Valor por defecto
+  const query = searchParams.q || "";
 
   // Obtenemos los productos filtrados y paginados desde el servidor
   const { products, currentPage, totalPages } = await getPaginatedProductsWithImages({
     page,
     sortBy,
+    query,
   });
 
   if (products.length === 0) {
@@ -36,7 +39,7 @@ export default async function ShopPage({ searchParams }: Props) {
         <Search styleClass={styles.search}/>
         <Filter />
         </div>
-        
+
         <ProductGrid products={products} />
       </div>
 
