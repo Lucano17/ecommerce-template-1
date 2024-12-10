@@ -9,10 +9,10 @@ interface Props {
     id: string;
 }
 
-export default async function OrdersPage({ id }: Props) {
+export default async function OrdersPage() {
   const { ok, orders } = await getOrdersByUser();
 
-  if (!ok) {
+  if (!ok || !orders) {
     redirect("/auth/login");
   }
 
