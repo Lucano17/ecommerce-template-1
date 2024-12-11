@@ -44,6 +44,7 @@ export const ProductsInCheckout = ({params}:Props) => {
           key={`${item.product.slug} - ${item.size}`}
           className={styles.productsContainer}
         >
+          {/*//TODO Cambiar Image */}
           <Image
             src={`/products/${item.product.ProductImage[0]?.url}`}
             width={50}

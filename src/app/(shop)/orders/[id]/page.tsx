@@ -1,24 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import {
-  IsPaid,
-  Title,
-  ProductsInCheckout,
-  UserAddressData,
-} from "@/components";
+import { IsPaid, Title, ProductsInCheckout, UserAddressData, PaymentMenu } from "@/components";
 import styles from "./page.module.css";
 import { useUIStore } from "@/store";
 import { currencyFormat } from "@/utils";
-import { useRouter } from "next/navigation";
 import { getOrderById } from "@/actions";
 import Link from "next/link";
-import { PaymentsMenu } from "@/components/cart/payment/PaymentsMenu";
 
 interface Props {
   params: {
     id: string;
-    orderId: string;
   };
 }
 
@@ -31,10 +23,10 @@ interface Order {
 }
 
 export default function OrdersByIdPage({ params }: Props) {
-  const { id, orderId } = params;
-  const router = useRouter();
-  const openPaymentsMenu = useUIStore((state) => state.openPaymentsMenu);
-
+  const { id } = params;
+  const openPaymentMenu = useUIStore((state) => state.openPaymentMenu);
+  
+  const [preferenceId, setPreferenceId] = useState<string | null>(null);
   const [order, setOrder] = useState<Order | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -42,29 +34,14 @@ export default function OrdersByIdPage({ params }: Props) {
   useEffect(() => {
     const fetchOrder = async () => {
       try {
-        const { ok, order, message } = await getOrderById(id); // Uso del server action
+        const { ok, order, message } = await getOrderById(id);
 
         if (!ok || !order) {
           setError(message || "Orden no encontrada.");
-          return; // Evitar redirigir
+          return;
         }
 
-        setOrder({
-          itemsInOrder: order.OrderItem.reduce(
-            (sum, item) => sum + item.quantity,
-            0
-          ),
-          subtotal: order.OrderItem.reduce(
-            (sum, item) => sum + item.price * item.quantity,
-            0
-          ),
-          tax: order.OrderItem.reduce(
-            (sum, item) => sum + item.price * item.quantity * 0.21,
-            0
-          ),
-          total: order.total || 0,
-          isPaid: order.isPaid || false,
-        });
+        setOrder(order);
       } catch (err) {
         console.error("Error fetching order:", err);
         setError("Error al cargar la orden. Por favor, intenta nuevamente.");
@@ -74,7 +51,30 @@ export default function OrdersByIdPage({ params }: Props) {
     };
 
     fetchOrder();
-  }, [id, router]);
+  }, [id]);
+
+  useEffect(() => {
+    const fetchPreference = async () => {
+      try {
+        const response = await fetch("/api/payment/mercadopago/preference", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ orderId: id }),
+        });
+        const data = await response.json();
+
+        if (data.preferenceId) {
+          setPreferenceId(data.preferenceId);
+        } else {
+          throw new Error("No preference ID returned");
+        }
+      } catch (error) {
+        console.error("Error fetching preference:", error);
+      }
+    };
+
+    fetchPreference();
+  }, [id]);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -100,8 +100,8 @@ export default function OrdersByIdPage({ params }: Props) {
           <ProductsInCheckout params={{ id }} />
         </div>
 
-        <div className={styles.paymentsMenu}>
-          <PaymentsMenu params={params} />
+        <div className={styles.paymentMenu}>
+          <PaymentMenu preferenceId={preferenceId} />
         </div>
 
         <div className={styles.checkOut}>
@@ -126,9 +126,7 @@ export default function OrdersByIdPage({ params }: Props) {
             {order.isPaid ? (
               <Link href={`/checkout/shipping/${id}`}>Detalles del envío</Link>
             ) : (
-              <div>
-                <button onClick={openPaymentsMenu}>PAGAR</button>
-              </div>
+              <button onClick={openPaymentMenu}>PAGAR</button>
             )}
           </div>
         </div>

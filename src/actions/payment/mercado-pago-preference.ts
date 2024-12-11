@@ -14,7 +14,6 @@ export const mercadopago = new MercadoPagoConfig({
 });
 
 export const createMercadoPagoPreference = async ({ id }: Props) => {
-  const accessToken = process.env.NEXT_PUBLIC_MERCADO_PAGO_PUBLIC_KEY;
   const { order } = await getOrderById(id)
   try {
     const preference = await new Preference(mercadopago).create({
@@ -30,9 +29,9 @@ export const createMercadoPagoPreference = async ({ id }: Props) => {
         ],
         external_reference: id,
         back_urls: {
-          success: `${accessToken}/orders/${id}`,
-          failure: `${accessToken}/orders/${id}`,
-          pending: `${accessToken}/orders/${id}`,
+          success: `${process.env.NEXT_PUBLIC_APP_URL}/orders/${id}`,
+          failure: `${process.env.NEXT_PUBLIC_APP_URL}/orders/${id}`,
+          pending: `${process.env.NEXT_PUBLIC_APP_URL}/orders/${id}`,
         },
         auto_return: "approved",
         notification_url: "https://b0vd0lvs-3000.brs.devtunnels.ms/api/payment/mercadopago/webhook",

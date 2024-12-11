@@ -4,7 +4,7 @@ import { create } from 'zustand'
 interface State {
   isSideMenuOpen: boolean;
   isCategoryMenuOpen: boolean;
-  isPaymentsMenuOpen: boolean;
+  isPaymentMenuOpen: boolean;
 
   openSideMenu: () => void;
   closeSideMenu: () => void;
@@ -12,14 +12,14 @@ interface State {
   openCategoryMenu: () => void;
   closeCategoryMenu: () => void;
 
-  openPaymentsMenu: () => void;
-  closePaymentsMenu: () => void;
+  openPaymentMenu: () => void;
+  closePaymentMenu: () => void;
 }
 
 export const useUIStore = create<State>((set) => ({
   isSideMenuOpen: false,
   isCategoryMenuOpen: false,
-  isPaymentsMenuOpen: false,
+  isPaymentMenuOpen: false,
   
 
   openCategoryMenu: () => set({ isCategoryMenuOpen: true }),
@@ -28,6 +28,6 @@ export const useUIStore = create<State>((set) => ({
   openSideMenu: () => set({ isSideMenuOpen: true }),
   closeSideMenu: () => set({ isSideMenuOpen: false }),
 
-  openPaymentsMenu: () => set({ isPaymentsMenuOpen: true }),
-  closePaymentsMenu: () => set({ isPaymentsMenuOpen: false }),
+  openPaymentMenu: () => set({ isPaymentMenuOpen: true }),
+  closePaymentMenu: () => set({ isPaymentMenuOpen: false }),
 }))

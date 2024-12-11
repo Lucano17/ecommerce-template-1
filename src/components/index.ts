@@ -27,6 +27,7 @@ export * from "./ui/sideBar/SideBar"
 export * from "./ui/title/Title"
 export * from "./ui/top-menu/TopMenu"
 
+export * from "./cart/payment/PaymentMenu"
 export * from "./cart/payment/payment-methods/MercadoPagoButton"
 export * from "./cart/payment/payment-methods/PayPalButton"
 
