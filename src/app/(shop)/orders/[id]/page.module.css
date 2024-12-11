@@ -67,6 +67,15 @@
     margin-top: auto;
 }
 
+.order button {
+    margin-top: 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    padding-bottom: 2px;
+    cursor: pointer;
+}
+
 @media (max-width: 800px) {
     .carritoContainer {
         display: flex;
