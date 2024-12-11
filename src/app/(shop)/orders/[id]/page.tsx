@@ -1,7 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { IsPaid, Title, ProductsInCheckout, UserAddressData } from "@/components";
+import {
+  IsPaid,
+  Title,
+  ProductsInCheckout,
+  UserAddressData,
+} from "@/components";
 import styles from "./page.module.css";
 import { useUIStore } from "@/store";
 import { currencyFormat } from "@/utils";
@@ -45,9 +50,18 @@ export default function OrdersByIdPage({ params }: Props) {
         }
 
         setOrder({
-          itemsInOrder: order.OrderItem.reduce((sum, item) => sum + item.quantity, 0),
-          subtotal: order.OrderItem.reduce((sum, item) => sum + item.price * item.quantity, 0),
-          tax: order.OrderItem.reduce((sum, item) => sum + item.price * item.quantity * 0.21, 0),
+          itemsInOrder: order.OrderItem.reduce(
+            (sum, item) => sum + item.quantity,
+            0
+          ),
+          subtotal: order.OrderItem.reduce(
+            (sum, item) => sum + item.price * item.quantity,
+            0
+          ),
+          tax: order.OrderItem.reduce(
+            (sum, item) => sum + item.price * item.quantity * 0.21,
+            0
+          ),
           total: order.total || 0,
           isPaid: order.isPaid || false,
         });
@@ -77,12 +91,17 @@ export default function OrdersByIdPage({ params }: Props) {
   return (
     <div className={styles.container}>
       <Title title={`Orden #${id.split("-").at(-1) || "Desconocida"}`} />
+
       <div className={styles.carritoContainer}>
         <div className={styles.carrito}>
           <span className={styles.state}>
             <IsPaid id={id} />
           </span>
           <ProductsInCheckout params={{ id }} />
+        </div>
+
+        <div className={styles.paymentsMenu}>
+          <PaymentsMenu params={params} />
         </div>
 
         <div className={styles.checkOut}>
@@ -109,7 +128,6 @@ export default function OrdersByIdPage({ params }: Props) {
             ) : (
               <div>
                 <button onClick={openPaymentsMenu}>PAGAR</button>
-                <PaymentsMenu params={params} />
               </div>
             )}
           </div>
