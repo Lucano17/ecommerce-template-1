@@ -1,41 +1,45 @@
+/* UsersTable.module.css */
 .container {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-}
-
-.container table {
-    width: 100%;
+    display: block; /* Asegúrate de que no se limite el flujo */
+    width: 100%; /* Asegura que la tabla ocupe todo el espacio disponible */
+    box-sizing: border-box; /* Incluye el padding en el cálculo del ancho */
+  }
+  
+  .container table {
+    min-width: 600px; /* Asegura que la tabla tenga un ancho mínimo */
+    max-width: 100%; /* Evita que se desborde demasiado */
     border-collapse: collapse;
     background-color: rgba(240, 248, 255, 0.041);
-}
-
-.container th, .container td {
+  }
+  
+  .container th,
+  .container td {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: center;
-}
-
-.container th {
+  }
+  
+  .container th {
     background-color: #353535; /* Añade un color de fondo a los headers */
-}
-
-.container td {
+  }
+  
+  .container td {
     vertical-align: middle;
-}
+  }
+  
 
 .container select {
-    margin-left: 10px;
-    padding: 2px 3px 2px 3px;
-    border: 1px solid white;
-    border-radius: 5px;
-    cursor: pointer;
+  margin-left: 10px;
+  padding: 2px 3px 2px 3px;
+  border: 1px solid white;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .state {
-    margin: auto;
+  margin: auto;
 }
 
 .tdContainer {
-    display: flex;
+  display: flex;
 }
