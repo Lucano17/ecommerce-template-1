@@ -38,3 +38,6 @@ next-env.d.ts
 # database
 .env
 /postgres/
+
+# TO-DO list
+TO-DO.md
