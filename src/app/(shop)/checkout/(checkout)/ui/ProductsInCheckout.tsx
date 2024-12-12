@@ -5,6 +5,7 @@ import { useCartStore } from "@/store";
 import { useEffect, useState } from "react";
 import styles from "./ProductsInCheckout.module.css";
 import { currencyFormat } from "@/utils";
+import { ProductImage } from "@/components";
 
 export const ProductsInCheckout = () => {
   // const productsInCart = useCartStore((state) => state.cart);
@@ -26,11 +27,11 @@ export const ProductsInCheckout = () => {
           key={`${product.slug} - ${product.size}`}
           className={styles.productsContainer}
         >
-          <Image
-            src={`/products/${product.image}`}
+          <ProductImage
+            src={product.image}
             width={50}
             height={55}
-            alt="imagen"
+            alt={product.title}
           />
 
           <div className={styles.productContentContainer}>
