@@ -15,6 +15,11 @@ export const MercadoPagoButton = ({ preferenceId }: MercadoPagoButtonProps) => {
     });
   }, []);
 
+  if (!preferenceId) {
+    console.error("No preference ID provided");
+    return <div>Error: Missing payment details</div>;
+}
+
   return (
     <div id="wallet_container">
       <Wallet
