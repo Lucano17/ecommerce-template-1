@@ -39,14 +39,14 @@ export const SideBar = () => {
               className={styles.closeIcon}
               onClick={() => closeSideMenu()}
             />
-            <div className={styles.searchContainer}>
+            {/* <div className={styles.searchContainer}>
               <IoSearchOutline className={styles.searchIcon} size={20} />
               <input
                 className={styles.searchInput}
                 type="text"
                 placeholder="Buscar"
               />
-            </div>
+            </div> */}
 
             <Link
               href={"/"}
