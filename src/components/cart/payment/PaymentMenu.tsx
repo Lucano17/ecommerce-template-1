@@ -40,7 +40,7 @@ export const PaymentMenu = ({ preferenceId }: Props) => {
             {preferenceId ? (
               <MercadoPagoButton preferenceId={preferenceId} />
             ) : (
-              <Skeleton />
+              <p>Error al cargar el botón de Mercado Pago</p>
             )}
           </div>
         </div>
