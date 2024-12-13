@@ -20,7 +20,7 @@
 }
 
 .input {
-    color: black;
+    color: rgb(253, 253, 253);
     margin-top: 5px;
     background: none;
     border-bottom: 1px solid white;
@@ -31,7 +31,7 @@
 
 .formContainer input:-webkit-autofill {
     box-shadow: 0 0 0px 1000px rgb(61, 61, 61) inset;
-    -webkit-text-fill-color: #000; /* Cambia el color del texto según lo necesites */
+    -webkit-text-fill-color: #ffffff; /* Cambia el color del texto según lo necesites */
     border-radius: 2px;
     padding: 2px 3px;
 }
