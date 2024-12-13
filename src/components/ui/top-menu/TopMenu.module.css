@@ -28,7 +28,8 @@
 
 .navLinksContainer {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    gap: 100px;
 }
 
 .categoryContainer {
@@ -110,4 +111,5 @@
     .container {
         gap: 27px;
     }
+    
   }
