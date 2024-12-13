@@ -17,17 +17,18 @@
 }
 
 .container th {
-    background-color: #353535; /* Añade un color de fondo a los headers */
+    background-color: #353535;
 }
 
 .container td {
     vertical-align: middle;
 }
 
-.state {
-    margin: auto;
+.container td span {
+    display: flex;
 }
 
-.tdContainer {
+.state {
     display: flex;
+    justify-content: center;
 }
