@@ -6,6 +6,7 @@ import styles from "./ProductsInCheckout.module.css";
 import { getOrderById } from "@/actions";
 import { currencyFormat } from "@/utils";
 import { OrderType } from "@/interfaces";
+import { ProductImage } from "@/components";
 
 interface Props {
   params: {
@@ -44,12 +45,11 @@ export const ProductsInCheckout = ({params}:Props) => {
           key={`${item.product.slug} - ${item.size}`}
           className={styles.productsContainer}
         >
-          {/*//TODO Cambiar Image */}
           <Image
-            src={`/products/${item.product.ProductImage[0]?.url}`}
+            src={`/products/${item.product.ProductImage[0].url}`}
             width={50}
             height={55}
-            alt="imagen"
+            alt={item.product.title}
           />
 
           <div className={styles.productContentContainer}>
