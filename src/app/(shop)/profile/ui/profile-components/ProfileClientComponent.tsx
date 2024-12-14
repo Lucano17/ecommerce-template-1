@@ -34,7 +34,7 @@ export const ProfileClientComponent: React.FC<ProfileClientComponentProps> = ({ 
 
   const saveChanges = async (field: "name" | "email" | "password") => {
     try {
-      const response = await fetch("/api/user/update", {
+      const response = await fetch("/api/auth/user/update", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
