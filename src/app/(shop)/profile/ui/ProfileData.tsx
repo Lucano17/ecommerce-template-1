@@ -24,7 +24,7 @@ export const ProfileData = async ({ email, name, password}: Props) => {
 
   return (
     <div className={styles.container}>
-      <input type="image" className={styles.image} />
+      {/* <input type="image" className={styles.image} /> */}
 
       <div className={styles.singleDataContainer}>
         <h3>Correo electrónico:</h3>
