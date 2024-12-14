@@ -8,6 +8,7 @@ export {login} from "./auth/login"
 export {logout} from "./auth/logout"
 export {onLogout} from "./auth/onLogout"
 export {registerUser} from "./auth/register"
+export {userUpdate} from "./auth/update-user"
 
 export {getCountries} from "./country/get-countries"
 
