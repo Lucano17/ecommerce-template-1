@@ -11,7 +11,7 @@
     background-color: red;
     border-radius: 5px;
     width: 100%;
-    padding: 0 4px 0 4px;
+    padding: 1px 5px 1px 5px;
 }
 
 .paidTrue {
@@ -22,7 +22,7 @@
     background-color: rgb(15, 144, 3);
     border-radius: 5px;
     width: 100%;
-    padding: 0 4px 0 4px;
+    padding: 1px 5px 1px 5px;
 }
 
 .paidTrue p {
