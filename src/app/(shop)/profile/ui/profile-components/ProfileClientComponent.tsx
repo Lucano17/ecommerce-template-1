@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../ProfileData.module.css";
 import { FaEdit, FaRegSave } from "react-icons/fa";
+import { userUpdate } from "@/actions/auth/update-user";
 
 interface User {
   name: string;
@@ -31,11 +32,34 @@ export const ProfileClientComponent: React.FC<ProfileClientComponentProps> = ({ 
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const saveChanges = (field: "name" | "email" | "password") => {
-    // Aquí podrías llamar a una función para actualizar los datos en la base de datos
-    setEditMode((prev) => ({ ...prev, [field]: false }));
+  const saveChanges = async (field: "name" | "email" | "password") => {
+    try {
+      const response = await fetch("/api/user/update", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email, // Siempre envía el email para identificar al usuario
+          name: field === "name" ? formData.name : undefined,
+          password: field === "password" ? formData.password : undefined,
+        }),
+      });
+  
+      if (!response.ok) {
+        console.error("Error al guardar los cambios");
+        return;
+      }
+  
+      const updatedUser = await response.json();
+      console.log("Usuario actualizado:", updatedUser);
+  
+      // Desactiva el modo edición
+      setEditMode((prev) => ({ ...prev, [field]: false }));
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
-
   return (
     <div className={styles.container}>
       {/* Nombre de usuario */}
