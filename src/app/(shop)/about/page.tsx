@@ -23,6 +23,12 @@ export default async function AboutPage() {
         </div>
         <div className={styles.mainContent}>
           <p>
+            Recuerda que esta es una tienda de prueba, a la hora de realizar
+            transacciones por favor use cuentas de prueba. <br/>
+            <br />
+            El siguiente texto solo simula ser de una tienda, no se apega a la realidad.
+          </p>
+          <p>
             Teslo Shop es una tienda de ropa con más de 15 años brindando a
             nuestros clientes los mejores productos, con la mejor calidad.
             Contamos con indumentaria y accesorios de industria nacional, y

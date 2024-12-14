@@ -6,9 +6,11 @@
 
 .mainContent {
   display: flex;
+  flex-direction: column;
   text-justify: auto;
   width: 80%;
   margin: auto;
+  gap: 10px;
 }
 
 .aboutContainer {
