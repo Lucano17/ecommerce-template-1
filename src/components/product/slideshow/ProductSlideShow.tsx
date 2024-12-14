@@ -61,15 +61,16 @@ export const ProductSlideShow = ({ images, title }: Props) => {
           modules={[FreeMode, Navigation, Thumbs]}
           className={styles.mySwiper}
         >
+
           {displayImages.map((image) => (
             <SwiperSlide key={image}>
               <ProductImage
-                width={100}
+                width={90}
                 height={100}
                 src={image}
                 alt={title}
                 priority={true}
-              />
+                />
             </SwiperSlide>
           ))}
         </Swiper>
