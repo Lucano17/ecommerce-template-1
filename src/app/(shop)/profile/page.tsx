@@ -1,3 +1,4 @@
+import prisma from "@/lib/prisma";
 import { auth } from "@/auth.config";
 import { Title } from "@/components";
 import { redirect } from "next/navigation";
@@ -12,10 +13,19 @@ export default async function ProfilePage() {
     redirect("/");
   }
 
+  // Obtenemos los datos actualizados desde la base de datos
+  const user = await prisma.user.findUnique({
+    where: { email: session.user.email },
+  });
+
+  if (!user) {
+    redirect("/");
+  }
+
   return (
     <div className={styles.container}>
       <Title title="Perfil" />
-      <ProfileClientComponent user={session.user} />
+      <ProfileClientComponent user={user} />
     </div>
   );
 }
