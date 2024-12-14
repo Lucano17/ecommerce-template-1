@@ -32,22 +32,29 @@ export const ProfileClientComponent: React.FC<ProfileClientComponentProps> = ({ 
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const saveChanges = (field: "name" | "email" | "password") => {
+  const saveChanges = (field: "name" | "password") => {
     startTransition(async () => {
       try {
         await userUpdate(
-          formData.email, // Siempre se envía el email como identificador
+          user.email,
           field === "name" ? formData.name : undefined,
           field === "password" ? formData.password : undefined
         );
-
-        // Desactiva el modo edición
+  
+        // Actualizamos el estado local
+        setFormData((prev) => ({
+          ...prev,
+          ...(field === "name" && { name: formData.name }),
+          ...(field === "password" && { password: "" }), // Limpiamos el campo de password
+        }));
+  
         setEditMode((prev) => ({ ...prev, [field]: false }));
       } catch (error) {
         console.error("Error al guardar los cambios:", error);
       }
     });
   };
+  
 
   return (
     <div className={styles.container}>
