@@ -15,21 +15,21 @@ export const Pagination = ({ totalPages }: Props) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const pageString = searchParams.get("page") ?? "1"; // Definimos página 1 como valor por defecto
+  const pageString = searchParams.get("page") ?? "1"; // Page 1 as default value
   let currentPage = isNaN(+pageString) ? 1 : +pageString;
 
-  const allPages = generatePaginationNumbers(currentPage, totalPages); // Genera los números de página
+  const allPages = generatePaginationNumbers(currentPage, totalPages); // Generate the page's numbers
 
-  // Función para crear URLs con los parámetros adecuados
+  // Function to create the URL with the correct params
   const createPageUrl = (pageNumber: number | string) => {
     const params = new URLSearchParams(searchParams);
     
     if (+pageNumber <= 0 || +pageNumber > totalPages) {
-      return `${pathname}?${params.toString()}`; // Evita números de página no válidos
+      return `${pathname}?${params.toString()}`; // Avoid invalid page numbers 
     }
 
     params.set("page", pageNumber.toString());
-    return `${pathname}?${params.toString()}`; // Mantiene otros parámetros como sortBy intactos
+    return `${pathname}?${params.toString()}`; // Mantain sortBy
   };
 
   return (

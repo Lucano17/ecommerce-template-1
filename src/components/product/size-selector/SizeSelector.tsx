@@ -4,7 +4,7 @@ import styles from "./SizeSelector.module.css";
 interface Props {
   selectedSize?: Size;
   availableSizes: Size[];
-  onSelectedSizeChange: (size: Size) => void; // Nueva función para manejar el cambio de talla
+  onSelectedSizeChange: (size: Size) => void;
 }
 
 export const SizeSelector = ({ selectedSize, availableSizes, onSelectedSizeChange }: Props) => {
@@ -15,8 +15,8 @@ export const SizeSelector = ({ selectedSize, availableSizes, onSelectedSizeChang
         {availableSizes.map(size => (
           <button
             key={size}
-            className={`${styles.sizeButton} ${selectedSize === size ? styles.selected : ''}`} // Clase para talla seleccionada
-            onClick={() => onSelectedSizeChange(size)} // Cambiar talla cuando se haga clic
+            className={`${styles.sizeButton} ${selectedSize === size ? styles.selected : ''}`} // style class for size selected
+            onClick={() => onSelectedSizeChange(size)} // Change the size
           >
             {size}
           </button>

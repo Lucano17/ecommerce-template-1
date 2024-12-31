@@ -16,10 +16,10 @@ interface Props {
 
 export const ProductGrid = async({ products, searchParams }: Props) => {
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
-  const sortBy = searchParams.sortBy || "price_asc";  // Valor por defecto
+  const sortBy = searchParams.sortBy || "price_asc";  // Default value
   const query = searchParams.q || "";
 
-  // Obtenemos los productos filtrados y paginados desde el servidor
+  // Obtain filtered products from the server
   const {  currentPage, totalPages } = await getPaginatedProductsWithImages({
     page,
     sortBy,

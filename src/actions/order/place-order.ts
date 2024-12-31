@@ -32,10 +32,10 @@ export const placeOrder = async (productIds: ProductToOrder[], address: Address)
         },
     });
 
-    // Calcular los montos
+    // Calculate amounts
     const itemsInOrder = productIds.reduce((count, p) => count + p.quantity, 0)
 
-    // Colocar los totales de tax, subtotal y total
+    // Put taxes, subtotal & total
     const { subTotal: subtotal, tax, total } = productIds.reduce((totals, item) => {
         const productQuantity = item.quantity;
         const product = products.find((product) => product.id === item.productId)

@@ -50,8 +50,8 @@ export const authConfig = {
 
         if (!bcryptjs.compareSync(password, user.password)) return null
         
-        const { password: _, ...rest } = user;  // Eliminar la contraseña del objeto usuario
-        return rest; // Devuelve el usuario sin la contraseña
+        const { password: _, ...rest } = user;  // Delete password from user object
+        return rest; // Return user without password
       },
     }),
   ]

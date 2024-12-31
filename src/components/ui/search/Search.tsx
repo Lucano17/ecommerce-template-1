@@ -22,11 +22,11 @@ export const Search = ({
 
     setLoading(true);
     try {
-      const searchParams = new URLSearchParams(); // Crea nuevos parámetros de búsqueda
-      searchParams.set("q", query); // Agrega el parámetro de búsqueda
-      searchParams.set("page", "1"); // Reinicia la paginación
+      const searchParams = new URLSearchParams(); // Create new search Params
+      searchParams.set("q", query); // Add search params
+      searchParams.set("page", "1"); // Restart the pagination
 
-      router.push(`/?${searchParams.toString()}`); // Redirige con los nuevos parámetros
+      router.push(`/?${searchParams.toString()}`); // Redirect with the new params
     } catch (error) {
       console.error("Error al buscar productos:", error);
     } finally {

@@ -41,7 +41,7 @@ export const AddToCart = ({ product }: Props) => {
         <SizeSelector
           selectedSize={selectedSize}
           availableSizes={product?.sizes || []}
-          onSelectedSizeChange={setSelectedSize} // Cambiar la talla seleccionada
+          onSelectedSizeChange={setSelectedSize} // Change the selected size
         />
       </div>
 

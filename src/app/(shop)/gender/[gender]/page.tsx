@@ -20,7 +20,7 @@ interface Props {
 export default async function GendersByIdPage({ params, searchParams }: Props) {
   const { gender } = params;
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
-  const sortBy = searchParams.sortBy || "price_asc";  // Valor por defecto
+  const sortBy = searchParams.sortBy || "price_asc";  // Default value
   const query = searchParams.q || "";
 
 

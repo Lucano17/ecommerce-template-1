@@ -45,7 +45,7 @@ export const ProfileClientComponent: React.FC<ProfileClientComponentProps> = ({ 
         setFormData((prev) => ({
           ...prev,
           ...(field === "name" && { name: formData.name }),
-          ...(field === "password" && { password: "" }), // Limpiamos el campo de password
+          ...(field === "password" && { password: "" }), // Clean password field
         }));
   
         setEditMode((prev) => ({ ...prev, [field]: false }));
@@ -58,7 +58,6 @@ export const ProfileClientComponent: React.FC<ProfileClientComponentProps> = ({ 
 
   return (
     <div className={styles.container}>
-      {/* Nombre de usuario */}
       <div className={styles.singleDataContainer}>
         <h3>Nombre de usuario:</h3>
         <div className={styles.userData}>

@@ -16,7 +16,7 @@ export default async function ShopPage({ searchParams }: Props) {
   const sortBy = searchParams.sortBy || "price_asc";  // Valor por defecto
   const query = searchParams.q || "";
 
-  // Obtenemos los productos filtrados y paginados desde el servidor
+  // Obtain the filtred products
   const { products, currentPage, totalPages } = await getPaginatedProductsWithImages({
     page,
     sortBy,

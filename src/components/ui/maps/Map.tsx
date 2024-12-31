@@ -2,9 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 
-// Interfaz para las propiedades del componente
 interface MapProps {
-  lat?: number; // Coordenadas opcionales para centrar el mapa
+  lat?: number; // Optional coords
   lng?: number;
 }
 
@@ -47,7 +46,7 @@ export const Map: React.FC<MapProps> = () => {
       width= {windowDimention.width > 750 ? "80%" : "100%"}
       height="400"
       style={{
-        border: 0, // Esto se define como un objeto
+        border: 0,
       }}
       allowFullScreen
       loading="lazy"

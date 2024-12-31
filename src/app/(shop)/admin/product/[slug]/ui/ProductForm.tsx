@@ -132,7 +132,7 @@ export const ProductForm = ({ product, categories }: Props) => {
         </div>
       </div>
 
-      {/* Selector de tallas y fotos */}
+      {/* Size selector & photos */}
       <div className={styles.productDataContainer}>
         {/* As checkboxes */}
 

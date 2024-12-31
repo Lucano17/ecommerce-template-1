@@ -21,7 +21,6 @@ interface Props {
 export const ProductSlideShow = ({ images, title }: Props) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperObject>();
 
-  // Si no hay imágenes, usa el placeholder
   const displayImages = images.length > 0 ? images : ["/imgs/placeholder.jpg"];
 
   return (

@@ -36,6 +36,6 @@ export async function generateMetadata(
 export default async function ProductBySlugPage({ params }: Props) {
   const { slug } = params;
 
-  // Usamos un componente del servidor para obtener el producto y pasarlo al cliente
+  // Use server component to obtain the product and send it to the client
   return <ProductServerComponent slug={slug} />;
 }

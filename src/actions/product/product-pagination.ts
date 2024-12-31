@@ -10,7 +10,7 @@ interface PaginationOptions {
   take?: number;
   gender?: Gender;
   category?: string;
-  sortBy?: string; // Agregar el campo sortBy
+  sortBy?: string; // add sortBy
   query?: string
 }
 
@@ -19,7 +19,7 @@ export const getPaginatedProductsWithImages = async ({
   take = 12,
   gender,
   category,
-  sortBy = "price_asc", // Valor por defecto si no se pasa sortBy
+  sortBy = "price_asc", // Default value if there is not sortBy
   query,
 }: PaginationOptions) => {
   try {

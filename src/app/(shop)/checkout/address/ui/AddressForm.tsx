@@ -59,10 +59,8 @@ export const AddressForm = ({countries, userStoreAddress = {}}: Props) => {
     setAddress(restAddress)
 
     if (rememberAddress) {
-      //TODO: Server action
       await setUserAddress(restAddress, session!.user.id)
     } else {
-      //TODO: Server action
       await deleteUserAddress(session!.user.id)
     }
 

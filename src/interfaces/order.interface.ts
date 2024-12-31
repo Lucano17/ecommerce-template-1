@@ -2,7 +2,7 @@ import { Size } from "@prisma/client";
 
 export interface OrderType {
   OrderItem: {
-    id?: string;          // Hacemos que estos campos sean opcionales
+    id?: string;
     orderId?: string;
     productId?: string;
     quantity: number;

@@ -20,7 +20,7 @@ interface Props {
 export default async function TypeByIdPage({ params, searchParams }: Props) {
   const { category } = params;
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
-  const sortBy = searchParams.sortBy || "price_asc";  // Valor por defecto
+  const sortBy = searchParams.sortBy || "price_asc";  // Default value
   const query = searchParams.q || "";
 
   const existingCategory = await prisma.category.findUnique({

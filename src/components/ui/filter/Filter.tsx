@@ -11,22 +11,12 @@ export const Filter = () => {
     const sortBy = event.target.value;
     const searchParams = new URLSearchParams(window.location.search);
 
-    searchParams.set("sortBy", sortBy); // Actualiza el parámetro sortBy
-  searchParams.set("page", "1"); // Reinicia la paginación
+    searchParams.set("sortBy", sortBy); // Update sortBy
+  searchParams.set("page", "1"); // Restart the pagination
 
   const newPath = `${pathname}?${searchParams.toString()}`;
   router.push(newPath);
 };
-
-    // if (pathname.startsWith("/")) {
-    //   router.push(`/?page=1&sortBy=${sortBy}`);
-    // } else if (pathname.startsWith("/gender")) {
-    //   router.push(`/gender/${pathname.split("/")[2]}?page=1&sortBy=${sortBy}`);
-    // } else if (pathname.startsWith("/category")) {
-    //   router.push(`/category/${pathname.split("/")[2]}?page=1&sortBy=${sortBy}`);
-    // } else {
-    //   router.push(`/?page=1&sortBy=${sortBy}`);
-    // }
 
   
 

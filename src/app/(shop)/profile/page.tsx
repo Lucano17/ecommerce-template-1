@@ -13,7 +13,7 @@ export default async function ProfilePage() {
     redirect("/");
   }
 
-  // Obtenemos los datos actualizados desde la base de datos
+  // Obtain uploaded data from database
   const user = await prisma.user.findUnique({
     where: { email: session.user.email },
   });

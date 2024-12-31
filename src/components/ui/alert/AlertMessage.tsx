@@ -1,4 +1,4 @@
-"use client"; // Indica que este componente es para el cliente
+"use client";
 
 import { useEffect } from "react";
 
@@ -11,5 +11,5 @@ export default function AlertMessage({alertMessage}: Props) {
     alert(alertMessage);
   }, [alertMessage]);
 
-  return null; // No necesitamos renderizar nada, solo mostrar la alerta
+  return null;
 }

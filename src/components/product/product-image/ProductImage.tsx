@@ -23,7 +23,7 @@ export const ProductImage = ({
   onMouseLeave,
 }: Props) => {
   const localSrc =
-    src && src.trim() !== "" && !src.startsWith("/imgs/") // Asegúrate de no procesar si ya es el placeholder
+    src && src.trim() !== "" && !src.startsWith("/imgs/") 
       ? src.startsWith("http")
         ? src
         : `/products/${src}`
