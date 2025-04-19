@@ -5,10 +5,9 @@ TypeScript.js, Next.JS, Node.JS, PostgreSQL & Prisma.
 ## Getting Started
 
 ## First, run the development server:
-
 1. Clone the repository.
 2. Create a copy of ```.env.template```, then rename it to ```.env```, and change the enviornment var.
-3. Instal dependencies ```pnpm install``` o ```pnpm dlx install```.
+3. Install dependencies ```pnpm install``` or ```pnpm dlx install```.
 4. Up database ```docker compose up -d```.
 5. Run Prisma migrations ```pnpm dlx prisma migrate dev --name (migration_name)```.
 6. Execute seed ```pnpm run seed```.
@@ -22,9 +21,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 
 ## Run in production:
-1. 
-2. 
-3. 
+# To check de build
+1. pnpm run build
+2. pnpm start
+3. Change development env to production
+# Then deploy
 
 # Prisma DATABASE commands:
 1. Set the ```DATABASE_URL``` in the ```.env``` file to point to your existing database. If your database has no tables yet, read ```https://pris.ly/d/getting-started```
