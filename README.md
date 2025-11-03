@@ -1,4 +1,4 @@
-## E-commerce web application with TypeScript, Next.js, PostgreSQL and Mercado Pago payment method
+# E-commerce web application with TypeScript, Next.js, PostgreSQL and Mercado Pago payment method
 
 This is an E-COMMERCE project made by Lucas de la Fuente. I used the following technologies:
 TypeScript.js, Next.JS, Node.JS, PostgreSQL & Prisma.
